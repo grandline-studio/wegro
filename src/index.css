@@ -633,8 +633,8 @@ button, input, select, textarea {
 }
 
 .brand-emblem {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 26px;
   object-fit: contain;
   filter: drop-shadow(0 2px 6px rgba(8, 7, 5, 0.12));
 }
@@ -910,6 +910,14 @@ main > section:first-child,
   padding-top: var(--space-16);
   padding-bottom: var(--space-12);
   font-size: 0.9375rem;
+}
+
+.footer .brand-name {
+  color: #FFFFFA !important;
+}
+
+.footer .brand-name span {
+  color: #94B9AF !important;
 }
 
 .footer-grid {

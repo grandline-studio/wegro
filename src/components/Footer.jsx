@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, ExternalLink, ShieldAlert } from 'lucide-react';
+import { Mail, Phone, MapPin, ExternalLink, ShieldAlert, Quote } from 'lucide-react';
 import { companyConfig } from '../data/companyConfig';
 
 export default function Footer({ navigate }) {
@@ -12,21 +12,93 @@ export default function Footer({ navigate }) {
   return (
     <footer className="footer" role="contentinfo" aria-label="WeGro Footer">
       <div className="container">
-        {/* Top Tagline & Corporate Identity */}
-        <div style={{ marginBottom: 40, borderBottom: '1px solid rgba(148, 185, 175, 0.14)', paddingBottom: 32 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-            <img
-              src="/wegrow_logo.png"
-              alt="WeGro Logo"
-              style={{ width: 36, height: 36, objectFit: 'contain' }}
-            />
-            <span className="brand-name" style={{ fontSize: '1.45rem' }}>
-              We<span>Gro</span>
-            </span>
+        {/* Top Tagline & Corporate Identity Hero Banner */}
+        <div
+          style={{
+            background: 'linear-gradient(135deg, rgba(148, 185, 175, 0.08) 0%, rgba(14, 13, 11, 0.85) 100%)',
+            border: '1px solid rgba(148, 185, 175, 0.22)',
+            borderRadius: 20,
+            padding: '36px 40px',
+            marginBottom: 48,
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '0 16px 36px -6px rgba(0, 0, 0, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.1)'
+          }}
+        >
+          {/* Subtle Ambient Refraction Orb */}
+          <div
+            style={{
+              position: 'absolute',
+              top: -60,
+              right: -60,
+              width: 260,
+              height: 260,
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(148, 185, 175, 0.18) 0%, transparent 70%)',
+              pointerEvents: 'none'
+            }}
+          />
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 20, position: 'relative', zIndex: 1 }}>
+            {/* Logo and SEBI Badge Row */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <img
+                  src="/wegrow_emblem.png"
+                  alt="WeGro Emblem"
+                  style={{ width: 44, height: 28, objectFit: 'contain', filter: 'drop-shadow(0 2px 8px rgba(148, 185, 175, 0.4))' }}
+                />
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span style={{ fontSize: '1.5rem', fontWeight: 800, color: '#FFFFFA', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+                    We<span style={{ color: '#94B9AF' }}>Gro</span>
+                  </span>
+                  <span style={{ fontSize: '0.6875rem', fontFamily: 'var(--font-mono)', color: 'rgba(255, 255, 250, 0.65)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                    Research Analysts
+                  </span>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  padding: '6px 14px',
+                  borderRadius: 999,
+                  background: 'rgba(148, 185, 175, 0.12)',
+                  border: '1px solid rgba(148, 185, 175, 0.28)',
+                  fontSize: '0.75rem',
+                  fontFamily: 'var(--font-mono)',
+                  color: '#94B9AF',
+                  letterSpacing: '0.04em'
+                }}
+              >
+                <span>SEBI REG NO. {companyConfig.sebiRegistrationNumber}</span>
+              </div>
+            </div>
+
+            {/* Corporate Quote Statement */}
+            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', paddingTop: 6 }}>
+              <Quote size={28} style={{ color: '#94B9AF', flexShrink: 0, marginTop: 4, opacity: 0.85 }} />
+              <div>
+                <p
+                  style={{
+                    fontSize: 'clamp(1.15rem, 2.2vw, 1.55rem)',
+                    fontWeight: 700,
+                    color: '#FFFFFA',
+                    lineHeight: 1.45,
+                    letterSpacing: '-0.02em',
+                    maxWidth: 860
+                  }}
+                >
+                  "{companyConfig.tagline}"
+                </p>
+                <p style={{ fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.6)', marginTop: 8 }}>
+                  SEBI Registered Research Analyst • INH000008093 | BSE Membership: 5422
+                </p>
+              </div>
+            </div>
           </div>
-          <p style={{ fontSize: '1.2rem', fontWeight: 700, color: '#94B9AF', lineHeight: 1.4, maxWidth: 650 }}>
-            "{companyConfig.tagline}"
-          </p>
         </div>
 
         {/* Regulatory Details & Office Addresses Grid */}

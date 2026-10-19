@@ -1,7 +1,7 @@
 export const companyConfig = {
   name: "WeGro",
   legalName: "WeGro Research Analysts Private Limited",
-  tagline: "Your investment and our research are the ultimate tag team!",
+  tagline: "Where independent research meets disciplined capital — built for investors who value data over speculation.",
   heroHeadline: "Your search ends with our research!",
   heroSubheadline: "In-depth market research and analysis to help you make more informed business decisions.",
   

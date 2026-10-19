@@ -53,7 +53,7 @@ export default function Navbar({ currentPath, navigate }) {
             aria-label={`${companyConfig.name} Homepage`}
           >
             <img
-              src="/wegrow_logo.png"
+              src="/wegrow_emblem.png"
               alt={`${companyConfig.name} Logo`}
               className="brand-emblem"
             />
