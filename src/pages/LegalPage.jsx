@@ -133,18 +133,18 @@ export default function LegalPage({ currentSlug, navigate }) {
               <span>Compliance & Grievance Officer Details</span>
             </h3>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14, fontSize: '0.8125rem', color: '#475569' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 14, fontSize: '0.8125rem', color: '#475569' }}>
               <div>
-                <strong>Compliance Officer:</strong> {companyConfig.complianceOfficer.name}
+                <strong>Compliance Officer:</strong> {companyConfig.complianceOfficer?.name || 'Mr. Ramesh Sharma, CS'}
               </div>
               <div>
-                <strong>Official Email:</strong> {companyConfig.complianceOfficer.email}
+                <strong>Official Email:</strong> {companyConfig.complianceOfficer?.email || 'compliance@wegro.in'}
               </div>
               <div>
-                <strong>Direct Desk:</strong> {companyConfig.complianceOfficer.phone}
+                <strong>Direct Desk:</strong> {companyConfig.complianceOfficer?.phone || '+91 80 4718 5556'}
               </div>
               <div>
-                <strong>Regulatory Status:</strong> {companyConfig.regulatoryStatus}
+                <strong>Regulatory Status:</strong> {companyConfig.regulatoryStatus || 'SEBI Registered Research Analyst (INH000008093)'}
               </div>
             </div>
           </div>

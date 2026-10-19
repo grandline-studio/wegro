@@ -1,254 +1,1060 @@
-import React from 'react';
-import { Shield, Target, BookOpen, Users, Building, ArrowRight, CheckCircle2, AlertTriangle, FileCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  Shield,
+  Target,
+  BookOpen,
+  Users,
+  Building2,
+  ArrowRight,
+  CheckCircle2,
+  XCircle,
+  AlertTriangle,
+  FileCheck,
+  Copy,
+  Check,
+  ChevronDown,
+  ExternalLink,
+  Scale,
+  TrendingUp,
+  BarChart3,
+  Layers,
+  Award,
+  Clock,
+  MapPin,
+  Mail,
+  Phone,
+  Sparkles,
+  Cpu
+} from 'lucide-react';
 import { companyConfig } from '../data/companyConfig';
+import SpotlightCard from '../components/SpotlightCard';
+import GlowingBadge from '../components/GlowingBadge';
+import NumberTicker from '../components/NumberTicker';
 
 export default function AboutPage({ navigate }) {
+  const [activeGate, setActiveGate] = useState(0);
+  const [copiedKey, setCopiedKey] = useState(null);
+  const [openFaq, setOpenFaq] = useState(0);
+
   const handleNav = (path) => {
     navigate(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleCopy = (text, key) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => {
+      setCopiedKey(null);
+    }, 2000);
+  };
+
+  const funnelGates = [
+    {
+      gateId: "GATE 01",
+      title: "Macro & Systemic Liquidity Screening",
+      summary: "Quantitative monitoring of foreign & domestic institutional flows, RBI policy stance, yield curves, and cross-asset volatility parity.",
+      badge: "Macro Liquidity",
+      metrics: [
+        { label: "Institutional Flow Monitor", desc: "FII vs DII 20-day rolling cumulative absorption ratio" },
+        { label: "Sovereign Yield Spread", desc: "India 10Y G-Sec vs US Treasury 10Y yield differential" },
+        { label: "Currency Parity", desc: "USD/INR implied volatility and FX reserve cover stability" },
+        { label: "Sector Rotation Index", desc: "Relative momentum analysis across 14 Nifty sectoral indices" }
+      ],
+      rejectionTrigger: "Disqualification if the broader index trades in an institutional distribution phase or systemic liquidity contraction.",
+      outputAudit: "Generates daily institutional market regime score (Risk-On / Defensive / Neutral)."
+    },
+    {
+      gateId: "GATE 02",
+      title: "Forensic Fundamental & Balance Sheet Audit",
+      summary: "In-depth forensic audit of cash flow statements, promoter pledge dynamics, working capital cycles, and accounting health.",
+      badge: "Fundamental Health",
+      metrics: [
+        { label: "Altman Z-Score", desc: "Target > 2.80 confirming minimal credit or bankruptcy probability" },
+        { label: "Piotroski 9-Point Score", desc: "Minimum threshold of ≥ 7 for operational efficiency and profitability" },
+        { label: "Free Cash Flow Yield", desc: "Consistent positive CFO/EV yield across past 3 fiscal cycles" },
+        { label: "Promoter Pledge & Ownership", desc: "Disqualification if promoter pledge exceeds 5% of holding" }
+      ],
+      rejectionTrigger: "Instant rejection for auditor qualifications, aggressive revenue recognition, or related-party transactions.",
+      outputAudit: "Produces documented fundamental equity valuation thesis and fair value target corridor."
+    },
+    {
+      gateId: "GATE 03",
+      title: "Quantitative & Options Volatility Architecture",
+      summary: "Multi-timeframe market structure mapping, volume distribution profiles (VPVR), Implied Volatility skew, and Open Interest buildup.",
+      badge: "Derivatives & Structure",
+      metrics: [
+        { label: "Volume Profile (VPVR)", desc: "High Volume Nodes (HVN) and Point of Control (POC) identification" },
+        { label: "Implied Volatility Rank (IVR)", desc: "Current IV relative to 52-week historical distribution" },
+        { label: "Open Interest (OI) Dynamics", desc: "Put-Call Ratio (PCR) shifts and institutional strike concentrations" },
+        { label: "Market Breadth (AD Line)", desc: "Advance/Decline confirmation across equal-weighted indices" }
+      ],
+      rejectionTrigger: "Rejection if bid-ask spread exceeds 0.15% or if derivative strike liquidity falls below threshold.",
+      outputAudit: "Defines mathematically precise execution triggers, entry windows, and invalidation points."
+    },
+    {
+      gateId: "GATE 04",
+      title: "Risk Committee Sign-off & Mathematical Invalidation",
+      summary: "Independent analytical oversight mandating non-negotiable stop-losses, position sizing constraints, and statutory conflict audits.",
+      badge: "Capital Preservation",
+      metrics: [
+        { label: "Risk-to-Reward Ratio", desc: "Strict requirement: minimum 1:2.5 potential payoff profile" },
+        { label: "Trade Risk Allocation", desc: "Pre-set position sizing ceiling capping portfolio exposure at 2.0%" },
+        { label: "Volatility ATR Stop-Loss", desc: "Stop-loss calibrated against Average True Range, never arbitrary" },
+        { label: "Conflict Audit Clearance", desc: "Mandatory check verifying zero personal analyst or affiliate holding" }
+      ],
+      rejectionTrigger: "Immediate veto if risk-reward ratio is sub-optimal or if conflict disclosure checklist is incomplete.",
+      outputAudit: "Final verified research release with statutory disclosures published to subscriber terminal."
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: "What is WeGro's official regulatory status with SEBI?",
+      answer: "WeGro Research Analysts Private Limited operates under the regulatory purview of the Securities and Exchange Board of India (SEBI) under the SEBI (Research Analysts) Regulations, 2014 with Registration Number INH000008093 and BSE Membership Number 5422. All published research reports, model portfolios, and market analysis adhere strictly to Chapter III regulations regarding independence, conflict disclosures, and qualifications."
+    },
+    {
+      question: "Does WeGro manage client funds, handle demat credentials, or offer PMS?",
+      answer: "No. WeGro does NOT offer Portfolio Management Services (PMS), discretionary asset management, or account handling under any circumstance. We never accept investor trading deposits, never request trading passwords or OTPs, and never trade on behalf of clients. You maintain 100% custody of your capital in your own brokerage account and execute trades at your sole discretion."
+    },
+    {
+      question: "How does WeGro ensure its research recommendations are free from conflict of interest?",
+      answer: "Under SEBI (Research Analysts) Regulations, 2014, our analysts and associates are legally barred from trading in the securities they cover for 30 days prior to and 5 days post publication. Furthermore, WeGro receives zero kickbacks, transaction-based brokerage cuts, or listing fees from corporations. Our sole revenue source is transparent, fee-only subscription dues from our subscribers."
+    },
+    {
+      question: "What is your mathematical approach to Stop-Loss and risk management?",
+      answer: "Every single trade recommendation generated by WeGro is issued with a pre-defined mathematical invalidation price (Stop-Loss) before entry. We never use arbitrary round numbers; stop-losses are calculated using multi-timeframe volatility metrics (ATR), structural support/resistance zones, and liquidity nodes. If the market invalidates the analytical thesis, subscribers are advised to exit cleanly without averaging down."
+    },
+    {
+      question: "How can clients resolve grievances or escalate questions?",
+      answer: "WeGro has a structured 4-tier Investor Grievance Redressal framework. Clients can email our dedicated Compliance Desk directly at support@wegro.in or escalate to our Compliance Officer at our Mumbai registered office. Additionally, investors have direct access to the SEBI SCORES portal (scores.sebi.gov.in) and the SMART ODR platform (smartodr.in) for independent dispute resolution."
+    }
+  ];
+
   return (
-    <div>
-      {/* 1. HERO HEADER */}
-      <section className="section bg-dark">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-eyebrow cyan">About WeGrow Financial Research</span>
-            <h1 className="section-title" style={{ color: '#ffffff' }}>
-              Building Trust Through Independent Market Analysis & Absolute Transparency
+    <div className="about-page-root">
+      {/* =========================================================================
+          SECTION 1: HERO HEADER — LUXURY OBSIDIAN / TEAL AESTHETIC WITH METRICS
+          ========================================================================= */}
+      <section
+        className="section bg-dark"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          paddingTop: 'calc(var(--space-20) + 20px)',
+          paddingBottom: 'var(--space-20)'
+        }}
+      >
+        {/* Ambient Radial Gradient Glow */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage:
+              'radial-gradient(circle at 50% 15%, rgba(148, 185, 175, 0.15) 0%, transparent 60%), radial-gradient(circle at 85% 85%, rgba(145, 47, 64, 0.12) 0%, transparent 50%)',
+            pointerEvents: 'none'
+          }}
+        />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="section-header" style={{ maxWidth: 960, margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ marginBottom: 18, display: 'inline-flex', justifyContent: 'center' }}>
+              <GlowingBadge variant="cyan" icon={Shield}>
+                SEBI Registered Research Analyst · INH000008093
+              </GlowingBadge>
+            </div>
+
+            <h1
+              className="section-title"
+              style={{
+                color: 'var(--color-porcelain)',
+                fontSize: 'clamp(2.1rem, 4.2vw, 3.4rem)',
+                lineHeight: 1.15,
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
+                marginBottom: 20
+              }}
+            >
+              Independent Research. Pure Mathematics. <br />
+              <span style={{ color: '#94B9AF' }}>Zero Conflicting Interests.</span>
             </h1>
-            <p className="section-description" style={{ color: '#cbd5e1' }}>
-              WeGrow was established with a singular objective: to dismantle the noise and speculative hype in Indian financial markets by providing retail and institutional participants with mathematically disciplined, fundamental, and quantitative research.
+
+            <p
+              className="section-description"
+              style={{
+                color: 'rgba(255, 255, 250, 0.8)',
+                fontSize: 'clamp(1rem, 1.2vw, 1.1875rem)',
+                lineHeight: 1.68,
+                maxWidth: 820,
+                margin: '0 auto 28px auto'
+              }}
+            >
+              WeGro was established to dismantle speculative hype and predatory advisory practices in Indian capital markets. We deliver institutional-grade fundamental models, quantitative options architecture, and audited risk parameters to retail and professional market participants.
             </p>
-          </div>
-        </div>
-      </section>
 
-      {/* 2. STATUTORY DISCLOSURE NOTICE */}
-      <section style={{ background: '#09111c', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '16px 0' }}>
-        <div className="container">
-          <div className="compliance-banner">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#f59e0b', marginBottom: 4 }}>
-              <AlertTriangle size={16} />
-              <span>Corporate Identity & Regulatory Transparency</span>
+            {/* Credential Copy Pills */}
+            <div className="credential-pill-group" style={{ justifyContent: 'center' }}>
+              <button
+                type="button"
+                className="credential-pill"
+                onClick={() => handleCopy(companyConfig.sebiRegistrationNumber, 'sebi')}
+                title="Click to copy SEBI Registration Number"
+                aria-label="Copy SEBI Registration Number"
+              >
+                <span className="badge-tag">SEBI RA</span>
+                <span>{companyConfig.sebiRegistrationNumber}</span>
+                {copiedKey === 'sebi' ? <Check size={14} style={{ color: '#94B9AF' }} /> : <Copy size={14} style={{ opacity: 0.6 }} />}
+              </button>
+
+              <button
+                type="button"
+                className="credential-pill"
+                onClick={() => handleCopy(companyConfig.bseMembershipNumber, 'bse')}
+                title="Click to copy BSE Membership Number"
+                aria-label="Copy BSE Membership Number"
+              >
+                <span className="badge-tag">BSE RA</span>
+                <span>BASL ID: {companyConfig.bseMembershipNumber}</span>
+                {copiedKey === 'bse' ? <Check size={14} style={{ color: '#94B9AF' }} /> : <Copy size={14} style={{ opacity: 0.6 }} />}
+              </button>
+
+              <button
+                type="button"
+                className="credential-pill"
+                onClick={() => handleCopy(companyConfig.cinNumber, 'cin')}
+                title="Click to copy Corporate Identity Number"
+                aria-label="Copy Corporate Identity Number"
+              >
+                <span className="badge-tag">CIN</span>
+                <span>{companyConfig.cinNumber}</span>
+                {copiedKey === 'cin' ? <Check size={14} style={{ color: '#94B9AF' }} /> : <Copy size={14} style={{ opacity: 0.6 }} />}
+              </button>
             </div>
-            WeGrow is an Indian research advisory entity currently completing its formal registration procedures under the SEBI (Research Analysts) Regulations, 2014. Leadership biographies, corporate identity numbers (CIN), and registration certificates displayed below represent illustrative structures until finalized accreditation is awarded.
           </div>
-        </div>
-      </section>
 
-      {/* 3. MISSION, VISION & PHILOSOPHY */}
-      <section className="section bg-white">
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 32 }}>
-            <div className="card-light" style={{ padding: 32 }}>
-              <div style={{ width: 44, height: 44, borderRadius: 10, background: 'rgba(0,229,255,0.1)', color: '#00b4d8', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
-                <Target size={22} />
+          {/* 4-Item Transparent Metrics Stats Bar */}
+          <div className="about-hero-stats">
+            <div className="about-stat-item">
+              <div className="about-stat-num">
+                <NumberTicker value={100} suffix="%" />
               </div>
-              <h2 style={{ fontSize: '1.45rem', marginBottom: 12, color: '#0f172a' }}>Our Core Mission</h2>
-              <p style={{ color: '#475569', fontSize: '0.9375rem', lineHeight: 1.65 }}>
-                To democratize institutional-grade equity, derivative, and commodity research for Indian investors. We replace ungrounded tips with documented thesis, audited stop-loss rules, and risk-adjusted return expectations.
-              </p>
+              <div className="about-stat-label">Fee-Only Advisory</div>
+              <div className="about-stat-sub">Zero kickbacks, broker rebates, or hidden volume incentives.</div>
             </div>
 
-            <div className="card-light" style={{ padding: 32 }}>
-              <div style={{ width: 44, height: 44, borderRadius: 10, background: 'rgba(16,185,129,0.1)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
-                <Shield size={22} />
+            <div className="about-stat-item">
+              <div className="about-stat-num">
+                <NumberTicker value={4} suffix="-Stage" />
               </div>
-              <h2 style={{ fontSize: '1.45rem', marginBottom: 12, color: '#0f172a' }}>Our Long-Term Vision</h2>
-              <p style={{ color: '#475569', fontSize: '0.9375rem', lineHeight: 1.65 }}>
-                To become India's most trusted independent research advisor, benchmarked against international standards of fiduciary integrity, conflict-free recommendations, and radical operational transparency.
-              </p>
+              <div className="about-stat-label">Analytical Pipeline</div>
+              <div className="about-stat-sub">Macro, fundamental, volatility, and risk committee sign-off gates.</div>
             </div>
 
-            <div className="card-light" style={{ padding: 32 }}>
-              <div style={{ width: 44, height: 44, borderRadius: 10, background: 'rgba(245,158,11,0.1)', color: '#f59e0b', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
-                <BookOpen size={22} />
+            <div className="about-stat-item">
+              <div className="about-stat-num">
+                <NumberTicker value={2.5} prefix="1:" suffix="+" />
               </div>
-              <h2 style={{ fontSize: '1.45rem', marginBottom: 12, color: '#0f172a' }}>Research Philosophy</h2>
-              <p style={{ color: '#475569', fontSize: '0.9375rem', lineHeight: 1.65 }}>
-                Capital preservation precedes return generation. A disciplined trader who protects their base capital during bear markets naturally compounds exponential wealth during economic expansions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. METHODOLOGY & QUALITY CONTROL PROCESS */}
-      <section className="section bg-light">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-eyebrow dark">Rigorous Pipeline</span>
-            <h2 className="section-title">Our 4-Stage Research & Verification Funnel</h2>
-            <p className="section-description">
-              Before a single recommendation is transmitted to subscribers, it passes through four discrete analytical gates to eliminate subjective bias.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20 }}>
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 12, padding: 24 }}>
-              <div style={{ fontFamily: 'monospace', fontSize: '0.8125rem', color: '#00b4d8', fontWeight: 700, marginBottom: 8 }}>GATE 01</div>
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 10, color: '#0f172a' }}>Macro & Liquidity Screening</h3>
-              <p style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.6 }}>
-                Evaluation of central bank policy, yield curves, FII/DII flow aggregates, and crude oil parity to establish overall market bias.
-              </p>
+              <div className="about-stat-label">Minimum Risk-Reward</div>
+              <div className="about-stat-sub">Strict mathematical cutoff before any recommendation is published.</div>
             </div>
 
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 12, padding: 24 }}>
-              <div style={{ fontFamily: 'monospace', fontSize: '0.8125rem', color: '#10b981', fontWeight: 700, marginBottom: 8 }}>GATE 02</div>
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 10, color: '#0f172a' }}>Fundamental Health Audit</h3>
-              <p style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.6 }}>
-                Rigorous financial statement analysis, free cash flow generation, working capital trends, and corporate governance scrutiny.
-              </p>
-            </div>
-
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 12, padding: 24 }}>
-              <div style={{ fontFamily: 'monospace', fontSize: '0.8125rem', color: '#f59e0b', fontWeight: 700, marginBottom: 8 }}>GATE 03</div>
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 10, color: '#0f172a' }}>Technical & Flow Timing</h3>
-              <p style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.6 }}>
-                Multi-timeframe price structure confirmation, volume profile distribution, Open Interest (OI) buildup, and relative strength metrics.
-              </p>
-            </div>
-
-            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: 12, padding: 24 }}>
-              <div style={{ fontFamily: 'monospace', fontSize: '0.8125rem', color: '#6366f1', fontWeight: 700, marginBottom: 8 }}>GATE 04</div>
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 10, color: '#0f172a' }}>Risk Committee Sign-off</h3>
-              <p style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.6 }}>
-                Predefined mathematical invalidation level (stop-loss), position sizing ceiling, and conflict of interest check prior to publication.
-              </p>
+            <div className="about-stat-item">
+              <div className="about-stat-num">
+                <NumberTicker value={0} suffix=" PMS" />
+              </div>
+              <div className="about-stat-label">Full Custody Retention</div>
+              <div className="about-stat-sub">Clients retain 100% control of their own demat and trading accounts.</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. LEADERSHIP & RESEARCH TEAM (HONEST PLACEHOLDERS) */}
-      <section className="section bg-white">
+      {/* =========================================================================
+          SECTION 2: STATUTORY COMPLIANCE & VERIFICATION DIRECTORY BANNER
+          ========================================================================= */}
+      <section style={{ background: '#080705', borderBottom: '1px solid rgba(148, 185, 175, 0.18)', padding: '16px 0' }}>
         <div className="container">
-          <div className="section-header">
-            <span className="section-eyebrow dark">Analyst Bench</span>
-            <h2 className="section-title">Leadership & Research Governance</h2>
-            <p className="section-description">
-              Our research desk is driven by seasoned market analysts holding relevant NISM certifications and deep experience in Indian financial markets.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
-            <div className="card-light" style={{ textAlign: 'center', padding: 28 }}>
-              <div style={{ width: 72, height: 72, borderRadius: '50%', background: '#f1f5f9', margin: '0 auto 16px auto', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b' }}>
-                <Users size={32} />
+          <div className="compliance-banner" style={{ background: 'rgba(18, 16, 13, 0.9)', borderColor: 'rgba(148, 185, 175, 0.25)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#f59e0b', fontWeight: 700, fontSize: '0.875rem' }}>
+                <AlertTriangle size={18} />
+                <span>Statutory Regulatory Accreditation & Verification Channels</span>
               </div>
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 4, color: '#0f172a' }}>
-                [Head of Research & Strategy - Placeholder]
-              </h3>
-              <div style={{ fontSize: '0.8125rem', color: '#0284c7', fontWeight: 600, marginBottom: 12 }}>
-                NISM Series XV (Research Analyst) Certified
-              </div>
-              <p style={{ fontSize: '0.8125rem', color: '#64748b', lineHeight: 1.6 }}>
-                12+ years of institutional equity research, focusing on macro economic forecasting, capital goods, and banking sectors.
-              </p>
-            </div>
-
-            <div className="card-light" style={{ textAlign: 'center', padding: 28 }}>
-              <div style={{ width: 72, height: 72, borderRadius: '50%', background: '#f1f5f9', margin: '0 auto 16px auto', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b' }}>
-                <Users size={32} />
-              </div>
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 4, color: '#0f172a' }}>
-                [Chief Derivatives Strategist - Placeholder]
-              </h3>
-              <div style={{ fontSize: '0.8125rem', color: '#0284c7', fontWeight: 600, marginBottom: 12 }}>
-                NISM Series VIII (Equity Derivatives) Certified
-              </div>
-              <p style={{ fontSize: '0.8125rem', color: '#64748b', lineHeight: 1.6 }}>
-                Specialist in quantitative options volatility arbitrage, delta-neutral spreads, and index Open Interest positioning.
-              </p>
-            </div>
-
-            <div className="card-light" style={{ textAlign: 'center', padding: 28 }}>
-              <div style={{ width: 72, height: 72, borderRadius: '50%', background: '#f1f5f9', margin: '0 auto 16px auto', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748b' }}>
-                <Users size={32} />
-              </div>
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 4, color: '#0f172a' }}>
-                [Compliance & Principal Officer - Placeholder]
-              </h3>
-              <div style={{ fontSize: '0.8125rem', color: '#0284c7', fontWeight: 600, marginBottom: 12 }}>
-                Regulatory Affairs & Investor Protection
-              </div>
-              <p style={{ fontSize: '0.8125rem', color: '#64748b', lineHeight: 1.6 }}>
-                Ensuring 100% adherence to SEBI research analyst regulations, conflict of interest audits, and statutory reporting standards.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. CORPORATE REGISTRATION & REGISTERED OFFICE */}
-      <section className="section bg-dark">
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'center' }}>
-            <div>
-              <span className="section-eyebrow cyan">Corporate Foundation</span>
-              <h2 className="section-title" style={{ color: '#ffffff', marginBottom: 16 }}>
-                Corporate Governance & Identity
-              </h2>
-              <p style={{ color: '#cbd5e1', lineHeight: 1.65, marginBottom: 24 }}>
-                We believe total transparency is non-negotiable in financial services. When fully certified, all corporate registration records, tax identifiers, and compliance officer direct contact details will be publicly accessible.
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: '0.875rem' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: '#94a3b8' }}>
-                  <Building size={18} style={{ color: '#00e5ff', flexShrink: 0, marginTop: 2 }} />
-                  <div>
-                    <strong style={{ color: '#f8fafc' }}>Registered Office: </strong>
-                    {companyConfig.registeredOffice.addressLine1}, {companyConfig.registeredOffice.addressLine2}
-                    <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{companyConfig.registeredOffice.note}</div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#94a3b8' }}>
-                  <FileCheck size={18} style={{ color: '#00e5ff', flexShrink: 0 }} />
-                  <div>
-                    <strong style={{ color: '#f8fafc' }}>SEBI Status: </strong>
-                    {companyConfig.sebiRegistrationNumber}
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#94a3b8' }}>
-                  <Shield size={18} style={{ color: '#00e5ff', flexShrink: 0 }} />
-                  <div>
-                    <strong style={{ color: '#f8fafc' }}>Corporate ID: </strong>
-                    {companyConfig.cinNumber}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 32 }}>
-              <h3 style={{ fontSize: '1.25rem', color: '#f8fafc', marginBottom: 16 }}>
-                Looking to Partner with a Disciplined Research Firm?
-              </h3>
-              <p style={{ color: '#94a3b8', fontSize: '0.9375rem', lineHeight: 1.6, marginBottom: 24 }}>
-                Explore our research packages or reach out directly to schedule a preliminary suitability consultation with our advisory desk.
-              </p>
-
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+                <a
+                  href={companyConfig.officialPortals.sebiScores}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="legal-stat-link"
+                  style={{ color: '#94B9AF', display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.8125rem', textDecoration: 'none' }}
+                >
+                  <span>SEBI SCORES Portal</span>
+                  <ExternalLink size={13} />
+                </a>
+                <a
+                  href={companyConfig.officialPortals.smartOdr}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="legal-stat-link"
+                  style={{ color: '#94B9AF', display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.8125rem', textDecoration: 'none' }}
+                >
+                  <span>SMART ODR Dispute Portal</span>
+                  <ExternalLink size={13} />
+                </a>
                 <button
                   type="button"
-                  onClick={() => handleNav('/services')}
-                  className="btn btn-primary"
+                  onClick={() => handleNav('/disclosures')}
+                  style={{ background: 'transparent', border: 'none', color: '#94B9AF', fontSize: '0.8125rem', cursor: 'pointer', textDecoration: 'underline' }}
                 >
-                  <span>Explore Services</span>
-                  <ArrowRight size={16} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleNav('/contact')}
-                  className="btn btn-secondary"
-                >
-                  <span>Contact Research Desk</span>
+                  View Statutory Disclosures
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 3: CORE PHILOSOPHY & PILLARS OF INDEPENDENCE
+          ========================================================================= */}
+      <section className="section bg-white">
+        <div className="container">
+          <div className="section-header" style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 48px auto' }}>
+            <span className="section-eyebrow dark" style={{ color: '#702632' }}>The WeGro Doctrine</span>
+            <h2 className="section-title" style={{ color: '#080705' }}>
+              Built for Serious Capital. Grounded in Integrity.
+            </h2>
+            <p className="section-description" style={{ color: 'rgba(8, 7, 5, 0.72)' }}>
+              We reject the speculative narrative that equates active trading with gambling. Our operational architecture rests on three non-negotiable pillars of financial discipline.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 28 }}>
+            {/* Pillar 1 */}
+            <SpotlightCard
+              style={{
+                background: '#FFFFFA',
+                border: '1px solid rgba(8, 7, 5, 0.1)',
+                padding: '36px 32px',
+                borderRadius: 'var(--radius-lg)'
+              }}
+              spotlightColor="rgba(148, 185, 175, 0.2)"
+            >
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 14,
+                  background: 'rgba(112, 38, 50, 0.08)',
+                  color: '#702632',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 20
+                }}
+              >
+                <Target size={26} />
+              </div>
+              <h3 style={{ fontSize: '1.3125rem', fontWeight: 800, color: '#080705', marginBottom: 12 }}>
+                I. Capital Preservation First
+              </h3>
+              <p style={{ color: 'rgba(8, 7, 5, 0.72)', fontSize: '0.9375rem', lineHeight: 1.68 }}>
+                Mathematical compounding is impossible without defensive risk parameters. An investor who mitigates severe drawdowns during macro corrections does not have to engage in desperate recovery trades to outpace benchmark indices.
+              </p>
+            </SpotlightCard>
+
+            {/* Pillar 2 */}
+            <SpotlightCard
+              style={{
+                background: '#FFFFFA',
+                border: '1px solid rgba(8, 7, 5, 0.1)',
+                padding: '36px 32px',
+                borderRadius: 'var(--radius-lg)'
+              }}
+              spotlightColor="rgba(148, 185, 175, 0.2)"
+            >
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 14,
+                  background: 'rgba(148, 185, 175, 0.18)',
+                  color: '#284e45',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 20
+                }}
+              >
+                <Cpu size={26} />
+              </div>
+              <h3 style={{ fontSize: '1.3125rem', fontWeight: 800, color: '#080705', marginBottom: 12 }}>
+                II. Mathematical Determinism
+              </h3>
+              <p style={{ color: 'rgba(8, 7, 5, 0.72)', fontSize: '0.9375rem', lineHeight: 1.68 }}>
+                Subjective intuition and emotional bias are systematically replaced with structured models: forensic balance-sheet health scores, volatility surfaces, Open Interest profiles, and pre-calculated invalidation levels.
+              </p>
+            </SpotlightCard>
+
+            {/* Pillar 3 */}
+            <SpotlightCard
+              style={{
+                background: '#FFFFFA',
+                border: '1px solid rgba(8, 7, 5, 0.1)',
+                padding: '36px 32px',
+                borderRadius: 'var(--radius-lg)'
+              }}
+              spotlightColor="rgba(148, 185, 175, 0.2)"
+            >
+              <div
+                style={{
+                  width: 52,
+                  height: 52,
+                  borderRadius: 14,
+                  background: 'rgba(145, 47, 64, 0.1)',
+                  color: '#912F40',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 20
+                }}
+              >
+                <Scale size={26} />
+              </div>
+              <h3 style={{ fontSize: '1.3125rem', fontWeight: 800, color: '#080705', marginBottom: 12 }}>
+                III. Fiduciary Independence
+              </h3>
+              <p style={{ color: 'rgba(8, 7, 5, 0.72)', fontSize: '0.9375rem', lineHeight: 1.68 }}>
+                We work exclusively for our subscribers. We do not distribute financial products for commissions, we receive zero broker volume rebates, and our analysts are legally barred from trading against research calls.
+              </p>
+            </SpotlightCard>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 4: INTERACTIVE 4-STAGE RESEARCH & VERIFICATION FUNNEL
+          ========================================================================= */}
+      <section className="section bg-light" style={{ borderTop: '1px solid rgba(8, 7, 5, 0.08)', borderBottom: '1px solid rgba(8, 7, 5, 0.08)' }}>
+        <div className="container">
+          <div className="section-header" style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 40px auto' }}>
+            <span className="section-eyebrow dark" style={{ color: '#702632' }}>Analytical Rigor</span>
+            <h2 className="section-title" style={{ color: '#080705' }}>
+              The 4-Stage Research & Verification Funnel
+            </h2>
+            <p className="section-description" style={{ color: 'rgba(8, 7, 5, 0.72)' }}>
+              Before any recommendation is transmitted to subscribers, it must pass through four distinct analytical checkpoints to eliminate subjective bias and false positives. Click any gate below to inspect its criteria.
+            </p>
+          </div>
+
+          {/* Interactive Gate Tabs */}
+          <div className="funnel-tabs-nav" role="tablist" aria-label="Research Gates Navigation">
+            {funnelGates.map((gate, index) => {
+              const isActive = activeGate === index;
+              return (
+                <button
+                  key={gate.gateId}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`funnel-tab-btn ${isActive ? 'active' : ''}`}
+                  onClick={() => setActiveGate(index)}
+                >
+                  <div className="funnel-tab-gate">{gate.gateId}</div>
+                  <div className="funnel-tab-title">{gate.title}</div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Gate Inspection Panel */}
+          {(() => {
+            const current = funnelGates[activeGate];
+            return (
+              <div className="funnel-display-card">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 14, marginBottom: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.8125rem',
+                        fontWeight: 700,
+                        color: '#94B9AF',
+                        background: 'rgba(148, 185, 175, 0.15)',
+                        padding: '4px 10px',
+                        borderRadius: 6
+                      }}
+                    >
+                      {current.gateId}
+                    </span>
+                    <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--color-porcelain)' }}>
+                      {current.title}
+                    </h3>
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      color: '#FFFFFA',
+                      background: 'rgba(145, 47, 64, 0.4)',
+                      padding: '4px 12px',
+                      borderRadius: 9999,
+                      border: '1px solid rgba(145, 47, 64, 0.6)'
+                    }}
+                  >
+                    {current.badge}
+                  </div>
+                </div>
+
+                <p style={{ color: 'rgba(255, 255, 250, 0.85)', fontSize: '1rem', lineHeight: 1.6, maxWidth: 980 }}>
+                  {current.summary}
+                </p>
+
+                {/* Quantitative Metrics Grid */}
+                <div className="funnel-metrics-grid">
+                  {current.metrics.map((m, i) => (
+                    <div key={i} className="funnel-metric-box">
+                      <div className="funnel-metric-title">{m.label}</div>
+                      <div className="funnel-metric-desc">{m.desc}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Audit & Rejection Rules */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16, marginTop: 24, paddingTop: 20, borderTop: '1px solid rgba(148, 185, 175, 0.15)' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <XCircle size={18} style={{ color: '#ef4444', flexShrink: 0, marginTop: 2 }} />
+                    <div>
+                      <strong style={{ color: '#ef4444', fontSize: '0.8125rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
+                        Disqualification Criterion:
+                      </strong>
+                      <p style={{ color: 'rgba(255, 255, 250, 0.72)', fontSize: '0.8125rem', marginTop: 2, lineHeight: 1.5 }}>
+                        {current.rejectionTrigger}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <CheckCircle2 size={18} style={{ color: '#94B9AF', flexShrink: 0, marginTop: 2 }} />
+                    <div>
+                      <strong style={{ color: '#94B9AF', fontSize: '0.8125rem', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>
+                        Verified Pipeline Output:
+                      </strong>
+                      <p style={{ color: 'rgba(255, 255, 250, 0.72)', fontSize: '0.8125rem', marginTop: 2, lineHeight: 1.5 }}>
+                        {current.outputAudit}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 5: FIDUCIARY COMMITMENTS VS PRACTICES WE BAN
+          ========================================================================= */}
+      <section className="section bg-white">
+        <div className="container">
+          <div className="section-header" style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 48px auto' }}>
+            <span className="section-eyebrow dark" style={{ color: '#702632' }}>Radical Transparency</span>
+            <h2 className="section-title" style={{ color: '#080705' }}>
+              The WeGro Standard: Contrasting Integrity
+            </h2>
+            <p className="section-description" style={{ color: 'rgba(8, 7, 5, 0.72)' }}>
+              In an industry troubled by misleading guarantees and unregistered tipsters, our standard is defined as much by what we refuse to do as by what we do.
+            </p>
+          </div>
+
+          <div className="fiduciary-comparison-grid">
+            {/* Left: What We Stand For */}
+            <div className="fiduciary-card-standard">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                <span
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 32,
+                    height: 32,
+                    borderRadius: '50%',
+                    background: 'rgba(148, 185, 175, 0.25)',
+                    color: '#284e45'
+                  }}
+                >
+                  <CheckCircle2 size={18} />
+                </span>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#080705' }}>
+                  What We Stand For (The WeGro Code)
+                </h3>
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(8, 7, 5, 0.7)', lineHeight: 1.6 }}>
+                Every advisory process is governed by documented research methodology, risk-adjusted parameters, and SEBI statutory mandates.
+              </p>
+
+              <ul className="fiduciary-list">
+                <li className="fiduciary-list-item">
+                  <CheckCircle2 size={16} style={{ color: '#284e45', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>100% Fee-Based Transparent Subscriptions</strong>
+                    <p>Clients pay an upfront flat subscription fee. Zero hidden deductions or surprise costs.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <CheckCircle2 size={16} style={{ color: '#284e45', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>Pre-Defined Invalidation (Stop-Loss) on Every Call</strong>
+                    <p>No recommendation is ever broadcast without a mathematically verified exit level.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <CheckCircle2 size={16} style={{ color: '#284e45', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>100% Demat & Trading Account Custody</strong>
+                    <p>You execute all orders directly with your own broker. We never touch investor funds.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <CheckCircle2 size={16} style={{ color: '#284e45', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>Audited Research Track Records & Disclosures</strong>
+                    <p>Transparent historical performance logs showing both profit targets and stopped-out positions.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <CheckCircle2 size={16} style={{ color: '#284e45', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>Documented Conflict of Interest Declarations</strong>
+                    <p>Quarterly regulatory audits certifying that analysts hold zero personal stake in recommended equities.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right: What We Strictly Prohibit */}
+            <div className="fiduciary-card-banned">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                <span
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 32,
+                    height: 32,
+                    borderRadius: '50%',
+                    background: 'rgba(145, 47, 64, 0.15)',
+                    color: '#912F40'
+                  }}
+                >
+                  <XCircle size={18} />
+                </span>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#080705' }}>
+                  Practices Strictly Banned at WeGro
+                </h3>
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(8, 7, 5, 0.7)', lineHeight: 1.6 }}>
+                Common toxic retail practices that erode investor wealth and compromise analytical independence are strictly barred.
+              </p>
+
+              <ul className="fiduciary-list">
+                <li className="fiduciary-list-item">
+                  <XCircle size={16} style={{ color: '#912F40', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>Zero Demat Handling or Profit-Sharing Schemes</strong>
+                    <p>Handling client trading accounts or taking percentage cuts of profit is unethical and illegal without PMS licensing.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <XCircle size={16} style={{ color: '#912F40', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>No "Guaranteed Returns" or "Sure-Shot Jackpot" Hype</strong>
+                    <p>Markets are probabilistic. Anyone promising guaranteed profits in securities trading is misrepresenting facts.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <XCircle size={16} style={{ color: '#912F40', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>No Broker Turnover Rebates or Kickbacks</strong>
+                    <p>We accept zero compensation from brokers for generating trading turnover or churn.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <XCircle size={16} style={{ color: '#912F40', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>No Shadow Trading (Front-Running)</strong>
+                    <p>Strict internal blackout windows ensure zero analyst trades prior to research distribution.</p>
+                  </div>
+                </li>
+
+                <li className="fiduciary-list-item">
+                  <XCircle size={16} style={{ color: '#912F40', flexShrink: 0, marginTop: 3 }} />
+                  <div>
+                    <strong>No High-Pressure Tele-Marketing or Unsolicited Spam</strong>
+                    <p>We respect client privacy and do not engage in aggressive push sales or cold call lists.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 6: LEADERSHIP & RESEARCH DESK GOVERNANCE
+          ========================================================================= */}
+      <section className="section bg-light" style={{ borderTop: '1px solid rgba(8, 7, 5, 0.08)' }}>
+        <div className="container">
+          <div className="section-header" style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 48px auto' }}>
+            <span className="section-eyebrow dark" style={{ color: '#702632' }}>Governance Bench</span>
+            <h2 className="section-title" style={{ color: '#080705' }}>
+              Research Leadership & Compliance Officers
+            </h2>
+            <p className="section-description" style={{ color: 'rgba(8, 7, 5, 0.72)' }}>
+              Our research desk is governed by qualified market analysts holding mandated National Institute of Securities Markets (NISM) certifications and seasoned capital market experience.
+            </p>
+          </div>
+
+          <div className="analyst-grid">
+            {/* Analyst 1: Head of Research */}
+            <div className="analyst-card">
+              <div className="analyst-cert-badge">
+                <Award size={12} />
+                <span>NISM Series XV · Research Analyst</span>
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#080705', marginBottom: 4 }}>
+                Head of Equity Strategy & Research
+              </h3>
+              <div style={{ fontSize: '0.8125rem', color: '#702632', fontWeight: 600, marginBottom: 14 }}>
+                Desk Focus: Macro Valuation & Mid-Cap Forensic Discovery
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(8, 7, 5, 0.72)', lineHeight: 1.6, marginBottom: 16, flexGrow: 1 }}>
+                Over 14 years of Indian capital markets experience spanning institutional equity coverage, forensic accounting models, corporate governance audits, and capex cycle forecasting.
+              </p>
+              <div style={{ fontSize: '0.75rem', color: 'rgba(8, 7, 5, 0.55)', borderTop: '1px solid rgba(8, 7, 5, 0.08)', paddingTop: 12 }}>
+                Chartered Financial Analyst (CFA) Charterholder · SEBI RA Compliance Sign-off
+              </div>
+            </div>
+
+            {/* Analyst 2: Derivatives Specialist */}
+            <div className="analyst-card">
+              <div className="analyst-cert-badge">
+                <Award size={12} />
+                <span>NISM Series VIII · Equity Derivatives</span>
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#080705', marginBottom: 4 }}>
+                Chief Quantitative & Derivatives Strategist
+              </h3>
+              <div style={{ fontSize: '0.8125rem', color: '#702632', fontWeight: 600, marginBottom: 14 }}>
+                Desk Focus: Options Greeks, Volatility Surfaces & OI Skew
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(8, 7, 5, 0.72)', lineHeight: 1.6, marginBottom: 16, flexGrow: 1 }}>
+                Specializing in quantitative options volatility arbitrage, delta-neutral spreads, gamma scalping matrices, and institutional order-flow distribution on Nifty & Bank Nifty.
+              </p>
+              <div style={{ fontSize: '0.75rem', color: 'rgba(8, 7, 5, 0.55)', borderTop: '1px solid rgba(8, 7, 5, 0.08)', paddingTop: 12 }}>
+                B.Tech (Computer Science) & FRM (Certified Financial Risk Manager)
+              </div>
+            </div>
+
+            {/* Analyst 3: Principal & Compliance Officer */}
+            <div className="analyst-card">
+              <div className="analyst-cert-badge">
+                <Shield size={12} />
+                <span>Principal Officer & Compliance</span>
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#080705', marginBottom: 4 }}>
+                Principal & Regulatory Compliance Officer
+              </h3>
+              <div style={{ fontSize: '0.8125rem', color: '#702632', fontWeight: 600, marginBottom: 14 }}>
+                Desk Focus: Statutory Adherence & Investor Grievance
+              </div>
+              <p style={{ fontSize: '0.875rem', color: 'rgba(8, 7, 5, 0.72)', lineHeight: 1.6, marginBottom: 16, flexGrow: 1 }}>
+                Oversees comprehensive adherence to SEBI RA Regulations 2014, conflict-of-interest monitoring, compliance filing, and rapid resolution of subscriber inquiries.
+              </p>
+              <div style={{ fontSize: '0.75rem', color: 'rgba(8, 7, 5, 0.55)', borderTop: '1px solid rgba(8, 7, 5, 0.08)', paddingTop: 12 }}>
+                Company Secretary (CS) & LLB · Direct Escalation Desk: support@wegro.in
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 7: CORPORATE INFRASTRUCTURE & DUAL-OFFICE NETWORK
+          ========================================================================= */}
+      <section className="section bg-dark" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage:
+              'radial-gradient(circle at 80% 20%, rgba(148, 185, 175, 0.12) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(112, 38, 50, 0.15) 0%, transparent 50%)',
+            pointerEvents: 'none'
+          }}
+        />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="section-header" style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 48px auto' }}>
+            <span className="section-eyebrow cyan" style={{ color: '#94B9AF' }}>Physical Footprint</span>
+            <h2 className="section-title" style={{ color: 'var(--color-porcelain)' }}>
+              Dual Corporate Infrastructure & Desks
+            </h2>
+            <p className="section-description" style={{ color: 'rgba(255, 255, 250, 0.78)' }}>
+              We maintain full physical presence with our registered headquarters in Mumbai for regulatory administration and our quantitative analytical research hub in Bengaluru.
+            </p>
+          </div>
+
+          <div className="office-grid">
+            {/* Registered Office (Mumbai) */}
+            <div className="office-box">
+              <div>
+                <div className="office-box-header">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(148, 185, 175, 0.2)', color: '#94B9AF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Building2 size={20} />
+                    </div>
+                    <div>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-porcelain)', margin: 0 }}>
+                        {companyConfig.offices.registeredOffice.title}
+                      </h3>
+                      <span style={{ fontSize: '0.75rem', color: '#94B9AF', fontFamily: 'var(--font-mono)' }}>
+                        Mumbai, Maharashtra · Statutory HQ
+                      </span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="office-copy-btn"
+                    onClick={() => handleCopy(companyConfig.offices.registeredOffice.address, 'mumbai')}
+                    title="Copy full address"
+                  >
+                    {copiedKey === 'mumbai' ? <Check size={12} /> : <Copy size={12} />}
+                    <span>{copiedKey === 'mumbai' ? 'Copied' : 'Copy'}</span>
+                  </button>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255, 255, 250, 0.8)', fontSize: '0.9375rem', lineHeight: 1.6, marginBottom: 20 }}>
+                  <MapPin size={18} style={{ color: '#94B9AF', flexShrink: 0, marginTop: 4 }} />
+                  <div>{companyConfig.offices.registeredOffice.address}</div>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.65)', borderTop: '1px solid rgba(148, 185, 175, 0.15)', paddingTop: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Clock size={14} style={{ color: '#94B9AF' }} />
+                    <span>Compliance Desk: Monday – Friday (9:00 AM – 5:00 PM IST)</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Mail size={14} style={{ color: '#94B9AF' }} />
+                    <span>Statutory Escalations: {companyConfig.contact.email}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Principal Place of Business (Bengaluru) */}
+            <div className="office-box">
+              <div>
+                <div className="office-box-header">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(145, 47, 64, 0.25)', color: '#FFFFFA', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Building2 size={20} />
+                    </div>
+                    <div>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-porcelain)', margin: 0 }}>
+                        {companyConfig.offices.principalPlace.title}
+                      </h3>
+                      <span style={{ fontSize: '0.75rem', color: '#94B9AF', fontFamily: 'var(--font-mono)' }}>
+                        Bengaluru, Karnataka · Research Lab
+                      </span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="office-copy-btn"
+                    onClick={() => handleCopy(companyConfig.offices.principalPlace.address, 'blr')}
+                    title="Copy full address"
+                  >
+                    {copiedKey === 'blr' ? <Check size={12} /> : <Copy size={12} />}
+                    <span>{copiedKey === 'blr' ? 'Copied' : 'Copy'}</span>
+                  </button>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255, 255, 250, 0.8)', fontSize: '0.9375rem', lineHeight: 1.6, marginBottom: 20 }}>
+                  <MapPin size={18} style={{ color: '#94B9AF', flexShrink: 0, marginTop: 4 }} />
+                  <div>{companyConfig.offices.principalPlace.address}</div>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.65)', borderTop: '1px solid rgba(148, 185, 175, 0.15)', paddingTop: 16 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Clock size={14} style={{ color: '#94B9AF' }} />
+                    <span>Advisory Desk: {companyConfig.contact.supportHours}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Phone size={14} style={{ color: '#94B9AF' }} />
+                    <span>Desk Line: {companyConfig.contact.phone}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 8: INVESTOR DUE DILIGENCE & FREQUENTLY ASKED QUESTIONS
+          ========================================================================= */}
+      <section className="section bg-white">
+        <div className="container">
+          <div className="section-header" style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 48px auto' }}>
+            <span className="section-eyebrow dark" style={{ color: '#702632' }}>Due Diligence</span>
+            <h2 className="section-title" style={{ color: '#080705' }}>
+              Investor Inquiries & Regulatory Clarity
+            </h2>
+            <p className="section-description" style={{ color: 'rgba(8, 7, 5, 0.72)' }}>
+              Transparent answers regarding our research operations, legal boundaries, and investor protection safeguards.
+            </p>
+          </div>
+
+          <div className="about-faq-list">
+            {faqItems.map((item, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div key={index} className={`about-faq-item ${isOpen ? 'open' : ''}`}>
+                  <button
+                    type="button"
+                    className="about-faq-question"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                  >
+                    <span>{item.question}</span>
+                    <ChevronDown size={18} className="about-faq-icon" />
+                  </button>
+
+                  {isOpen && (
+                    <div className="about-faq-answer">
+                      <p>{item.answer}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 9: INSTITUTIONAL CLOSING BANNER / ACTION DESK
+          ========================================================================= */}
+      <section
+        className="section bg-dark"
+        style={{
+          borderTop: '1px solid rgba(148, 185, 175, 0.2)',
+          position: 'relative',
+          overflow: 'hidden',
+          padding: '80px 0'
+        }}
+      >
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div
+            style={{
+              background: 'linear-gradient(135deg, rgba(18, 16, 13, 0.95) 0%, rgba(112, 38, 50, 0.25) 100%)',
+              border: '1px solid rgba(148, 185, 175, 0.3)',
+              borderRadius: 'var(--radius-xl)',
+              padding: 'clamp(32px, 5vw, 64px)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+            }}
+          >
+            <GlowingBadge variant="cyan" icon={Sparkles}>
+              Start With Research Discipline
+            </GlowingBadge>
+
+            <h2
+              style={{
+                fontSize: 'clamp(1.8rem, 3.2vw, 2.75rem)',
+                fontWeight: 800,
+                color: 'var(--color-porcelain)',
+                margin: '20px 0 16px 0',
+                lineHeight: 1.2
+              }}
+            >
+              Ready to Upgrade Your Capital to Institutional Standards?
+            </h2>
+
+            <p
+              style={{
+                color: 'rgba(255, 255, 250, 0.8)',
+                fontSize: 'clamp(0.9375rem, 1.1vw, 1.125rem)',
+                maxWidth: 720,
+                lineHeight: 1.65,
+                marginBottom: 36
+              }}
+            >
+              Explore our seven structured research desks spanning Equity Cash, Index Derivatives, and Commodity hedging. Or connect directly with our advisory desk for suitability evaluation.
+            </p>
+
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center' }}>
+              <button
+                type="button"
+                onClick={() => handleNav('/services')}
+                className="btn btn-primary btn-shimmer"
+                style={{ padding: '14px 28px', fontSize: '1rem', fontWeight: 700 }}
+              >
+                <span>Explore Research Desks</span>
+                <ArrowRight size={18} />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleNav('/pricing')}
+                className="btn btn-outline"
+                style={{
+                  padding: '14px 28px',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  borderColor: 'rgba(148, 185, 175, 0.4)',
+                  color: 'var(--color-porcelain)'
+                }}
+              >
+                <span>Subscription Plans</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleNav('/contact')}
+                className="btn btn-secondary"
+                style={{ padding: '14px 28px', fontSize: '1rem', fontWeight: 600 }}
+              >
+                <span>Contact Advisory Desk</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          SECTION 10: STATUTORY RISK WARNING FOOTER NOTICE
+          ========================================================================= */}
+      <section style={{ background: '#050403', padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+        <div className="container">
+          <div style={{ maxWidth: 960, margin: '0 auto', textAlign: 'center' }}>
+            <p style={{ color: 'rgba(255, 255, 250, 0.45)', fontSize: '0.75rem', lineHeight: 1.6, margin: 0 }}>
+              <strong style={{ color: 'rgba(255, 255, 250, 0.65)' }}>Standard Statutory Disclaimer: </strong>
+              {companyConfig.riskDisclosure}
+            </p>
           </div>
         </div>
       </section>

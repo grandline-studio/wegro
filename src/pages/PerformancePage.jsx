@@ -45,7 +45,7 @@ export default function PerformancePage() {
           </div>
 
           {/* Audit Metrics Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16 }}>
             {performanceAuditNotice.statDisclosures.map((stat, idx) => (
               <SpotlightCard key={idx} style={{ padding: 18, textAlign: 'center', background: 'rgba(255,255,255,0.03)' }}>
                 <div style={{ fontSize: '0.75rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4 }}>
@@ -181,7 +181,7 @@ export default function PerformancePage() {
               <span>Audit Methodology & Disclosures for Historical Records</span>
             </h3>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16, fontSize: '0.8125rem', color: '#475569', lineHeight: 1.6 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 16, fontSize: '0.8125rem', color: '#475569', lineHeight: 1.6 }}>
               <div>
                 <strong>1. Timestamp Integrity:</strong> Every research alert is recorded with microsecond server-time verification and transmitted synchronously across client channels.
               </div>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "lead-1",
+    "name": "Siddharth Iyer",
+    "phone": "+91 98201 54321",
+    "email": "siddharth.iyer@example.com",
+    "productService": "Fundamental Equity Growth Advisory",
+    "message": "Interested in annual subscription for long term family portfolio.",
+    "createdAt": "2026-10-18T14:30:00.000Z",
+    "consentGiven": true,
+    "consentTimestamp": "2026-10-18T14:30:00.000Z",
+    "status": "New",
+    "internalNotes": "High conviction lead from Mumbai. Prefers callback after 4 PM.",
+    "pan": "ABCDE1234F",
+    "dob": "1984-06-15"
+  },
+  {
+    "id": "lead-2",
+    "name": "Pooja Agarwal",
+    "phone": "+91 98450 98765",
+    "email": "pooja.agarwal@example.com",
+    "productService": "Tactical Momentum & Swing Strategy",
+    "message": "Requesting sample research note on mid-cap breakout setups.",
+    "createdAt": "2026-10-17T11:15:00.000Z",
+    "consentGiven": true,
+    "consentTimestamp": "2026-10-17T11:15:00.000Z",
+    "status": "Contacted",
+    "internalNotes": "Shared introductory brochure and sample risk-reward report.",
+    "pan": "BNMPK9876Q",
+    "dob": "1991-11-28"
+  },
+  {
+    "id": "lead-3",
+    "name": "Kunal Deshmukh",
+    "phone": "+91 99220 11223",
+    "email": "kunal.d@example.com",
+    "productService": "Comprehensive Portfolio Forensic Audit",
+    "message": "Hold 45 different stocks through various apps; need rationalization.",
+    "createdAt": "2026-10-15T09:40:00.000Z",
+    "consentGiven": true,
+    "consentTimestamp": "2026-10-15T09:40:00.000Z",
+    "status": "Closed",
+    "internalNotes": "Onboarded for Portfolio Audit service. KYC verified.",
+    "pan": "XYZPD4567M",
+    "dob": "1979-03-22"
+  }
+]

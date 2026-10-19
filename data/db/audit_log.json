@@ -1,0 +1,22 @@
+[
+  {
+    "id": "audit-init-1",
+    "timestamp": "2026-10-15T12:00:00.000Z",
+    "userId": "admin-1",
+    "username": "admin",
+    "action": "PUBLISH_COMPLAINTS",
+    "entityType": "complaint_board",
+    "entityId": "2026-10",
+    "summary": "Published statutory grievance disposal filing for Month Ending October 2026",
+    "changes": {
+      "monthEnding": {
+        "previous": "2026-09",
+        "current": "2026-10"
+      },
+      "status": {
+        "previous": "Draft",
+        "current": "Published"
+      }
+    }
+  }
+]

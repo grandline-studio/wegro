@@ -6,8 +6,12 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import PricingPage from './pages/PricingPage';
+import ContactPage from './pages/ContactPage';
+import ComplaintsPage from './pages/ComplaintsPage';
 import LegalPage from './pages/LegalPage';
 import NotFoundPage from './pages/NotFoundPage';
+import AdminApp from './admin/AdminApp';
+import { ContentProvider } from './content/ContentProvider';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
@@ -24,7 +28,9 @@ export default function App() {
   // Update document title for SEO & navigation
   useEffect(() => {
     const path = currentPath.toLowerCase().replace(/\/$/, '') || '/';
-    if (path === '/') {
+    if (path.startsWith('/admin')) {
+      document.title = 'WeGro Admin Portal — Institutional Governance';
+    } else if (path === '/') {
       document.title = 'WeGro — Your Search Ends With Our Research | SEBI Registered Research Analyst';
     } else if (path === '/about') {
       document.title = 'About Us — WeGro Research Analysts';
@@ -32,6 +38,8 @@ export default function App() {
       document.title = 'Services — WeGro Research Analysts';
     } else if (path === '/pricing') {
       document.title = 'Pricing & Advisory Subscriptions — WeGro';
+    } else if (path === '/contact') {
+      document.title = 'Contact & Corporate Desks — WeGro Research Analysts';
     } else if (path === '/complaints') {
       document.title = 'Complaint Board & Grievance Redressal — WeGro';
     } else if (path === '/disclosures') {
@@ -60,10 +68,19 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Route matching
-  const renderCurrentPage = () => {
-    const cleanPath = currentPath.toLowerCase().replace(/\/$/, '') || '/';
+  const cleanPath = currentPath.toLowerCase().replace(/\/$/, '') || '/';
 
+  // 1. ADMIN ROUTE ISOLATION: Render AdminApp exclusively (no public navbar/footer)
+  if (cleanPath.startsWith('/admin')) {
+    return (
+      <ContentProvider>
+        <AdminApp navigate={navigate} />
+      </ContentProvider>
+    );
+  }
+
+  // Route matching for public pages
+  const renderCurrentPage = () => {
     if (cleanPath === '/') {
       return <HomePage navigate={navigate} />;
     }
@@ -76,8 +93,11 @@ export default function App() {
     if (cleanPath === '/pricing') {
       return <PricingPage navigate={navigate} />;
     }
+    if (cleanPath === '/contact') {
+      return <ContactPage navigate={navigate} />;
+    }
     if (cleanPath === '/complaints') {
-      return <LegalPage currentSlug="complaints" navigate={navigate} />;
+      return <ComplaintsPage navigate={navigate} />;
     }
 
     // Legal / Regulatory Pages
@@ -100,17 +120,19 @@ export default function App() {
   };
 
   return (
-    <div className="app-root">
-      {/* 1. Navigation Bar (Header) */}
-      <Navbar currentPath={currentPath} navigate={navigate} />
+    <ContentProvider>
+      <div className="app-root">
+        {/* Navigation Bar (Header) */}
+        <Navbar currentPath={currentPath} navigate={navigate} />
 
-      {/* Main Content Area */}
-      <main id="main-content" tabIndex="-1">
-        {renderCurrentPage()}
-      </main>
+        {/* Main Content Area */}
+        <main id="main-content" tabIndex="-1">
+          {renderCurrentPage()}
+        </main>
 
-      {/* 6. Footer Section */}
-      <Footer navigate={navigate} />
-    </div>
+        {/* Footer Section */}
+        <Footer navigate={navigate} />
+      </div>
+    </ContentProvider>
   );
 }

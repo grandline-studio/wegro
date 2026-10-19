@@ -50,7 +50,7 @@ export default function RiskCalculator() {
       </p>
 
       {/* Inputs Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16, marginBottom: 24 }}>
         <div>
           <label style={{ display: 'block', fontSize: '0.75rem', color: '#cbd5e1', marginBottom: 6, fontWeight: 600 }}>
             Trading Capital (₹)
@@ -113,7 +113,7 @@ export default function RiskCalculator() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
           gap: 12,
           background: 'rgba(4, 8, 16, 0.6)',
           border: '1px solid rgba(255, 255, 255, 0.08)',

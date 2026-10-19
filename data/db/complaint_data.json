@@ -1,0 +1,208 @@
+{
+  "header": {
+    "eyebrow": "Section 1 • Statutory Filing",
+    "title": "Data for the Month Ending — October 2026",
+    "description": "Statutory monthly disclosure of investor grievances disposal pursuant to SEBI Master Circular for Research Analysts and Regulation 20(1) of SEBI (Research Analysts) Regulations, 2014.",
+    "footnote": "Certified under Regulation 20(1) of SEBI (Research Analysts) Regulations, 2014",
+    "complianceOfficerName": "Aniket Sharma (Principal Compliance Officer)",
+    "monthEnding": "2026-10"
+  },
+  "section1": {
+    "columns": [
+      {
+        "id": "srNo",
+        "label": "Sr. No.",
+        "isCalculated": false
+      },
+      {
+        "id": "source",
+        "label": "Received From",
+        "isCalculated": false
+      },
+      {
+        "id": "carriedForward",
+        "label": "Carried Forward from Previous Month",
+        "isCalculated": false
+      },
+      {
+        "id": "received",
+        "label": "Received During Month",
+        "isCalculated": false
+      },
+      {
+        "id": "resolved",
+        "label": "Resolved During Month",
+        "isCalculated": false
+      },
+      {
+        "id": "pending",
+        "label": "Total Pending",
+        "isCalculated": true
+      },
+      {
+        "id": "pendingOver3Months",
+        "label": "Pending > 3 Months",
+        "isCalculated": false
+      }
+    ],
+    "rows": [
+      {
+        "id": "direct",
+        "srNo": 1,
+        "source": "Directly from Investors",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "pendingOver3Months": 0,
+        "isOverridden": false
+      },
+      {
+        "id": "scores",
+        "srNo": 2,
+        "source": "SEBI (SCORES 2.0 Portal)",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "pendingOver3Months": 0,
+        "isOverridden": false
+      },
+      {
+        "id": "other",
+        "srNo": 3,
+        "source": "Other Sources (BASL / Exchanges)",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "pendingOver3Months": 0,
+        "isOverridden": false
+      }
+    ],
+    "grandTotal": {
+      "carriedForward": 0,
+      "received": 0,
+      "resolved": 0,
+      "pending": 0,
+      "pendingOver3Months": 0,
+      "isOverridden": false
+    }
+  },
+  "section2": {
+    "monthlyTrend": [
+      {
+        "id": "m-2026-10",
+        "monthYear": "October 2026",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentMonth": true
+      },
+      {
+        "id": "m-2026-09",
+        "monthYear": "September 2026",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentMonth": false
+      },
+      {
+        "id": "m-2026-08",
+        "monthYear": "August 2026",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentMonth": false
+      },
+      {
+        "id": "m-2026-07",
+        "monthYear": "July 2026",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentMonth": false
+      },
+      {
+        "id": "m-2026-06",
+        "monthYear": "June 2026",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentMonth": false
+      },
+      {
+        "id": "m-2026-05",
+        "monthYear": "May 2026",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentMonth": false
+      }
+    ],
+    "annualTrend": [
+      {
+        "id": "fy-2026-27",
+        "financialYear": "FY 2026-27 (Current YTD)",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentFY": true
+      },
+      {
+        "id": "fy-2025-26",
+        "financialYear": "FY 2025-26",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentFY": false
+      },
+      {
+        "id": "fy-2024-25",
+        "financialYear": "FY 2024-25",
+        "carriedForward": 0,
+        "received": 0,
+        "resolved": 0,
+        "pending": 0,
+        "isCurrentFY": false
+      }
+    ],
+    "displayMonthsCount": 6
+  },
+  "section3": {
+    "auditReports": [
+      {
+        "id": "audit-2025-26",
+        "financialYear": "FY 2025-26",
+        "status": "Completed",
+        "reportUrl": "/reports/annual-compliance-audit-fy25-26.pdf",
+        "adverseFindings": "Nil (Full statutory compliance certified by independent peer-reviewed chartered accountant)"
+      },
+      {
+        "id": "audit-2024-25",
+        "financialYear": "FY 2024-25",
+        "status": "Completed",
+        "reportUrl": "/reports/annual-compliance-audit-fy24-25.pdf",
+        "adverseFindings": "Nil"
+      },
+      {
+        "id": "audit-2026-27",
+        "financialYear": "FY 2026-27",
+        "status": "In progress",
+        "reportUrl": "",
+        "adverseFindings": "Annual audit will be initiated at closure of financial year."
+      }
+    ]
+  },
+  "lastPublishedAt": "2026-10-15T12:00:00.000Z",
+  "publishedBy": "admin",
+  "isDraft": false
+}

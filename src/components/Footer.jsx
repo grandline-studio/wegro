@@ -102,7 +102,7 @@ export default function Footer({ navigate }) {
         </div>
 
         {/* Regulatory Details & Office Addresses Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32, marginBottom: 40 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 32, marginBottom: 40 }}>
           {/* Regulatory Registrations */}
           <div>
             <h4 className="footer-col-title">Regulatory Details</h4>

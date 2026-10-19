@@ -91,10 +91,10 @@ export default function ContactPage() {
       {/* 2. CONTACT CONTENT & FORM */}
       <section className="section bg-light">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 40, alignItems: 'start' }}>
+          <div className="contact-grid">
             {/* Left: Contact Info & Operational Details */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-              <div className="card-light" style={{ padding: 28 }}>
+              <div className="card-light contact-card-info">
                 <h2 style={{ fontSize: '1.25rem', marginBottom: 16, color: '#0f172a' }}>
                   Official Communications Desk
                 </h2>
@@ -172,7 +172,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right: Interactive Form */}
-            <div className="card-light" style={{ padding: 36 }}>
+            <div className="card-light contact-card-form">
               <h2 style={{ fontSize: '1.45rem', marginBottom: 6, color: '#0f172a' }}>
                 Service Inquiry & Suitability Check
               </h2>
@@ -233,7 +233,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                  <div className="contact-form-row">
                     <div className="form-group">
                       <label className="form-label">Email Address *</label>
                       <input
@@ -258,7 +258,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                  <div className="contact-form-row">
                     <div className="form-group">
                       <label className="form-label">Primary Service Interest</label>
                       <select

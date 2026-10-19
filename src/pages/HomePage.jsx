@@ -319,7 +319,7 @@ export default function HomePage({ navigate }) {
           ========================================================================= */}
       <section style={{ background: '#F8FAF9', borderTop: '1px solid rgba(8, 7, 5, 0.08)', borderBottom: '1px solid rgba(8, 7, 5, 0.08)', padding: '36px 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 32, alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 32, alignItems: 'center' }}>
             {/* Highlight 1 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{ width: 50, height: 50, borderRadius: 12, background: 'rgba(148, 185, 175, 0.22)', color: '#284e45', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -425,7 +425,7 @@ export default function HomePage({ navigate }) {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 24 }}>
             {/* Pillar 1: Research */}
             <div className="card-light" style={{ padding: 28, background: '#FFFFFA', border: '1px solid rgba(8, 7, 5, 0.08)' }}>
               <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(145, 47, 64, 0.12)', color: '#912F40', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
