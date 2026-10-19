@@ -83,21 +83,11 @@ export default function ServicesPage({ onSelectService, navigate }) {
         className="section bg-dark"
         style={{
           position: 'relative',
-          overflow: 'hidden',
           paddingTop: 'calc(var(--space-20) + 16px)',
-          paddingBottom: 'var(--space-16)'
+          paddingBottom: 'var(--space-16)',
+          background: 'var(--bg-canvas)'
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'radial-gradient(circle at 50% 25%, rgba(148, 185, 175, 0.16) 0%, transparent 65%), radial-gradient(circle at 85% 85%, rgba(112, 38, 50, 0.14) 0%, transparent 50%)',
-            pointerEvents: 'none'
-          }}
-        />
-
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-header" style={{ maxWidth: 920, margin: '0 auto', textAlign: 'center' }}>
             <div style={{ marginBottom: 16, display: 'inline-flex', justifyContent: 'center' }}>
@@ -109,7 +99,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
             <h1
               className="section-title"
               style={{
-                color: 'var(--color-porcelain)',
+                color: 'var(--text-dark-primary)',
                 fontSize: 'clamp(2.1rem, 4vw, 3.25rem)',
                 fontWeight: 800,
                 letterSpacing: '-0.02em',
@@ -123,7 +113,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
             <p
               className="section-description"
               style={{
-                color: 'rgba(255, 255, 250, 0.8)',
+                color: 'var(--text-dark-secondary)',
                 fontSize: 'clamp(1rem, 1.15vw, 1.125rem)',
                 lineHeight: 1.68,
                 maxWidth: 780,
@@ -144,9 +134,10 @@ export default function ServicesPage({ onSelectService, navigate }) {
                 style={{
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.75rem',
-                  color: '#94B9AF',
+                  color: 'var(--brand-primary)',
                   letterSpacing: '0.04em',
-                  textTransform: 'uppercase'
+                  textTransform: 'uppercase',
+                  fontWeight: 600
                 }}
               >
                 Showing {filteredServices.length} of {servicesData.length} Research Desks
@@ -157,19 +148,19 @@ export default function ServicesPage({ onSelectService, navigate }) {
       </section>
 
       {/* =========================================================================
-          SECTION 2: STATUTORY ADVISORY SCOPE BANNER (HIGH CONTRAST FIX)
+          SECTION 2: STATUTORY ADVISORY SCOPE BANNER
           ========================================================================= */}
-      <section style={{ background: '#080705', borderBottom: '1px solid rgba(148, 185, 175, 0.2)', padding: '16px 0' }}>
+      <section style={{ background: 'var(--bg-subtle)', borderBottom: '1px solid var(--border-light)', padding: '16px 0' }}>
         <div className="container">
           <div className="compliance-banner">
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, flex: 1, minWidth: 300 }}>
-                <AlertTriangle size={18} style={{ color: '#f59e0b', flexShrink: 0, marginTop: 3 }} />
+                <AlertTriangle size={18} style={{ color: '#B45309', flexShrink: 0, marginTop: 3 }} />
                 <div>
-                  <strong style={{ color: '#f59e0b', fontSize: '0.875rem', display: 'block', marginBottom: 4 }}>
+                  <strong style={{ color: '#B45309', fontSize: '0.875rem', display: 'block', marginBottom: 4 }}>
                     Non-Discretionary Research Scope & Suitability Guidelines
                   </strong>
-                  <p style={{ margin: 0, fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.82)', lineHeight: 1.55 }}>
+                  <p style={{ margin: 0, fontSize: '0.8125rem', color: 'var(--text-dark-secondary)', lineHeight: 1.55 }}>
                     WeGro provides research reports, quantitative strategies, and trade level invalidations. WeGro does NOT offer Portfolio Management Services (PMS), discretionary trading, or profit-sharing accounts. Subscriptions are strictly fee-based. Derivatives and leveraged products are not suitable for all investors.
                   </p>
                 </div>
@@ -180,11 +171,12 @@ export default function ServicesPage({ onSelectService, navigate }) {
                   type="button"
                   onClick={() => handleNav('/disclosures')}
                   style={{
-                    background: 'rgba(148, 185, 175, 0.12)',
-                    border: '1px solid rgba(148, 185, 175, 0.3)',
-                    color: '#94B9AF',
+                    background: 'var(--brand-primary-soft)',
+                    border: '1px solid var(--brand-primary-border)',
+                    color: 'var(--brand-primary)',
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.75rem',
+                    fontWeight: 600,
                     padding: '6px 14px',
                     borderRadius: 6,
                     cursor: 'pointer',
@@ -468,26 +460,25 @@ export default function ServicesPage({ onSelectService, navigate }) {
           SECTION 6: CLOSING CONVERSION DESK
           ========================================================================= */}
       <section
-        className="section bg-dark"
+        className="section"
         style={{
-          borderTop: '1px solid rgba(148, 185, 175, 0.2)',
+          borderTop: '1px solid var(--border-light)',
           padding: '72px 0',
-          position: 'relative',
-          overflow: 'hidden'
+          background: 'var(--bg-canvas)'
         }}
       >
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="container">
           <div
             style={{
-              background: 'linear-gradient(135deg, rgba(18, 16, 13, 0.95) 0%, rgba(112, 38, 50, 0.28) 100%)',
-              border: '1px solid rgba(148, 185, 175, 0.3)',
+              background: 'var(--bg-white)',
+              border: '1px solid var(--border-light)',
               borderRadius: 'var(--radius-xl)',
               padding: 'clamp(32px, 5vw, 56px)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+              boxShadow: 'var(--shadow-md)'
             }}
           >
             <GlowingBadge variant="cyan" icon={Sparkles}>
@@ -498,7 +489,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
               style={{
                 fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                 fontWeight: 800,
-                color: 'var(--color-porcelain)',
+                color: 'var(--text-dark-primary)',
                 margin: '18px 0 14px 0',
                 lineHeight: 1.2
               }}
@@ -508,7 +499,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
 
             <p
               style={{
-                color: 'rgba(255, 255, 250, 0.8)',
+                color: 'var(--text-dark-secondary)',
                 fontSize: 'clamp(0.9375rem, 1.1vw, 1.0625rem)',
                 maxWidth: 680,
                 lineHeight: 1.65,
@@ -522,7 +513,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
               <button
                 type="button"
                 onClick={() => handleNav('/pricing')}
-                className="btn btn-primary btn-shimmer"
+                className="btn btn-primary"
                 style={{ padding: '14px 26px', fontSize: '0.9375rem', fontWeight: 700 }}
               >
                 <span>View Subscription Plans</span>
@@ -537,8 +528,9 @@ export default function ServicesPage({ onSelectService, navigate }) {
                   padding: '14px 26px',
                   fontSize: '0.9375rem',
                   fontWeight: 600,
-                  borderColor: 'rgba(148, 185, 175, 0.4)',
-                  color: 'var(--color-porcelain)'
+                  borderColor: 'var(--border-light)',
+                  color: 'var(--text-dark-primary)',
+                  background: 'var(--bg-white)'
                 }}
               >
                 <span>Contact Advisory Desk</span>

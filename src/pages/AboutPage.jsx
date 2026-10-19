@@ -137,25 +137,14 @@ export default function AboutPage({ navigate }) {
           SECTION 1: HERO HEADER — LUXURY OBSIDIAN / TEAL AESTHETIC WITH METRICS
           ========================================================================= */}
       <section
-        className="section bg-dark"
+        className="section"
         style={{
           position: 'relative',
-          overflow: 'hidden',
           paddingTop: 'calc(var(--space-20) + 20px)',
-          paddingBottom: 'var(--space-20)'
+          paddingBottom: 'var(--space-20)',
+          background: 'var(--bg-canvas)'
         }}
       >
-        {/* Ambient Radial Gradient Glow */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'radial-gradient(circle at 50% 15%, rgba(148, 185, 175, 0.15) 0%, transparent 60%), radial-gradient(circle at 85% 85%, rgba(145, 47, 64, 0.12) 0%, transparent 50%)',
-            pointerEvents: 'none'
-          }}
-        />
-
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-header" style={{ maxWidth: 960, margin: '0 auto', textAlign: 'center' }}>
             <div style={{ marginBottom: 18, display: 'inline-flex', justifyContent: 'center' }}>
@@ -167,7 +156,7 @@ export default function AboutPage({ navigate }) {
             <h1
               className="section-title"
               style={{
-                color: 'var(--color-porcelain)',
+                color: 'var(--text-dark-primary)',
                 fontSize: 'clamp(2.1rem, 4.2vw, 3.4rem)',
                 lineHeight: 1.15,
                 fontWeight: 800,
@@ -176,13 +165,13 @@ export default function AboutPage({ navigate }) {
               }}
             >
               Independent Research. Pure Mathematics. <br />
-              <span style={{ color: '#94B9AF' }}>Zero Conflicting Interests.</span>
+              <span style={{ color: 'var(--brand-primary)' }}>Zero Conflicting Interests.</span>
             </h1>
 
             <p
               className="section-description"
               style={{
-                color: 'rgba(255, 255, 250, 0.8)',
+                color: 'var(--text-dark-secondary)',
                 fontSize: 'clamp(1rem, 1.2vw, 1.1875rem)',
                 lineHeight: 1.68,
                 maxWidth: 820,
@@ -479,15 +468,15 @@ export default function AboutPage({ navigate }) {
                         fontFamily: 'var(--font-mono)',
                         fontSize: '0.8125rem',
                         fontWeight: 700,
-                        color: '#94B9AF',
-                        background: 'rgba(148, 185, 175, 0.15)',
+                        color: 'var(--brand-primary)',
+                        background: 'var(--brand-primary-soft)',
                         padding: '4px 10px',
                         borderRadius: 6
                       }}
                     >
                       {current.gateId}
                     </span>
-                    <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--color-porcelain)' }}>
+                    <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--text-dark-primary)' }}>
                       {current.title}
                     </h3>
                   </div>
@@ -496,18 +485,18 @@ export default function AboutPage({ navigate }) {
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.75rem',
                       fontWeight: 600,
-                      color: '#FFFFFA',
-                      background: 'rgba(145, 47, 64, 0.4)',
+                      color: 'var(--brand-primary)',
+                      background: 'var(--brand-primary-soft)',
                       padding: '4px 12px',
                       borderRadius: 9999,
-                      border: '1px solid rgba(145, 47, 64, 0.6)'
+                      border: '1px solid var(--brand-primary-border)'
                     }}
                   >
                     {current.badge}
                   </div>
                 </div>
 
-                <p style={{ color: 'rgba(255, 255, 250, 0.85)', fontSize: '1rem', lineHeight: 1.6, maxWidth: 980 }}>
+                <p style={{ color: 'var(--text-dark-secondary)', fontSize: '1rem', lineHeight: 1.6, maxWidth: 980 }}>
                   {current.summary}
                 </p>
 
@@ -790,24 +779,16 @@ export default function AboutPage({ navigate }) {
       {/* =========================================================================
           SECTION 7: CORPORATE INFRASTRUCTURE & DUAL-OFFICE NETWORK
           ========================================================================= */}
-      <section className="section bg-dark" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'radial-gradient(circle at 80% 20%, rgba(148, 185, 175, 0.12) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(112, 38, 50, 0.15) 0%, transparent 50%)',
-            pointerEvents: 'none'
-          }}
-        />
-
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <section className="section" style={{ background: 'var(--bg-subtle)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}>
+        <div className="container">
           <div className="section-header" style={{ textAlign: 'center', maxWidth: 840, margin: '0 auto 48px auto' }}>
-            <span className="section-eyebrow cyan" style={{ color: '#94B9AF' }}>Physical Footprint</span>
-            <h2 className="section-title" style={{ color: 'var(--color-porcelain)' }}>
+            <span className="section-eyebrow" style={{ color: 'var(--brand-primary)', background: 'var(--brand-primary-soft)', border: '1px solid var(--brand-primary-border)' }}>
+              Physical Footprint
+            </span>
+            <h2 className="section-title" style={{ color: 'var(--text-dark-primary)', marginTop: 8 }}>
               Dual Corporate Infrastructure & Desks
             </h2>
-            <p className="section-description" style={{ color: 'rgba(255, 255, 250, 0.78)' }}>
+            <p className="section-description" style={{ color: 'var(--text-dark-secondary)' }}>
               We maintain full physical presence with our registered headquarters in Mumbai for regulatory administration and our quantitative analytical research hub in Bengaluru.
             </p>
           </div>
@@ -818,14 +799,14 @@ export default function AboutPage({ navigate }) {
               <div>
                 <div className="office-box-header">
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(148, 185, 175, 0.2)', color: '#94B9AF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Building2 size={20} />
                     </div>
                     <div>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-porcelain)', margin: 0 }}>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-dark-primary)', margin: 0 }}>
                         {companyConfig.offices.registeredOffice.title}
                       </h3>
-                      <span style={{ fontSize: '0.75rem', color: '#94B9AF', fontFamily: 'var(--font-mono)' }}>
+                      <span style={{ fontSize: '0.75rem', color: 'var(--brand-primary)', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
                         Mumbai, Maharashtra · Statutory HQ
                       </span>
                     </div>
@@ -842,18 +823,18 @@ export default function AboutPage({ navigate }) {
                   </button>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255, 255, 250, 0.8)', fontSize: '0.9375rem', lineHeight: 1.6, marginBottom: 20 }}>
-                  <MapPin size={18} style={{ color: '#94B9AF', flexShrink: 0, marginTop: 4 }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'var(--text-dark-secondary)', fontSize: '0.9375rem', lineHeight: 1.6, marginBottom: 20 }}>
+                  <MapPin size={18} style={{ color: 'var(--brand-primary)', flexShrink: 0, marginTop: 4 }} />
                   <div>{companyConfig.offices.registeredOffice.address}</div>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.65)', borderTop: '1px solid rgba(148, 185, 175, 0.15)', paddingTop: 16 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.8125rem', color: 'var(--text-dark-muted)', borderTop: '1px solid var(--border-light)', paddingTop: 16 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Clock size={14} style={{ color: '#94B9AF' }} />
+                    <Clock size={14} style={{ color: 'var(--brand-primary)' }} />
                     <span>Compliance Desk: Monday – Friday (9:00 AM – 5:00 PM IST)</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Mail size={14} style={{ color: '#94B9AF' }} />
+                    <Mail size={14} style={{ color: 'var(--brand-primary)' }} />
                     <span>Statutory Escalations: {companyConfig.contact.email}</span>
                   </div>
                 </div>
@@ -865,14 +846,14 @@ export default function AboutPage({ navigate }) {
               <div>
                 <div className="office-box-header">
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(145, 47, 64, 0.25)', color: '#FFFFFA', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--brand-secondary-soft)', color: 'var(--brand-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <Building2 size={20} />
                     </div>
                     <div>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-porcelain)', margin: 0 }}>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-dark-primary)', margin: 0 }}>
                         {companyConfig.offices.principalPlace.title}
                       </h3>
-                      <span style={{ fontSize: '0.75rem', color: '#94B9AF', fontFamily: 'var(--font-mono)' }}>
+                      <span style={{ fontSize: '0.75rem', color: 'var(--brand-secondary)', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
                         Bengaluru, Karnataka · Research Lab
                       </span>
                     </div>
@@ -889,18 +870,18 @@ export default function AboutPage({ navigate }) {
                   </button>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'rgba(255, 255, 250, 0.8)', fontSize: '0.9375rem', lineHeight: 1.6, marginBottom: 20 }}>
-                  <MapPin size={18} style={{ color: '#94B9AF', flexShrink: 0, marginTop: 4 }} />
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: 'var(--text-dark-secondary)', fontSize: '0.9375rem', lineHeight: 1.6, marginBottom: 20 }}>
+                  <MapPin size={18} style={{ color: 'var(--brand-primary)', flexShrink: 0, marginTop: 4 }} />
                   <div>{companyConfig.offices.principalPlace.address}</div>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.65)', borderTop: '1px solid rgba(148, 185, 175, 0.15)', paddingTop: 16 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.8125rem', color: 'var(--text-dark-muted)', borderTop: '1px solid var(--border-light)', paddingTop: 16 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Clock size={14} style={{ color: '#94B9AF' }} />
+                    <Clock size={14} style={{ color: 'var(--brand-primary)' }} />
                     <span>Advisory Desk: {companyConfig.contact.supportHours}</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Phone size={14} style={{ color: '#94B9AF' }} />
+                    <Phone size={14} style={{ color: 'var(--brand-primary)' }} />
                     <span>Desk Line: {companyConfig.contact.phone}</span>
                   </div>
                 </div>
@@ -956,26 +937,25 @@ export default function AboutPage({ navigate }) {
           SECTION 9: INSTITUTIONAL CLOSING BANNER / ACTION DESK
           ========================================================================= */}
       <section
-        className="section bg-dark"
+        className="section"
         style={{
-          borderTop: '1px solid rgba(148, 185, 175, 0.2)',
-          position: 'relative',
-          overflow: 'hidden',
+          borderTop: '1px solid var(--border-light)',
+          background: 'var(--bg-canvas)',
           padding: '80px 0'
         }}
       >
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="container">
           <div
             style={{
-              background: 'linear-gradient(135deg, rgba(18, 16, 13, 0.95) 0%, rgba(112, 38, 50, 0.25) 100%)',
-              border: '1px solid rgba(148, 185, 175, 0.3)',
+              background: 'var(--bg-white)',
+              border: '1px solid var(--border-light)',
               borderRadius: 'var(--radius-xl)',
               padding: 'clamp(32px, 5vw, 64px)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+              boxShadow: 'var(--shadow-md)'
             }}
           >
             <GlowingBadge variant="cyan" icon={Sparkles}>
@@ -986,7 +966,7 @@ export default function AboutPage({ navigate }) {
               style={{
                 fontSize: 'clamp(1.8rem, 3.2vw, 2.75rem)',
                 fontWeight: 800,
-                color: 'var(--color-porcelain)',
+                color: 'var(--text-dark-primary)',
                 margin: '20px 0 16px 0',
                 lineHeight: 1.2
               }}
@@ -996,7 +976,7 @@ export default function AboutPage({ navigate }) {
 
             <p
               style={{
-                color: 'rgba(255, 255, 250, 0.8)',
+                color: 'var(--text-dark-secondary)',
                 fontSize: 'clamp(0.9375rem, 1.1vw, 1.125rem)',
                 maxWidth: 720,
                 lineHeight: 1.65,
@@ -1010,7 +990,7 @@ export default function AboutPage({ navigate }) {
               <button
                 type="button"
                 onClick={() => handleNav('/services')}
-                className="btn btn-primary btn-shimmer"
+                className="btn btn-primary"
                 style={{ padding: '14px 28px', fontSize: '1rem', fontWeight: 700 }}
               >
                 <span>Explore Research Desks</span>
@@ -1025,8 +1005,9 @@ export default function AboutPage({ navigate }) {
                   padding: '14px 28px',
                   fontSize: '1rem',
                   fontWeight: 600,
-                  borderColor: 'rgba(148, 185, 175, 0.4)',
-                  color: 'var(--color-porcelain)'
+                  borderColor: 'var(--border-light)',
+                  color: 'var(--text-dark-primary)',
+                  background: 'var(--bg-white)'
                 }}
               >
                 <span>Subscription Plans</span>
@@ -1048,11 +1029,11 @@ export default function AboutPage({ navigate }) {
       {/* =========================================================================
           SECTION 10: STATUTORY RISK WARNING FOOTER NOTICE
           ========================================================================= */}
-      <section style={{ background: '#050403', padding: '24px 0', borderTop: '1px solid rgba(255, 255, 255, 0.05)' }}>
+      <section style={{ background: 'var(--bg-subtle)', padding: '24px 0', borderTop: '1px solid var(--border-light)' }}>
         <div className="container">
           <div style={{ maxWidth: 960, margin: '0 auto', textAlign: 'center' }}>
-            <p style={{ color: 'rgba(255, 255, 250, 0.45)', fontSize: '0.75rem', lineHeight: 1.6, margin: 0 }}>
-              <strong style={{ color: 'rgba(255, 255, 250, 0.65)' }}>Standard Statutory Disclaimer: </strong>
+            <p style={{ color: 'var(--text-dark-muted)', fontSize: '0.75rem', lineHeight: 1.6, margin: 0 }}>
+              <strong style={{ color: 'var(--text-dark-secondary)' }}>Standard Statutory Disclaimer: </strong>
               {companyConfig.riskDisclosure}
             </p>
           </div>

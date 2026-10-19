@@ -15,9 +15,8 @@ export default function AnimatedTabs({
         alignItems: 'center',
         padding: 4,
         borderRadius: 9999,
-        background: 'rgba(255, 255, 255, 0.05)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        backdropFilter: 'blur(10px)',
+        background: 'var(--bg-subtle)',
+        border: '1px solid var(--border-light)',
         position: 'relative',
         gap: 2,
         maxWidth: '100%',
@@ -41,23 +40,23 @@ export default function AnimatedTabs({
               fontWeight: 600,
               border: 'none',
               background: 'transparent',
-              color: isActive ? '#040810' : '#cbd5e1',
+              color: isActive ? '#FFFFFF' : 'var(--text-dark-muted)',
               cursor: 'pointer',
               zIndex: 2,
-              transition: 'color 0.2s ease',
+              transition: 'color 0.15s ease',
               whiteSpace: 'nowrap'
             }}
           >
             {isActive && (
               <motion.div
                 layoutId="activeTabPill"
-                transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
+                transition={{ type: 'spring', bounce: 0.15, duration: 0.4 }}
                 style={{
                   position: 'absolute',
                   inset: 0,
                   borderRadius: 9999,
-                  background: 'linear-gradient(135deg, #00e5ff 0%, #00b4d8 100%)',
-                  boxShadow: '0 2px 10px rgba(0, 229, 255, 0.4)',
+                  background: 'var(--brand-primary)',
+                  boxShadow: '0 1px 3px rgba(28, 63, 53, 0.2)',
                   zIndex: -1
                 }}
               />

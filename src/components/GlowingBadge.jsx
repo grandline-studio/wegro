@@ -7,25 +7,22 @@ export default function GlowingBadge({
 }) {
   const colorMap = {
     cyan: {
-      text: '#00e5ff',
-      bg: 'rgba(0, 229, 255, 0.08)',
-      border: 'rgba(0, 229, 255, 0.25)',
-      dot: '#00e5ff',
-      glow: 'rgba(0, 229, 255, 0.6)'
+      text: '#1C3F35',
+      bg: 'rgba(28, 63, 53, 0.08)',
+      border: 'rgba(28, 63, 53, 0.22)',
+      dot: '#1C3F35'
     },
     emerald: {
-      text: '#10b981',
-      bg: 'rgba(16, 185, 129, 0.08)',
-      border: 'rgba(16, 185, 129, 0.25)',
-      dot: '#10b981',
-      glow: 'rgba(16, 185, 129, 0.6)'
+      text: '#15803D',
+      bg: 'rgba(21, 128, 61, 0.08)',
+      border: 'rgba(21, 128, 61, 0.22)',
+      dot: '#15803D'
     },
     amber: {
-      text: '#f59e0b',
-      bg: 'rgba(245, 158, 11, 0.08)',
-      border: 'rgba(245, 158, 11, 0.25)',
-      dot: '#f59e0b',
-      glow: 'rgba(245, 158, 11, 0.6)'
+      text: '#B45309',
+      bg: 'rgba(180, 83, 9, 0.08)',
+      border: 'rgba(180, 83, 9, 0.22)',
+      dot: '#B45309'
     }
   };
 
@@ -46,8 +43,7 @@ export default function GlowingBadge({
         fontWeight: 600,
         fontFamily: 'var(--font-mono)',
         letterSpacing: '0.04em',
-        textTransform: 'uppercase',
-        boxShadow: `0 0 16px ${c.bg}`
+        textTransform: 'uppercase'
       }}
     >
       <span style={{ position: 'relative', display: 'flex', width: 8, height: 8 }}>

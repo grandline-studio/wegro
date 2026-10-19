@@ -433,9 +433,9 @@ export default function ComplaintsPage({ navigate }) {
                 gap: 8,
                 padding: '6px 14px',
                 borderRadius: 999,
-                background: 'rgba(148, 185, 175, 0.12)',
-                border: '1px solid rgba(148, 185, 175, 0.3)',
-                color: '#94B9AF',
+                background: 'var(--brand-primary-soft)',
+                border: '1px solid var(--brand-primary-border)',
+                color: 'var(--brand-primary)',
                 fontSize: '0.75rem',
                 fontFamily: 'var(--font-mono)',
                 letterSpacing: '0.04em',
@@ -455,7 +455,7 @@ export default function ComplaintsPage({ navigate }) {
               style={{
                 fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
                 fontWeight: 800,
-                color: '#FFFFFA',
+                color: 'var(--text-dark-primary)',
                 letterSpacing: '-0.03em',
                 lineHeight: 1.2,
                 marginBottom: 16
@@ -467,7 +467,7 @@ export default function ComplaintsPage({ navigate }) {
             <p
               style={{
                 fontSize: 'clamp(0.875rem, 1.3vw, 1.05rem)',
-                color: 'rgba(255, 255, 250, 0.78)',
+                color: 'var(--text-dark-secondary)',
                 lineHeight: 1.6,
                 maxWidth: 720,
                 margin: '0 auto 24px auto'
@@ -487,13 +487,13 @@ export default function ComplaintsPage({ navigate }) {
                 fontFamily: 'var(--font-mono)'
               }}
             >
-              <span style={{ padding: '5px 10px', background: 'rgba(255, 255, 255, 0.06)', borderRadius: 6, border: '1px solid rgba(255, 255, 255, 0.12)', color: 'rgba(255, 255, 250, 0.9)' }}>
+              <span style={{ padding: '5px 10px', background: 'var(--bg-white)', borderRadius: 6, border: '1px solid var(--border-light)', color: 'var(--text-dark-primary)', boxShadow: 'var(--shadow-sm)' }}>
                 SEBI Reg: <strong>{companyConfig.sebiRegistrationNumber}</strong>
               </span>
-              <span style={{ padding: '5px 10px', background: 'rgba(255, 255, 255, 0.06)', borderRadius: 6, border: '1px solid rgba(255, 255, 255, 0.12)', color: 'rgba(255, 255, 250, 0.9)' }}>
+              <span style={{ padding: '5px 10px', background: 'var(--bg-white)', borderRadius: 6, border: '1px solid var(--border-light)', color: 'var(--text-dark-primary)', boxShadow: 'var(--shadow-sm)' }}>
                 BSE Member ID: <strong>{companyConfig.bseMembershipNumber}</strong>
               </span>
-              <span style={{ padding: '5px 10px', background: 'rgba(148, 185, 175, 0.15)', borderRadius: 6, border: '1px solid rgba(148, 185, 175, 0.4)', color: '#94B9AF' }}>
+              <span style={{ padding: '5px 10px', background: 'var(--brand-primary-soft)', borderRadius: 6, border: '1px solid var(--brand-primary-border)', color: 'var(--brand-primary)', fontWeight: 600 }}>
                 Audit: <strong>Month Ending October 2026</strong>
               </span>
             </div>
@@ -506,17 +506,17 @@ export default function ComplaintsPage({ navigate }) {
           ========================================================================= */}
       <section
         style={{
-          background: '#0d0c0a',
-          borderBottom: '1px solid rgba(148, 185, 175, 0.16)',
+          background: 'var(--bg-subtle)',
+          borderBottom: '1px solid var(--border-light)',
           padding: '14px 0'
         }}
       >
         <div className="container">
           <div className="complaints-notice-banner">
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: '#f59e0b', fontSize: '0.8125rem' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: '#B45309', fontSize: '0.8125rem' }}>
               <AlertTriangle size={18} style={{ flexShrink: 0, marginTop: 2 }} />
-              <span style={{ color: 'rgba(255, 255, 250, 0.88)', lineHeight: 1.5 }}>
-                <strong style={{ color: '#f59e0b' }}>Mandatory SEBI Disclosure:</strong> Research Analysts are required to display complaints data on their website by the 7th of every succeeding month.
+              <span style={{ color: 'var(--text-dark-secondary)', lineHeight: 1.5 }}>
+                <strong style={{ color: '#B45309' }}>Mandatory SEBI Disclosure:</strong> Research Analysts are required to display complaints data on their website by the 7th of every succeeding month.
               </span>
             </div>
 
@@ -1110,7 +1110,7 @@ export default function ComplaintsPage({ navigate }) {
                   </div>
                   <table className="sebi-table">
                     <thead>
-                      <tr style={{ background: '#12100d', color: '#FFFFFA' }}>
+                      <tr style={{ background: 'var(--bg-subtle)', color: 'var(--text-dark-primary)', borderBottom: '2px solid var(--border-light)' }}>
                         <th style={{ width: 80 }}>Sr. No.</th>
                         <th className="sticky-col-header">Month & Year</th>
                         <th style={{ textAlign: 'center' }}>Carried Forward</th>
@@ -1177,7 +1177,7 @@ export default function ComplaintsPage({ navigate }) {
                   </div>
                   <table className="sebi-table">
                     <thead>
-                      <tr style={{ background: '#12100d', color: '#FFFFFA' }}>
+                      <tr style={{ background: 'var(--bg-subtle)', color: 'var(--text-dark-primary)', borderBottom: '2px solid var(--border-light)' }}>
                         <th style={{ width: 80 }}>Sr. No.</th>
                         <th className="sticky-col-header">Financial Year</th>
                         <th style={{ textAlign: 'center' }}>Carried Forward</th>
@@ -1556,12 +1556,12 @@ export default function ComplaintsPage({ navigate }) {
             {/* Box 1: SEBI SCORES 2.0 */}
             <div
               style={{
-                background: 'linear-gradient(145deg, #0f172a 0%, #080705 100%)',
-                color: '#FFFFFA',
+                background: 'var(--bg-white)',
+                color: 'var(--text-dark-primary)',
                 padding: '28px 22px',
                 borderRadius: 16,
-                border: '1px solid rgba(148, 185, 175, 0.25)',
-                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)',
+                border: '1px solid var(--border-light)',
+                boxShadow: 'var(--shadow-sm)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between'
@@ -1569,26 +1569,26 @@ export default function ComplaintsPage({ navigate }) {
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-                  <div style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(148, 185, 175, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94B9AF', flexShrink: 0 }}>
+                  <div style={{ width: 38, height: 38, borderRadius: 10, background: 'var(--brand-primary-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-primary)', flexShrink: 0 }}>
                     <Scale size={18} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#FFFFFA' }}>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-dark-primary)' }}>
                       SEBI SCORES 2.0 Portal
                     </h3>
-                    <div style={{ fontSize: '0.6875rem', color: '#94B9AF', fontFamily: 'var(--font-mono)' }}>
+                    <div style={{ fontSize: '0.6875rem', color: 'var(--brand-primary)', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
                       SEBI Complaints Redress System
                     </div>
                   </div>
                 </div>
 
-                <p style={{ fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.78)', lineHeight: 1.55, marginBottom: 16 }}>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--text-dark-secondary)', lineHeight: 1.55, marginBottom: 16 }}>
                   If your complaint is not redressed within 30 calendar days or if you are not satisfied with our resolution, you may lodge a complaint directly with SEBI. SCORES facilitates centralized online tracking, auto-escalation, and independent review.
                 </p>
 
-                <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px 14px', borderRadius: 10, fontSize: '0.75rem', marginBottom: 20 }}>
-                  <div style={{ color: '#94B9AF', fontWeight: 700, marginBottom: 4 }}>SEBI Toll-Free Investor Helplines:</div>
-                  <div style={{ fontFamily: 'var(--font-mono)', color: '#FFFFFA' }}>
+                <div style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-light)', padding: '12px 14px', borderRadius: 10, fontSize: '0.75rem', marginBottom: 20 }}>
+                  <div style={{ color: 'var(--brand-primary)', fontWeight: 700, marginBottom: 4 }}>SEBI Toll-Free Investor Helplines:</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-dark-primary)', fontWeight: 600 }}>
                     1800 22 7575 / 1800 266 7575 (Toll-Free, 9:00 AM – 6:00 PM IST)
                   </div>
                 </div>
@@ -1621,12 +1621,12 @@ export default function ComplaintsPage({ navigate }) {
             {/* Box 2: SMART ODR Portal */}
             <div
               style={{
-                background: 'linear-gradient(145deg, #161a23 0%, #0d0c0a 100%)',
-                color: '#FFFFFA',
+                background: 'var(--bg-white)',
+                color: 'var(--text-dark-primary)',
                 padding: '28px 22px',
                 borderRadius: 16,
-                border: '1px solid rgba(145, 47, 64, 0.3)',
-                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.25)',
+                border: '1px solid var(--border-light)',
+                boxShadow: 'var(--shadow-sm)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between'
@@ -1634,26 +1634,26 @@ export default function ComplaintsPage({ navigate }) {
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-                  <div style={{ width: 38, height: 38, borderRadius: 10, background: 'rgba(145, 47, 64, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#912F40', flexShrink: 0 }}>
+                  <div style={{ width: 38, height: 38, borderRadius: 10, background: 'var(--brand-secondary-soft)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--brand-secondary)', flexShrink: 0 }}>
                     <ShieldAlert size={18} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#FFFFFA' }}>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-dark-primary)' }}>
                       SMART ODR Portal
                     </h3>
-                    <div style={{ fontSize: '0.6875rem', color: '#94B9AF', fontFamily: 'var(--font-mono)' }}>
+                    <div style={{ fontSize: '0.6875rem', color: 'var(--brand-secondary)', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
                       Securities Market Online Dispute Resolution
                     </div>
                   </div>
                 </div>
 
-                <p style={{ fontSize: '0.8125rem', color: 'rgba(255, 255, 250, 0.78)', lineHeight: 1.55, marginBottom: 16 }}>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--text-dark-secondary)', lineHeight: 1.55, marginBottom: 16 }}>
                   In pursuant of SEBI Circular SEBI/HO/OIAE/OIAE_IAD-1/P/CIR/2023/131, disputes unresolved through internal redressal or SCORES can be initiated on the SMART ODR portal for independent online conciliation and arbitration.
                 </p>
 
-                <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '12px 14px', borderRadius: 10, fontSize: '0.75rem', marginBottom: 20 }}>
-                  <div style={{ color: '#94B9AF', fontWeight: 700, marginBottom: 4 }}>Institutional Conciliation:</div>
-                  <div style={{ color: 'rgba(255, 255, 250, 0.85)' }}>
+                <div style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-light)', padding: '12px 14px', borderRadius: 10, fontSize: '0.75rem', marginBottom: 20 }}>
+                  <div style={{ color: 'var(--brand-secondary)', fontWeight: 700, marginBottom: 4 }}>Institutional Conciliation:</div>
+                  <div style={{ color: 'var(--text-dark-secondary)' }}>
                     100% digital, paperless dispute resolution conducted by empaneled MII institutions.
                   </div>
                 </div>
@@ -1665,7 +1665,7 @@ export default function ComplaintsPage({ navigate }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-sm btn-primary"
-                  style={{ flex: '1 1 auto', justifyContent: 'center', background: '#912F40', borderColor: '#912F40' }}
+                  style={{ flex: '1 1 auto', justifyContent: 'center' }}
                 >
                   <span>Launch SMART ODR</span>
                   <ExternalLink size={13} />

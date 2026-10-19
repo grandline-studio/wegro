@@ -74,14 +74,18 @@ export default function ContactPage() {
   return (
     <div>
       {/* 1. HERO HEADER */}
-      <section className="section bg-dark">
+      <section className="section" style={{ background: 'var(--bg-canvas)', paddingTop: 'calc(var(--space-20) + 16px)' }}>
         <div className="container">
-          <div className="section-header">
-            <span className="section-eyebrow cyan">Connect with Research Desk</span>
-            <h1 className="section-title" style={{ color: '#ffffff' }}>
+          <div className="section-header" style={{ maxWidth: 840, margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ marginBottom: 16, display: 'inline-flex', justifyContent: 'center' }}>
+              <span className="section-eyebrow" style={{ color: 'var(--brand-primary)', background: 'var(--brand-primary-soft)', border: '1px solid var(--brand-primary-border)' }}>
+                Connect with Research Desk
+              </span>
+            </div>
+            <h1 className="section-title" style={{ color: 'var(--text-dark-primary)' }}>
               Speak with Our Advisory Analysts
             </h1>
-            <p className="section-description" style={{ color: '#cbd5e1' }}>
+            <p className="section-description" style={{ color: 'var(--text-dark-secondary)' }}>
               Have questions regarding our research methodology, risk-reward parameters, or service syllabus? Submit an inquiry below.
             </p>
           </div>
@@ -89,68 +93,68 @@ export default function ContactPage() {
       </section>
 
       {/* 2. CONTACT CONTENT & FORM */}
-      <section className="section bg-light">
+      <section className="section" style={{ background: 'var(--bg-canvas)', padding: '56px 0' }}>
         <div className="container">
           <div className="contact-grid">
             {/* Left: Contact Info & Operational Details */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-              <div className="card-light contact-card-info">
-                <h2 style={{ fontSize: '1.25rem', marginBottom: 16, color: '#0f172a' }}>
+              <div className="card-light contact-card-info" style={{ background: 'var(--bg-white)', border: '1px solid var(--border-light)', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-sm)', padding: 28 }}>
+                <h2 style={{ fontSize: '1.25rem', marginBottom: 16, color: 'var(--text-dark-primary)', fontWeight: 700 }}>
                   Official Communications Desk
                 </h2>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 18, fontSize: '0.875rem' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 8, background: '#f0fdfa', color: '#00b4d8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Mail size={18} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 700, color: '#0f172a' }}>Research Inquiries</div>
-                      <a href={`mailto:${companyConfig.contact.primaryEmail}`} style={{ color: '#0284c7' }}>
+                      <div style={{ fontWeight: 700, color: 'var(--text-dark-primary)' }}>Research Inquiries</div>
+                      <a href={`mailto:${companyConfig.contact.primaryEmail}`} style={{ color: 'var(--brand-primary)', fontWeight: 600 }}>
                         {companyConfig.contact.primaryEmail}
                       </a>
-                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Response within 24 business hours</div>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-dark-muted)' }}>Response within 24 business hours</div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 8, background: '#f0fdfa', color: '#00b4d8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Phone size={18} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 700, color: '#0f172a' }}>Advisory Desk Telephone</div>
-                      <div style={{ color: '#0f172a', fontFamily: 'monospace' }}>
+                      <div style={{ fontWeight: 700, color: 'var(--text-dark-primary)' }}>Advisory Desk Telephone</div>
+                      <div style={{ color: 'var(--text-dark-primary)', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
                         {companyConfig.contact.phone}
                       </div>
-                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-dark-muted)' }}>
                         {companyConfig.contact.supportHours}
                       </div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 8, background: '#f0fdfa', color: '#00b4d8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Building size={18} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 700, color: '#0f172a' }}>Registered Corporate Office</div>
-                      <div style={{ color: '#475569', lineHeight: 1.5 }}>
+                      <div style={{ fontWeight: 700, color: 'var(--text-dark-primary)' }}>Registered Corporate Office</div>
+                      <div style={{ color: 'var(--text-dark-secondary)', lineHeight: 1.5 }}>
                         {companyConfig.registeredOffice.addressLine1},<br />
                         {companyConfig.registeredOffice.addressLine2}
                       </div>
-                      <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: 2 }}>
+                      <div style={{ fontSize: '0.75rem', color: 'var(--text-dark-muted)', marginTop: 2 }}>
                         {companyConfig.registeredOffice.note}
                       </div>
                     </div>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 8, background: '#f0fdfa', color: '#00b4d8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <Clock size={18} />
                     </div>
                     <div>
-                      <div style={{ fontWeight: 700, color: '#0f172a' }}>Operational Schedule</div>
-                      <div style={{ color: '#475569' }}>
+                      <div style={{ fontWeight: 700, color: 'var(--text-dark-primary)' }}>Operational Schedule</div>
+                      <div style={{ color: 'var(--text-dark-secondary)', lineHeight: 1.5 }}>
                         Active trading days: Monday through Friday (Cash & F&O)<br />
                         Evening Session: MCX Commodities Desk until 11:30 PM IST
                       </div>
@@ -160,12 +164,12 @@ export default function ContactPage() {
               </div>
 
               {/* Data Safety Notice */}
-              <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 12, padding: 20 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#0f172a', fontWeight: 700, marginBottom: 6, fontSize: '0.875rem' }}>
-                  <ShieldCheck size={18} style={{ color: '#10b981' }} />
+              <div style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-light)', borderRadius: 12, padding: 20 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--text-dark-primary)', fontWeight: 700, marginBottom: 6, fontSize: '0.875rem' }}>
+                  <ShieldCheck size={18} style={{ color: 'var(--brand-primary)' }} />
                   <span>Public Inquiry Privacy Guarantee</span>
                 </div>
-                <p style={{ fontSize: '0.8125rem', color: '#64748b', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--text-dark-muted)', lineHeight: 1.55 }}>
                   WeGrow adheres strictly to Indian DPDP principles. We never request sensitive identifiers like PAN, Aadhaar, bank OTPs, or demat credentials on public contact forms.
                 </p>
               </div>

@@ -37,27 +37,16 @@ export default function SpotlightCard({
       style={{
         position: 'relative',
         borderRadius: 'var(--radius-lg)',
-        border: '1px solid var(--navy-border)',
-        background: 'var(--navy-850)',
+        border: '1px solid var(--border-light)',
+        background: 'var(--bg-white)',
         overflow: 'hidden',
-        transition: 'border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease',
+        boxShadow: 'var(--shadow-sm)',
+        transition: 'border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease',
         ...style
       }}
     >
-      {/* Spotlight Radial Overlay */}
-      <div
-        style={{
-          pointerEvents: 'none',
-          position: 'absolute',
-          inset: 0,
-          opacity,
-          transition: 'opacity 0.4s ease',
-          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,
-          zIndex: 1
-        }}
-      />
-      {/* Content wrapper with z-index */}
-      <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column' }}>
+      {/* Content wrapper */}
+      <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column' }}>
         {children}
       </div>
     </div>

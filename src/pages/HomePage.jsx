@@ -71,22 +71,10 @@ export default function HomePage({ navigate }) {
         className="section-lg"
         style={{
           position: 'relative',
-          overflow: 'hidden',
-          background: '#FFFFFA',
-          borderBottom: '1px solid rgba(8, 7, 5, 0.08)'
+          background: 'var(--bg-canvas)',
+          borderBottom: '1px solid var(--border-light)'
         }}
       >
-        {/* Subtle Light Luxury Ambient Glow with Muted Teal & Soft Rose */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'radial-gradient(circle at 15% 25%, rgba(148, 185, 175, 0.22) 0%, transparent 50%), radial-gradient(circle at 85% 70%, rgba(145, 47, 64, 0.08) 0%, transparent 50%)',
-            pointerEvents: 'none'
-          }}
-        />
-
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="hero-grid">
             {/* Left: Main Headings */}
@@ -94,9 +82,9 @@ export default function HomePage({ navigate }) {
               <div
                 className="section-eyebrow"
                 style={{
-                  background: 'rgba(148, 185, 175, 0.22)',
-                  color: '#284e45',
-                  border: '1px solid rgba(148, 185, 175, 0.45)',
+                  background: 'var(--brand-primary-soft)',
+                  color: 'var(--brand-primary)',
+                  border: '1px solid var(--brand-primary-border)',
                   marginBottom: 18,
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -107,9 +95,10 @@ export default function HomePage({ navigate }) {
                   fontWeight: 700
                 }}
               >
-                <Activity size={14} style={{ color: '#284e45', flexShrink: 0 }} />
+                <Activity size={14} style={{ color: 'var(--brand-primary)', flexShrink: 0 }} />
                 <span>SEBI Registered Research Analyst • INH000008093</span>
               </div>
+
 
               <h1 className="section-title" style={{ color: '#080705', lineHeight: 1.18, marginBottom: 20 }}>
                 {companyConfig.heroHeadline}
@@ -119,20 +108,21 @@ export default function HomePage({ navigate }) {
                 {companyConfig.heroSubheadline}
               </p>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, fontSize: '0.875rem', color: 'rgba(8, 7, 5, 0.75)' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, fontSize: '0.875rem', color: 'var(--text-dark-secondary)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <CheckCircle2 size={16} style={{ color: '#284e45' }} />
+                  <CheckCircle2 size={16} style={{ color: 'var(--brand-primary)' }} />
                   <span style={{ fontWeight: 600 }}>BSE Member: {companyConfig.bseMembershipNumber}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <CheckCircle2 size={16} style={{ color: '#912F40' }} />
+                  <CheckCircle2 size={16} style={{ color: 'var(--brand-secondary)' }} />
                   <span style={{ fontWeight: 600 }}>Disciplined Risk:Reward</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <CheckCircle2 size={16} style={{ color: '#284e45' }} />
+                  <CheckCircle2 size={16} style={{ color: 'var(--brand-primary)' }} />
                   <span style={{ fontWeight: 600 }}>Analysis & Data Backed</span>
                 </div>
               </div>
+
             </div>
 
             {/* Right: Lead Generation Form Card (Luxury Elevated Light Card) */}
@@ -277,31 +267,31 @@ export default function HomePage({ navigate }) {
                       </div>
                     </div>
 
-                    {/* Submit Button with Glossy Effect */}
+                    {/* Submit Button */}
                     <button
                       type="submit"
                       disabled={formSubmitting}
-                      className="btn btn-primary btn-glossy"
+                      className="btn btn-primary"
                       style={{ width: '100%', justifyContent: 'center', padding: '13px 20px', fontSize: '0.95rem' }}
                     >
-                      <span style={{ position: 'relative', zIndex: 1, display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600 }}>
                         {formSubmitting ? 'Submitting Request...' : 'Request a callback'}
                         {!formSubmitting && <ArrowRight size={16} />}
                       </span>
                     </button>
 
                     {/* Small Disclaimer Text Underneath Button */}
-                    <div style={{ marginTop: 12, textAlign: 'center', fontSize: '0.75rem', color: 'rgba(8, 7, 5, 0.58)', lineHeight: 1.45 }}>
+                    <div style={{ marginTop: 12, textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-dark-muted)', lineHeight: 1.45 }}>
                       By submitting this form, you agree to our{' '}
-                      <a href="/terms" onClick={(e) => { e.preventDefault(); handleNav('/terms'); }} style={{ color: '#702632', textDecoration: 'underline' }}>
+                      <a href="/terms" onClick={(e) => { e.preventDefault(); handleNav('/terms'); }} style={{ color: 'var(--brand-primary)', textDecoration: 'underline', fontWeight: 600 }}>
                         Terms & Conditions
                       </a>
                       ,{' '}
-                      <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); handleNav('/privacy-policy'); }} style={{ color: '#702632', textDecoration: 'underline' }}>
+                      <a href="/privacy-policy" onClick={(e) => { e.preventDefault(); handleNav('/privacy-policy'); }} style={{ color: 'var(--brand-primary)', textDecoration: 'underline', fontWeight: 600 }}>
                         Privacy Policy
                       </a>
                       , and{' '}
-                      <a href="/disclosures" onClick={(e) => { e.preventDefault(); handleNav('/disclosures'); }} style={{ color: '#702632', textDecoration: 'underline' }}>
+                      <a href="/disclosures" onClick={(e) => { e.preventDefault(); handleNav('/disclosures'); }} style={{ color: 'var(--brand-primary)', textDecoration: 'underline', fontWeight: 600 }}>
                         Disclosures
                       </a>
                       .
@@ -315,18 +305,18 @@ export default function HomePage({ navigate }) {
       </section>
 
       {/* =========================================================================
-          SECTION 3: CORE STATS / HIGHLIGHTS BAR (LIGHT THEME)
+          SECTION 3: CORE STATS / HIGHLIGHTS BAR (MINIMAL LIGHT THEME)
           ========================================================================= */}
-      <section style={{ background: '#F8FAF9', borderTop: '1px solid rgba(8, 7, 5, 0.08)', borderBottom: '1px solid rgba(8, 7, 5, 0.08)', padding: '36px 0' }}>
+      <section style={{ background: 'var(--bg-subtle)', borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)', padding: '36px 0' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 32, alignItems: 'center' }}>
             {/* Highlight 1 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 50, height: 50, borderRadius: 12, background: 'rgba(148, 185, 175, 0.22)', color: '#284e45', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 50, height: 50, borderRadius: 12, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Award size={26} />
               </div>
               <div>
-                <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#080705', lineHeight: 1.35 }}>
+                <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: 'var(--text-dark-primary)', lineHeight: 1.35 }}>
                   Over 40 years of combined corporate experience
                 </p>
               </div>
@@ -334,11 +324,11 @@ export default function HomePage({ navigate }) {
 
             {/* Highlight 2 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 50, height: 50, borderRadius: 12, background: 'rgba(145, 47, 64, 0.12)', color: '#912F40', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 50, height: 50, borderRadius: 12, background: 'var(--brand-secondary-soft)', color: 'var(--brand-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <HeartHandshake size={26} />
               </div>
               <div>
-                <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#080705', lineHeight: 1.35 }}>
+                <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: 'var(--text-dark-primary)', lineHeight: 1.35 }}>
                   Committed to serve our customers, going the extra mile
                 </p>
               </div>
@@ -346,11 +336,11 @@ export default function HomePage({ navigate }) {
 
             {/* Highlight 3 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{ width: 50, height: 50, borderRadius: 12, background: 'rgba(112, 38, 50, 0.12)', color: '#702632', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 50, height: 50, borderRadius: 12, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Clock size={26} />
               </div>
               <div>
-                <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: '#080705', lineHeight: 1.35 }}>
+                <p style={{ fontSize: '1.0625rem', fontWeight: 700, color: 'var(--text-dark-primary)', lineHeight: 1.35 }}>
                   Regular Updates from us in a structured format and routine
                 </p>
               </div>
@@ -362,38 +352,36 @@ export default function HomePage({ navigate }) {
       {/* =========================================================================
           SECTION 4: ABOUT SECTION ("About WeGro")
           ========================================================================= */}
-      <section className="section" style={{ background: '#FFFFFA' }}>
+      <section className="section" style={{ background: 'var(--bg-canvas)' }}>
         <div className="container">
           <div style={{ maxWidth: 840, margin: '0 auto', textAlign: 'center' }}>
             <span
               className="section-eyebrow"
               style={{
-                background: 'rgba(112, 38, 50, 0.08)',
-                color: '#702632',
-                border: '1px solid rgba(112, 38, 50, 0.22)'
+                background: 'var(--brand-primary-soft)',
+                color: 'var(--brand-primary)',
+                border: '1px solid var(--brand-primary-border)'
               }}
             >
               Corporate Background
             </span>
-            <h2 className="section-title" style={{ marginTop: 8, marginBottom: 20, color: '#080705' }}>
+            <h2 className="section-title" style={{ marginTop: 8, marginBottom: 20, color: 'var(--text-dark-primary)' }}>
               About WeGro
             </h2>
-            <p style={{ fontSize: '1.125rem', color: 'rgba(8, 7, 5, 0.78)', lineHeight: 1.8, marginBottom: 32 }}>
+            <p style={{ fontSize: '1.125rem', color: 'var(--text-dark-secondary)', lineHeight: 1.8, marginBottom: 32 }}>
               WeGro is a SEBI-certified Research Analyst firm (Registration No: INH000008093) and BSE Member (Membership No: 5422). Built on the foundational pillars of quantitative analytical depth, institutional-grade data scrutiny, and uncompromising risk management, WeGro delivers structured, objective, and timely market intelligence across Indian Equities, Derivatives (F&O), and Commodities to assist investors and business leaders in making informed, disciplined financial decisions.
             </p>
             <div>
               <button
                 type="button"
                 onClick={() => handleNav('/about')}
-                className="btn btn-lg btn-glossy"
+                className="btn btn-lg btn-primary"
                 style={{
-                  background: 'linear-gradient(180deg, #842d3c 0%, #702632 45%, #591e28 100%)',
-                  color: '#FFFFFA',
                   padding: '14px 28px',
                   cursor: 'pointer'
                 }}
               >
-                <span style={{ position: 'relative', zIndex: 1, display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 700 }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 700 }}>
                   KNOW MORE ABOUT WEGRO
                   <ArrowRight size={18} />
                 </span>
@@ -406,74 +394,74 @@ export default function HomePage({ navigate }) {
       {/* =========================================================================
           SECTION 5: KEY VALUE PILLARS / FEATURE GRID (4 CARDS)
           ========================================================================= */}
-      <section className="section" style={{ background: '#f9fbfa', borderTop: '1px solid rgba(8, 7, 5, 0.08)' }}>
+      <section className="section" style={{ background: 'var(--bg-elevated)', borderTop: '1px solid var(--border-light)' }}>
         <div className="container">
           <div className="section-header">
             <span
               className="section-eyebrow"
               style={{
-                background: 'rgba(112, 38, 50, 0.08)',
-                color: '#702632',
-                border: '1px solid rgba(112, 38, 50, 0.22)'
+                background: 'var(--brand-primary-soft)',
+                color: 'var(--brand-primary)',
+                border: '1px solid var(--brand-primary-border)'
               }}
             >
               Core Strengths
             </span>
-            <h2 className="section-title" style={{ color: '#080705' }}>Key Value Pillars</h2>
-            <p className="section-description" style={{ color: 'rgba(8, 7, 5, 0.72)' }}>
+            <h2 className="section-title" style={{ color: 'var(--text-dark-primary)' }}>Key Value Pillars</h2>
+            <p className="section-description" style={{ color: 'var(--text-dark-secondary)' }}>
               Our operations and research philosophy are anchored upon four foundational principles that guide every market recommendation.
             </p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 24 }}>
             {/* Pillar 1: Research */}
-            <div className="card-light" style={{ padding: 28, background: '#FFFFFA', border: '1px solid rgba(8, 7, 5, 0.08)' }}>
-              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(145, 47, 64, 0.12)', color: '#912F40', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+            <div className="card-light" style={{ padding: 28, background: 'var(--bg-white)', border: '1px solid var(--border-light)' }}>
+              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
                 <TrendingUp size={24} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: '#080705' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: 'var(--text-dark-primary)' }}>
                 Research
               </h3>
-              <p style={{ fontSize: '0.9375rem', color: 'rgba(8, 7, 5, 0.75)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--text-dark-secondary)', lineHeight: 1.6 }}>
                 Backed by analysis and data. Every recommendation undergoes rigorous fundamental and technical evaluation before transmission.
               </p>
             </div>
 
             {/* Pillar 2: Customer Focus */}
-            <div className="card-light" style={{ padding: 28, background: '#FFFFFA', border: '1px solid rgba(8, 7, 5, 0.08)' }}>
-              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(148, 185, 175, 0.22)', color: '#3d6c62', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+            <div className="card-light" style={{ padding: 28, background: 'var(--bg-white)', border: '1px solid var(--border-light)' }}>
+              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--brand-secondary-soft)', color: 'var(--brand-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
                 <Users size={24} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: '#080705' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: 'var(--text-dark-primary)' }}>
                 Customer Focus
               </h3>
-              <p style={{ fontSize: '0.9375rem', color: 'rgba(8, 7, 5, 0.75)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--text-dark-secondary)', lineHeight: 1.6 }}>
                 Meeting financial objectives. We orient our communication, support, and syllabus toward the distinct goals and risk profiles of our clients.
               </p>
             </div>
 
             {/* Pillar 3: Risk Management */}
-            <div className="card-light" style={{ padding: 28, background: '#FFFFFA', border: '1px solid rgba(8, 7, 5, 0.08)' }}>
-              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(112, 38, 50, 0.12)', color: '#702632', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+            <div className="card-light" style={{ padding: 28, background: 'var(--bg-white)', border: '1px solid var(--border-light)' }}>
+              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--brand-primary-soft)', color: 'var(--brand-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
                 <ShieldCheck size={24} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: '#080705' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: 'var(--text-dark-primary)' }}>
                 Risk Management
               </h3>
-              <p style={{ fontSize: '0.9375rem', color: 'rgba(8, 7, 5, 0.75)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--text-dark-secondary)', lineHeight: 1.6 }}>
                 Robust risk management plan. Non-negotiable stop-loss discipline and structured risk:reward ratios to prioritize capital preservation.
               </p>
             </div>
 
             {/* Pillar 4: Vibrancy */}
-            <div className="card-light" style={{ padding: 28, background: '#FFFFFA', border: '1px solid rgba(8, 7, 5, 0.08)' }}>
-              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(145, 47, 64, 0.12)', color: '#912F40', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
+            <div className="card-light" style={{ padding: 28, background: 'var(--bg-white)', border: '1px solid var(--border-light)' }}>
+              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--brand-secondary-soft)', color: 'var(--brand-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
                 <Compass size={24} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: '#080705' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: 8, color: 'var(--text-dark-primary)' }}>
                 Vibrancy
               </h3>
-              <p style={{ fontSize: '0.9375rem', color: 'rgba(8, 7, 5, 0.75)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.9375rem', color: 'var(--text-dark-secondary)', lineHeight: 1.6 }}>
                 Young and energetic employee base. An agile, tech-driven research bench constantly monitoring live market dynamics and regulatory standards.
               </p>
             </div>
