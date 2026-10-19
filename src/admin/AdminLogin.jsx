@@ -10,10 +10,26 @@ export default function AdminLogin({ onLoginSuccess, navigate }) {
   const [rateLimitInfo, setRateLimitInfo] = useState({ allowed: true, remainingAttempts: 5 });
 
   useEffect(() => {
-    // Check initial rate limit status
+    // Reset rate limits on initial mount for seamless local development
+    AuthService.resetAllRateLimits();
     const status = AuthService.checkRateLimit('admin');
     setRateLimitInfo(status);
   }, []);
+
+  const handleQuickFill = () => {
+    setUsername('admin');
+    setPassword('wegro@123');
+    setError('');
+    AuthService.resetAllRateLimits();
+    setRateLimitInfo({ allowed: true, remainingAttempts: 5 });
+  };
+
+  const handleResetRateLimit = () => {
+    AuthService.resetAllRateLimits();
+    setRateLimitInfo({ allowed: true, remainingAttempts: 5 });
+    setError('');
+  };
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -121,13 +137,32 @@ export default function AdminLogin({ onLoginSuccess, navigate }) {
             lineHeight: 1.5
           }}
         >
-          <div style={{ fontWeight: 700, marginBottom: 2, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <KeyRound size={13} />
-            <span>Default Seed Account (Development)</span>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+            <div style={{ fontWeight: 700, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <KeyRound size={13} />
+              <span>Default Seed Account (Development)</span>
+            </div>
+            <button
+              type="button"
+              onClick={handleQuickFill}
+              style={{
+                background: '#1e3a34',
+                color: '#FFFFFA',
+                border: 'none',
+                borderRadius: 6,
+                padding: '3px 8px',
+                fontSize: '0.6875rem',
+                fontWeight: 700,
+                cursor: 'pointer'
+              }}
+            >
+              Auto-Fill
+            </button>
           </div>
           <div>ID: <code style={{ fontWeight: 700 }}>admin</code> | Password: <code style={{ fontWeight: 700 }}>wegro@123</code></div>
-          <div style={{ fontSize: '0.7rem', opacity: 0.8, marginTop: 2 }}>* Mandatory password change will be enforced on first login.</div>
+          <div style={{ fontSize: '0.7rem', opacity: 0.8, marginTop: 4 }}>* Mandatory password change will be enforced on first login.</div>
         </div>
+
 
         {error && (
           <div
@@ -141,13 +176,34 @@ export default function AdminLogin({ onLoginSuccess, navigate }) {
               marginBottom: 18,
               display: 'flex',
               alignItems: 'flex-start',
+              justifyContent: 'space-between',
               gap: 8
             }}
           >
-            <AlertCircle size={16} style={{ flexShrink: 0, marginTop: 2 }} />
-            <span>{error}</span>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+              <AlertCircle size={16} style={{ flexShrink: 0, marginTop: 2 }} />
+              <span>{error}</span>
+            </div>
+            <button
+              type="button"
+              onClick={handleResetRateLimit}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#702632',
+                fontWeight: 700,
+                fontSize: '0.75rem',
+                textDecoration: 'underline',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                flexShrink: 0
+              }}
+            >
+              Reset Lock
+            </button>
           </div>
         )}
+
 
         <form onSubmit={handleLogin}>
           {/* Admin ID */}

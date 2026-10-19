@@ -885,9 +885,10 @@ export const defaultLeads: LeadItem[] = [
 export const defaultAdminUser: AdminUser = {
   id: "admin-1",
   username: "admin",
-  // Hash for 'wegro@123' generated with bcrypt
-  passwordHash: "$2a$10$iKq1Kq09h3N98e9u0G9/t.mF6g8o8G7fX9vQ6a1b2c3d4e5f6g7h8", 
+  // Valid 10-round bcrypt hash for 'wegro@123'
+  passwordHash: "$2b$10$zSXHHbZ6jbrXveJ.oWymqe6gXHIzvT87YuifVEordNFHDdau1hGEK", 
   mustChangePassword: true,
+
   role: "superadmin",
   createdAt: "2026-10-19T00:00:00.000Z"
 };
