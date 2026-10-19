@@ -668,64 +668,8 @@ export default function ComplaintsPage({ navigate }) {
               </p>
             </div>
 
-            {/* Action Buttons: Edit Inputs Toggle + Reset + View Switcher */}
+            {/* View Switcher: Table vs Cards */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-              {isEditingData && (
-                <button
-                  type="button"
-                  onClick={resetToDefaultMonthlyData}
-                  style={{
-                    padding: '6px 12px',
-                    borderRadius: 8,
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                    background: '#FFFFFA',
-                    border: '1px solid rgba(8, 7, 5, 0.15)',
-                    color: '#080705',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 6
-                  }}
-                  title="Reset to uploaded October 2026 audit values"
-                >
-                  <RotateCcw size={13} />
-                  <span>Reset Default Values</span>
-                </button>
-              )}
-
-              <button
-                type="button"
-                onClick={() => setIsEditingData(!isEditingData)}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: 8,
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  border: isEditingData ? '1px solid #702632' : '1px solid rgba(8, 7, 5, 0.15)',
-                  background: isEditingData ? '#702632' : '#FFFFFA',
-                  color: isEditingData ? '#FFFFFA' : '#080705',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.04)'
-                }}
-              >
-                {isEditingData ? (
-                  <>
-                    <Lock size={13} />
-                    <span>Save & Lock Inputs</span>
-                  </>
-                ) : (
-                  <>
-                    <Edit3 size={13} style={{ color: '#702632' }} />
-                    <span>Edit Monthly Inputs</span>
-                  </>
-                )}
-              </button>
-
-              {/* View Switcher: Table vs Cards */}
               <div
                 style={{
                   display: 'inline-flex',
@@ -735,6 +679,7 @@ export default function ComplaintsPage({ navigate }) {
                   border: '1px solid rgba(8, 7, 5, 0.08)'
                 }}
               >
+
                 <button
                   type="button"
                   onClick={() => setTable1ViewMode('table')}
