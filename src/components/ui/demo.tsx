@@ -1,6 +1,12 @@
 import React from "react";
-import { ArrowUpRight, ArrowRight, ShieldCheck, CheckCircle2, TrendingUp } from "lucide-react";
-import Image from "next/image";
+import {
+  ArrowUpRight,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  TrendingUp,
+  Receipt
+} from "lucide-react";
 import { Marquee } from "@/demos/ui/marquee";
 
 export interface HeroProps {
@@ -22,23 +28,23 @@ export interface HeroProps {
 export default function Hero({
   headline = "Your search ends with our research!",
   subheadline = "In-depth market research and quantitative analysis to help you make disciplined, data-backed financial decisions.",
-  eyebrow = "SEBI Registered Research Analyst • INH000008093 • BSE Member: 6997",
+  eyebrow = "SEBI Registered Research Analyst • INH000008093 • BSE Member: 5422",
   metricNumber = "15,000+",
   metricLabel = "Market Participants Guided",
   ctaText = "Request Advisory Consultation",
   onCtaClick,
   secondaryCtaText = "Explore Advisory Services",
   onSecondaryCtaClick,
-  imageSrc = "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=1600&auto=format&fit=crop",
-  imageAlt = "WeGro Institutional Market Research Terminal",
   partners = [
     "NSE NIFTY 50",
     "BSE SENSEX",
     "SEBI SCORES",
     "SMART ODR",
     "MCX COMMODITIES",
-    "QUANTITATIVE RESEARCH",
     "STRICT 1:2+ RISK-REWARD",
+    "GST INVOICED BILLS",
+    "DIRECT BANK SETTLEMENT",
+    "ZERO PROFIT SHARING"
   ],
   avatars = [
     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
@@ -95,40 +101,210 @@ export default function Hero({
       <div className="hero-v2-container">
         <div className="hero-v2-grid">
           
-          {/* Left Column: Framed Editorial Showcase */}
+          {/* Left Column: Master Shaded Workstation Frame */}
           <div className="hero-v2-showcase">
-            <div className="hero-v2-card">
-              <Image
-                alt={imageAlt}
-                height={1080}
-                src={imageSrc}
-                width={1600}
-                priority
-              />
-              
-              {/* Contrast Vignette Overlay */}
-              <div className="hero-v2-card-vignette" />
+            {/* 1. Header Bar: SEBI Credentials & Demat Custody */}
+            <div className="hero-v2-satellite-top">
+              <div className="hero-v2-satellite-top-pill">
+                <span className="hero-v2-satellite-pulse" />
+                <ShieldCheck size={14} className="hero-v2-satellite-icon" />
+                <span className="hero-v2-satellite-top-text">
+                  SEBI RA INH000008093 • BSE 5422
+                </span>
+              </div>
+              <span className="hero-v2-satellite-top-sub">
+                100% Client Demat Custody
+              </span>
+            </div>
 
-              {/* Top Badge: Live Coverage */}
-              <div className="hero-v2-live-tag">
-                <span className="hero-v2-live-dot" />
-                <span>Live Coverage Active • NSE / BSE</span>
+            {/* 2. Central Workstation Card: NIFTY 50 Quantitative Terminal */}
+            <div className="hero-v2-terminal-card">
+              {/* Terminal Title Bar */}
+              <div className="hero-v2-terminal-header">
+                <div className="hero-v2-terminal-dots">
+                  <span className="hero-v2-dot hero-v2-dot-red" />
+                  <span className="hero-v2-dot hero-v2-dot-amber" />
+                  <span className="hero-v2-dot hero-v2-dot-emerald" />
+                </div>
+                <div className="hero-v2-terminal-title">
+                  WEGRO RESEARCH TERMINAL • NSE / BSE
+                </div>
+                <div className="hero-v2-terminal-status">
+                  <span className="hero-v2-live-dot" />
+                  <span>ACTIVE</span>
+                </div>
               </div>
 
-              {/* Bottom Overlay Card: Quantitative Research Metric */}
-              <div className="hero-v2-card-overlay">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.75rem', fontWeight: 700, color: '#1C3F35', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                    <TrendingUp size={14} style={{ color: '#1C3F35' }} />
-                    <span>Quantitative Screening</span>
+              {/* Terminal Price & Strategy Overview */}
+              <div className="hero-v2-terminal-body">
+                <div className="hero-v2-terminal-row">
+                  <div>
+                    <div className="hero-v2-terminal-symbol">
+                      <span className="hero-v2-badge-nse">NSE</span>
+                      <strong>NIFTY 50</strong>
+                      <span className="hero-v2-segment-tag">Cash & F&O</span>
+                    </div>
+                    <div className="hero-v2-terminal-strategy">
+                      Quantitative Momentum Breakout Setup
+                    </div>
                   </div>
-                  <span style={{ borderRadius: 9999, background: '#ECFDF5', color: '#047857', border: '1px solid #A7F3D0', padding: '2px 8px', fontSize: '0.6875rem', fontWeight: 700 }}>
-                    100% Audited
-                  </span>
+                  <div className="hero-v2-terminal-quote">
+                    <div className="hero-v2-quote-price">₹24,850.50</div>
+                    <div className="hero-v2-quote-change">
+                      <TrendingUp size={12} />
+                      <span>+182.40 (+0.74%)</span>
+                    </div>
+                  </div>
                 </div>
-                <p style={{ margin: 0, fontSize: '0.8125rem', color: '#374151', fontWeight: 500, lineHeight: 1.5 }}>
-                  Mathematical risk-to-reward parameters, defined stop-loss protocols, and audited SEBI transparency.
-                </p>
+
+                {/* Vector SVG Corridor Chart (High-Fidelity 140px viewBox) */}
+                <div className="hero-v2-chart-container">
+                  <svg
+                    viewBox="0 0 460 140"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="hero-v2-chart-svg"
+                    preserveAspectRatio="none"
+                  >
+                    <defs>
+                      <linearGradient id="targetGlow" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#10B981" stopOpacity="0.2" />
+                        <stop offset="100%" stopColor="#10B981" stopOpacity="0.0" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Chart Grid Lines */}
+                    <line x1="10" y1="24" x2="450" y2="24" stroke="#1E2E28" strokeDasharray="3 3" />
+                    <line x1="10" y1="54" x2="450" y2="54" stroke="#1E2E28" strokeDasharray="3 3" />
+                    <line x1="10" y1="84" x2="450" y2="84" stroke="#1E2E28" strokeDasharray="3 3" />
+                    <line x1="10" y1="114" x2="450" y2="114" stroke="#1E2E28" strokeDasharray="3 3" />
+
+                    {/* Target 2 Line */}
+                    <line x1="20" y1="24" x2="440" y2="24" stroke="#10B981" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.8" />
+                    <text x="340" y="20" fill="#34D399" fontSize="9.5" fontWeight="700" fontFamily="monospace">
+                      TARGET 2: 25,320
+                    </text>
+
+                    {/* Target 1 Line & Shaded Corridor */}
+                    <rect x="235" y="24" width="195" height="30" fill="url(#targetGlow)" />
+                    <line x1="20" y1="54" x2="440" y2="54" stroke="#10B981" strokeWidth="2" opacity="0.9" />
+                    <text x="340" y="50" fill="#10B981" fontSize="9.5" fontWeight="700" fontFamily="monospace">
+                      TARGET 1: 25,100
+                    </text>
+
+                    {/* Entry Range */}
+                    <line x1="20" y1="84" x2="440" y2="84" stroke="#0EA5E9" strokeWidth="1.5" opacity="0.8" />
+                    <text x="25" y="80" fill="#38BDF8" fontSize="9.5" fontWeight="600" fontFamily="monospace">
+                      ENTRY ZONE: 24,780 – 24,820
+                    </text>
+
+                    {/* Stop Loss (Invalidation) */}
+                    <line x1="20" y1="118" x2="440" y2="118" stroke="#EF4444" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.85" />
+                    <text x="25" y="132" fill="#F87171" fontSize="9.5" fontWeight="700" fontFamily="monospace">
+                      STRICT STOP-LOSS: 24,650 (-0.68%)
+                    </text>
+
+                    {/* Candlesticks */}
+                    {/* Candle 1 */}
+                    <line x1="60" y1="92" x2="60" y2="110" stroke="#EF4444" strokeWidth="1.5" />
+                    <rect x="56" y="96" width="8" height="10" fill="#EF4444" rx="1" />
+
+                    {/* Candle 2 */}
+                    <line x1="95" y1="88" x2="95" y2="108" stroke="#10B981" strokeWidth="1.5" />
+                    <rect x="91" y="92" width="8" height="9" fill="#10B981" rx="1" />
+
+                    {/* Candle 3 */}
+                    <line x1="130" y1="80" x2="130" y2="102" stroke="#10B981" strokeWidth="1.5" />
+                    <rect x="126" y="85" width="8" height="11" fill="#10B981" rx="1" />
+
+                    {/* Candle 4 (Consolidation) */}
+                    <line x1="165" y1="78" x2="165" y2="96" stroke="#EF4444" strokeWidth="1.5" />
+                    <rect x="161" y="82" width="8" height="7" fill="#EF4444" rx="1" />
+
+                    {/* Candle 5 (Breakout trigger) */}
+                    <line x1="200" y1="68" x2="200" y2="92" stroke="#10B981" strokeWidth="1.5" />
+                    <rect x="196" y="73" width="8" height="14" fill="#10B981" rx="1" />
+
+                    {/* Candle 6 (Expansion) */}
+                    <line x1="235" y1="56" x2="235" y2="82" stroke="#10B981" strokeWidth="1.5" />
+                    <rect x="231" y="61" width="8" height="15" fill="#10B981" rx="1" />
+
+                    {/* Candle 7 (Current Bar) */}
+                    <line x1="270" y1="46" x2="270" y2="72" stroke="#10B981" strokeWidth="1.5" />
+                    <rect x="266" y="51" width="8" height="14" fill="#10B981" rx="1" />
+
+                    {/* EMA 20 Trajectory Ribbon */}
+                    <path
+                      d="M 40 102 Q 110 98, 170 86 T 280 58 T 420 34"
+                      stroke="#38BDF8"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeLinecap="round"
+                      opacity="0.95"
+                    />
+
+                    {/* Risk-Reward Tag Pill */}
+                    <g transform="translate(138, 5)">
+                      <rect x="0" y="0" width="184" height="18" rx="9" fill="#1C3F35" stroke="#34D399" strokeWidth="1" />
+                      <text x="92" y="13" fill="#FFFFFF" fontSize="9" fontWeight="700" textAnchor="middle" letterSpacing="0.04em">
+                        RISK : REWARD = 1 : 2.45
+                      </text>
+                    </g>
+                  </svg>
+                </div>
+
+                {/* 3 Telemetry Metrics */}
+                <div className="hero-v2-terminal-footer">
+                  <div className="hero-v2-telemetry-col">
+                    <span className="hero-v2-telemetry-label">HORIZON</span>
+                    <span className="hero-v2-telemetry-val">3–10 Days Swing</span>
+                  </div>
+                  <div className="hero-v2-telemetry-divider" />
+                  <div className="hero-v2-telemetry-col">
+                    <span className="hero-v2-telemetry-label">RISK PROTOCOL</span>
+                    <span className="hero-v2-telemetry-val">Predefined Stop Loss</span>
+                  </div>
+                  <div className="hero-v2-telemetry-divider" />
+                  <div className="hero-v2-telemetry-col">
+                    <span className="hero-v2-telemetry-label">SEBI AUDIT</span>
+                    <span className="hero-v2-telemetry-val" style={{ color: '#34D399' }}>100% Verified Log</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Bottom Glass Card: Transparent Payment Structure & Final Bills */}
+            <div className="hero-v2-billing-card">
+              <div className="hero-v2-billing-header">
+                <div className="hero-v2-billing-icon-wrap">
+                  <Receipt size={16} className="hero-v2-billing-icon" />
+                </div>
+                <div className="hero-v2-billing-titles">
+                  <div className="hero-v2-billing-heading">
+                    Transparent Fixed Advisory & Billing
+                  </div>
+                  <div className="hero-v2-billing-sub">
+                    Direct Official Banking Gateway • Final GST Invoices
+                  </div>
+                </div>
+                <span className="hero-v2-billing-badge">
+                  SEBI Fee Mandate
+                </span>
+              </div>
+
+              <div className="hero-v2-billing-pills">
+                <div className="hero-v2-bill-pill">
+                  <CheckCircle2 size={13} style={{ color: '#047857', flexShrink: 0 }} />
+                  <span>Fixed Fee Only (Zero Profit Sharing)</span>
+                </div>
+                <div className="hero-v2-bill-pill">
+                  <CheckCircle2 size={13} style={{ color: '#047857', flexShrink: 0 }} />
+                  <span>100% Demat Control in Your Brokerage</span>
+                </div>
+                <div className="hero-v2-bill-pill">
+                  <CheckCircle2 size={13} style={{ color: '#047857', flexShrink: 0 }} />
+                  <span>Official GST Tax Invoice with Every Plan</span>
+                </div>
               </div>
             </div>
           </div>

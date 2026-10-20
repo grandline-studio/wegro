@@ -2952,22 +2952,22 @@ main > section:first-child,
   width: 100%;
   background: #FBFBFA;
   border-bottom: 1px solid #E3E3DC;
-  padding-top: 110px;
-  padding-bottom: 60px;
+  padding-top: 130px;
+  padding-bottom: 70px;
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .hero-v2-section {
-    padding-top: 140px;
-    padding-bottom: 80px;
+    padding-top: 150px;
+    padding-bottom: 85px;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-v2-section {
-    padding-top: 190px;
-    padding-bottom: 130px;
+    padding-top: 175px;
+    padding-bottom: 100px;
   }
 }
 
@@ -2994,127 +2994,399 @@ main > section:first-child,
 
 @media (min-width: 1024px) {
   .hero-v2-grid {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: 80px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.12fr);
+    gap: 60px;
+    align-items: center;
   }
 }
 
 @media (min-width: 1280px) {
   .hero-v2-grid {
-    gap: 96px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.15fr);
+    gap: 72px;
   }
 }
 
-/* Left Card Showcase */
+/* Left Column: Master Shaded Workstation Frame */
 .hero-v2-showcase {
   position: relative;
   width: 100%;
   min-width: 0;
-  max-width: 520px;
+  max-width: 580px;
   margin: 0 auto;
+  padding: 22px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 248, 246, 0.85) 100%);
+  border: 1px solid rgba(28, 63, 53, 0.12);
+  border-radius: 32px;
+  box-shadow: 0 20px 48px -12px rgba(28, 63, 53, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 639px) {
+  .hero-v2-showcase {
+    padding: 14px;
+    border-radius: 24px;
+    gap: 12px;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-v2-showcase {
-    max-width: none;
+    max-width: 600px;
     order: 1;
   }
 }
 
-.hero-v2-card {
+/* Top Floating Satellite Chip: SEBI RA Registration */
+.hero-v2-satellite-top {
   position: relative;
-  height: 280px;
+  z-index: 3;
   width: 100%;
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(28, 63, 53, 0.18);
-  box-shadow: 0 20px 50px -12px rgba(28, 63, 53, 0.14), 0 1px 3px rgba(0, 0, 0, 0.05);
-  background: #111110;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
-@media (min-width: 640px) {
-  .hero-v2-card {
-    height: 380px;
-    border-radius: 28px;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-v2-card {
-    height: 480px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-v2-card {
-    height: 560px;
-  }
-}
-
-.hero-v2-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-v2-card:hover img {
-  transform: scale(1.04);
-}
-
-.hero-v2-card-vignette {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8, 7, 5, 0.85) 0%, rgba(8, 7, 5, 0.25) 50%, rgba(8, 7, 5, 0.35) 100%);
-  pointer-events: none;
-}
-
-.hero-v2-live-tag {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+.hero-v2-satellite-top-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   border-radius: 9999px;
-  background: rgba(8, 7, 5, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #FFFFFF;
+  border: 1px solid rgba(28, 63, 53, 0.2);
   padding: 6px 14px;
+  box-shadow: 0 2px 8px rgba(28, 63, 53, 0.05);
   font-size: 0.75rem;
   font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: 0.03em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 5;
+  color: #1C3F35;
 }
 
-.hero-v2-live-dot {
+.hero-v2-satellite-pulse {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+  background: #059669;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25);
+  display: inline-block;
+  animation: heroPulse 2s infinite ease-in-out;
+}
+
+@keyframes heroPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(5, 150, 105, 0.15);
+  }
+}
+
+.hero-v2-satellite-icon {
+  color: #1C3F35;
+  flex-shrink: 0;
+}
+
+.hero-v2-satellite-top-text {
+  letter-spacing: 0.02em;
+}
+
+.hero-v2-satellite-top-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(8, 7, 5, 0.65);
+  background: rgba(28, 63, 53, 0.06);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(28, 63, 53, 0.12);
+}
+
+/* Central Workstation Card: NIFTY 50 Quantitative Terminal */
+.hero-v2-terminal-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  border-radius: 20px;
+  background: linear-gradient(175deg, #101B17 0%, #0A1310 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 45px -12px rgba(17, 28, 24, 0.35), 0 2px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-v2-terminal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 55px -12px rgba(17, 28, 24, 0.42), 0 4px 12px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.hero-v2-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.hero-v2-terminal-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.hero-v2-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
   display: inline-block;
 }
 
-.hero-v2-card-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+.hero-v2-dot-red {
+  background: #EF4444;
+}
+
+.hero-v2-dot-amber {
+  background: #F59E0B;
+}
+
+.hero-v2-dot-emerald {
+  background: #10B981;
+}
+
+.hero-v2-terminal-title {
+  font-size: 0.6875rem;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
+
+.hero-v2-terminal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.6875rem;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  color: #34D399;
+  letter-spacing: 0.05em;
+  background: rgba(16, 185, 129, 0.12);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.hero-v2-terminal-body {
+  padding: 16px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-v2-terminal-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-v2-terminal-symbol {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-size: 1.1rem;
+}
+
+.hero-v2-badge-nse {
+  background: #059669;
+  color: #FFFFFF;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.hero-v2-segment-tag {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.hero-v2-terminal-strategy {
+  font-size: 0.75rem;
+  color: #34D399;
+  font-weight: 600;
+  margin-top: 3px;
+  font-family: var(--font-mono, monospace);
+}
+
+.hero-v2-terminal-quote {
+  text-align: right;
+}
+
+.hero-v2-quote-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  font-family: var(--font-mono, monospace);
+  line-height: 1.1;
+}
+
+.hero-v2-quote-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #34D399;
+  font-family: var(--font-mono, monospace);
+  margin-top: 2px;
+}
+
+.hero-v2-chart-container {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 10px;
+  overflow: hidden;
+}
+
+.hero-v2-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-v2-terminal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
+
+.hero-v2-telemetry-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-v2-telemetry-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
+}
+
+.hero-v2-telemetry-val {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #F3F4F6;
+}
+
+.hero-v2-telemetry-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Bottom Glass Card: Transparent Payment Structure & Final Bills */
+.hero-v2-billing-card {
+  position: relative;
+  z-index: 3;
+  width: 100%;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 16px 20px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  background: #FFFFFF;
+  border: 1px solid rgba(28, 63, 53, 0.14);
+  box-shadow: 0 4px 14px rgba(28, 63, 53, 0.04);
+  padding: 14px 18px;
   text-align: left;
-  z-index: 5;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-v2-billing-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(17, 28, 24, 0.08);
+}
+
+.hero-v2-billing-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.hero-v2-billing-icon-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(28, 63, 53, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #1C3F35;
+}
+
+.hero-v2-billing-icon {
+  color: #1C3F35;
+}
+
+.hero-v2-billing-titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-v2-billing-heading {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #1C3F35;
+  line-height: 1.25;
+}
+
+.hero-v2-billing-sub {
+  font-size: 0.7rem;
+  color: #4B5563;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.hero-v2-billing-badge {
+  border-radius: 9999px;
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+  padding: 3px 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hero-v2-billing-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-v2-bill-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
 }
 
 /* Right Content Column */
@@ -3134,14 +3406,14 @@ main > section:first-child,
 
 /* 1. Eyebrow */
 .hero-v2-eyebrow {
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   border-radius: 9999px;
   border: 1px solid rgba(28, 63, 53, 0.22);
   background: rgba(28, 63, 53, 0.06);
-  padding: 10px 22px;
+  padding: 8px 20px;
   font-size: 0.8125rem;
   font-weight: 700;
   color: #1C3F35;
@@ -3151,7 +3423,7 @@ main > section:first-child,
 
 /* 2. Headline */
 .hero-v2-title {
-  margin: 0 0 28px 0;
+  margin: 0 0 20px 0;
   font-family: inherit;
   font-weight: 800;
   font-size: clamp(2.35rem, 4.2vw, 3.75rem);
@@ -3180,21 +3452,21 @@ main > section:first-child,
 
 /* 3. Subheadline */
 .hero-v2-sub {
-  margin: 0 0 46px 0;
+  margin: 0 0 32px 0;
   font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
   font-weight: 400;
-  line-height: 1.8;
+  line-height: 1.75;
   color: rgba(8, 7, 5, 0.72);
   max-width: 640px;
 }
 
 /* 4. Social Proof & Trust Metrics */
 .hero-v2-trust-row {
-  margin-bottom: 54px;
+  margin-bottom: 36px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .hero-v2-avatars {
@@ -3245,13 +3517,13 @@ main > section:first-child,
   margin-left: auto;
 }
 
-/* 5. CTAs — Generous 26px Gaps & Ergonomic 58px Hit Targets to Prevent Misclicks */
+/* 5. CTAs — Ergonomic Hit Targets */
 .hero-v2-actions {
-  margin-bottom: 60px;
+  margin-bottom: 36px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 26px;
+  gap: 22px;
 }
 
 .hero-v2-btn-primary {
@@ -3307,7 +3579,7 @@ main > section:first-child,
 /* 6. Partner Marquee — Clear Separation */
 .hero-v2-marquee-wrap {
   border-top: 1px solid #E8E8E0;
-  padding-top: 40px;
+  padding-top: 24px;
   margin-bottom: 8px;
 }
 

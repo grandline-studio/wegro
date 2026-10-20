@@ -189,15 +189,13 @@ export default function HomePage({ navigate }) {
         <Hero
           headline={companyConfig.heroHeadline}
           subheadline={companyConfig.heroSubheadline}
-          eyebrow="SEBI Registered Research Analyst • INH000008093 • BSE Member: 6997"
+          eyebrow="SEBI Registered Research Analyst • INH000008093 • BSE Member: 5422"
           metricNumber="15,000+"
           metricLabel="Market Participants Guided"
           ctaText="Request Advisory Consultation"
           onCtaClick={() => setIsConsultationModalOpen(true)}
           secondaryCtaText="Explore Advisory Services"
           onSecondaryCtaClick={() => handleNav('/services')}
-          imageSrc="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=1920&auto=format&fit=crop"
-          imageAlt="WeGro Institutional Market Research Terminal"
           partners={[
             "NSE NIFTY 50",
             "BSE SENSEX",
@@ -206,6 +204,9 @@ export default function HomePage({ navigate }) {
             "MCX COMMODITIES",
             "QUANTITATIVE RESEARCH",
             "STRICT 1:2+ RISK-REWARD",
+            "GST INVOICED BILLS",
+            "DIRECT BANK SETTLEMENT",
+            "ZERO PROFIT SHARING"
           ]}
         />
       </div>
