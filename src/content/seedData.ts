@@ -4,7 +4,7 @@ export const defaultSiteContent: SiteContent = {
   global: {
     brandName: "WeGro",
     legalName: "WeGro Research Analysts Private Limited",
-    tagline: "Where independent research meets disciplined capital — built for investors who value data over speculation.",
+    tagline: "Where independent research meets disciplined capital. Built for investors who value data over speculation.",
     logoEmblemUrl: "/wegrow_emblem.png",
     sebiRegistrationNumber: "INH000008093",
     bseMembershipNumber: "5422",

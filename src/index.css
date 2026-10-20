@@ -2945,7 +2945,7 @@ main > section:first-child,
 }
 
 /* ==========================================================================
-   WeGro Master Hero Redesign — Spatial Hierarchy & Typography
+   WeGro Hero — Institutional Research Showcase
    ========================================================================== */
 .hero-v2-section {
   position: relative;
@@ -3105,8 +3105,207 @@ main > section:first-child,
   border: 1px solid rgba(28, 63, 53, 0.12);
 }
 
-/* Central Workstation Card: NIFTY 50 Quantitative Terminal */
-.hero-v2-terminal-card {
+/* ── Registration Badge Strip ── */
+.hero-v2-reg-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.hero-v2-reg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 1px solid rgba(28, 63, 53, 0.18);
+  padding: 5px 13px;
+  font-size: 0.7375rem;
+  font-weight: 700;
+  color: #1C3F35;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(28, 63, 53, 0.06);
+}
+
+.hero-v2-reg-badge--green {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #047857;
+}
+
+/* ── Research Brief Card ── */
+.hero-v2-brief-card {
+  width: 100%;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(28, 63, 53, 0.13);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.03),
+    0 8px 24px -4px rgba(28, 63, 53, 0.07);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+}
+
+.hero-v2-brief-card:hover {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 14px 36px -6px rgba(28, 63, 53, 0.11);
+}
+
+.hero-v2-brief-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px;
+  background: #F8FAF9;
+  border-bottom: 1px solid rgba(28, 63, 53, 0.09);
+}
+
+.hero-v2-brief-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-v2-brief-icon-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(28, 63, 53, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hero-v2-brief-title {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #1C3F35;
+  line-height: 1.2;
+}
+
+.hero-v2-brief-meta {
+  font-size: 0.7rem;
+  color: rgba(8, 7, 5, 0.55);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.hero-v2-brief-status-badge {
+  border-radius: 9999px;
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+  padding: 3px 10px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hero-v2-brief-divider {
+  height: 1px;
+  background: rgba(28, 63, 53, 0.08);
+  margin: 0;
+}
+
+.hero-v2-brief-rows {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0;
+}
+
+.hero-v2-brief-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px;
+  gap: 12px;
+  border-bottom: 1px solid rgba(28, 63, 53, 0.055);
+  transition: background 0.15s ease;
+}
+
+.hero-v2-brief-row:last-child {
+  border-bottom: none;
+}
+
+.hero-v2-brief-row:hover {
+  background: rgba(28, 63, 53, 0.03);
+}
+
+.hero-v2-brief-row-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(8, 7, 5, 0.5);
+  flex-shrink: 0;
+}
+
+.hero-v2-brief-row-val {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #1A1A18;
+  text-align: right;
+}
+
+.hero-v2-brief-row-val--highlight {
+  color: #1C3F35;
+}
+
+.hero-v2-brief-row-val--green {
+  color: #047857;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-v2-brief-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 12px 18px;
+}
+
+.hero-v2-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 9999px;
+  background: rgba(28, 63, 53, 0.06);
+  border: 1px solid rgba(28, 63, 53, 0.12);
+  padding: 4px 11px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #1C3F35;
+}
+
+.hero-v2-chip--green {
+  background: #ECFDF5;
+  border-color: #A7F3D0;
+  color: #047857;
+}
+
+.hero-v2-brief-footer {
+  background: #F8FAF9;
+  border-top: 1px solid rgba(28, 63, 53, 0.09);
+  padding: 10px 18px;
+}
+
+.hero-v2-brief-footer-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 0.7rem;
+  color: rgba(8, 7, 5, 0.58);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Bottom Glass Card: Transparent Payment Structure & Final Bills */
+.hero-v2-billing-card {
   position: relative;
   z-index: 2;
   width: 100%;

@@ -326,7 +326,7 @@ export default function ComplaintBoardEditor({ currentUser }) {
       header: {
         ...prev.header,
         monthEnding: newMonthEnding,
-        title: `Data for the Month Ending — ${newMonthEnding}`
+        title: `Data for the Month Ending: ${newMonthEnding}`
       },
       section1: {
         ...prev.section1,

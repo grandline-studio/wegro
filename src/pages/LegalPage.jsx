@@ -69,7 +69,7 @@ export default function LegalPage({ currentSlug, navigate }) {
           <div className="compliance-banner">
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 700, color: '#f59e0b', marginBottom: 4 }}>
               <AlertTriangle size={16} />
-              <span>Statutory Compliance Draft — For Demonstration & Legal Review</span>
+              <span>Statutory Compliance Draft: For Demonstration and Legal Review</span>
             </div>
             This document represents a structured regulatory draft aligned with the SEBI (Research Analysts) Regulations, 2014 and SEBI master circulars. All corporate identifiers, addresses, and registration numbers are placeholders pending formal certificate issuance.
           </div>

@@ -117,7 +117,7 @@ Leading suppliers are generating positive free cash flow, operating at >85% capa
     ],
     fullBody: `
 ### Macro Fundamentals
-Precious metals continue to be buoyed by global dedollarization trends and sovereign reserve diversification. However, silver exhibits dual characteristics—both as a monetary hedge and an irreplaceable industrial element in next-generation electronic components.
+Precious metals continue to be buoyed by global dedollarization trends and sovereign reserve diversification. However, silver exhibits dual characteristics: it functions both as a monetary hedge and as an irreplaceable industrial element in next-generation electronic components.
 
 ### Trading Framework on MCX
 Traders are advised to structure staggered positions utilizing Mini contracts (SilverM) to manage margin volatility during high-impact US CPI and FOMC announcements.

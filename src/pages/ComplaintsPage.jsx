@@ -64,7 +64,7 @@ export default function ComplaintsPage({ navigate }) {
   const [searchedTicket, setSearchedTicket] = useState({
     id: 'WG-GRV-849201',
     statusType: 'in_review', // 'pending' | 'in_review' | 'resolved'
-    statusLabel: 'Under Active Scrutiny — Compliance Audit',
+    statusLabel: 'Under Active Scrutiny: Compliance Audit',
     statusBadgeColor: '#702632',
     statusBadgeBg: '#fffbeb',
     statusBadgeBorder: '#fde68a',
@@ -323,7 +323,7 @@ export default function ComplaintsPage({ navigate }) {
       const ticketPayload = {
         id: generatedCode,
         statusType: 'pending',
-        statusLabel: 'Pending — Acknowledged & Logged in Registry',
+        statusLabel: 'Pending: Acknowledged and Logged in Registry',
         statusBadgeColor: '#0e7490',
         statusBadgeBg: '#f0fdfa',
         statusBadgeBorder: '#99f6e4',
@@ -353,7 +353,7 @@ export default function ComplaintsPage({ navigate }) {
       setSearchedTicket({
         id: 'WG-GRV-849201',
         statusType: 'in_review',
-        statusLabel: 'In Review — Compliance Desk Audit',
+        statusLabel: 'In Review: Compliance Desk Audit',
         statusBadgeColor: '#702632',
         statusBadgeBg: '#fffbeb',
         statusBadgeBorder: '#fde68a',
@@ -371,7 +371,7 @@ export default function ComplaintsPage({ navigate }) {
       setSearchedTicket({
         id: 'WG-GRV-512044',
         statusType: 'resolved',
-        statusLabel: 'Resolved & Closed — Solution Dispatched',
+        statusLabel: 'Resolved and Closed. Solution Dispatched.',
         statusBadgeColor: '#14532d',
         statusBadgeBg: '#ecfdf5',
         statusBadgeBorder: '#86efac',
@@ -389,7 +389,7 @@ export default function ComplaintsPage({ navigate }) {
       setSearchedTicket({
         id: 'WG-GRV-103982',
         statusType: 'pending',
-        statusLabel: 'Pending — Queue Assignment Underway',
+        statusLabel: 'Pending: Queue Assignment Underway',
         statusBadgeColor: '#0e7490',
         statusBadgeBg: '#f0fdfa',
         statusBadgeBorder: '#99f6e4',
@@ -426,7 +426,7 @@ export default function ComplaintsPage({ navigate }) {
       setSearchedTicket({
         id: query,
         statusType: 'in_review',
-        statusLabel: 'In Review — Investigation In Progress',
+        statusLabel: 'In Review: Investigation In Progress',
         statusBadgeColor: '#702632',
         statusBadgeBg: '#fffbeb',
         statusBadgeBorder: '#fde68a',

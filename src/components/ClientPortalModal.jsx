@@ -74,7 +74,7 @@ export default function ClientPortalModal({ isOpen, onClose }) {
             <div className="compliance-banner" style={{ marginBottom: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontWeight: 700, marginBottom: 4, color: '#f59e0b' }}>
                 <AlertTriangle size={15} />
-                <span>Regulatory Notice — Pre-Launch Architecture</span>
+                <span>Regulatory Notice: Pre-Launch Architecture</span>
               </div>
               Public onboarding and subscription access will be enabled upon official SEBI Research Analyst registration. For demonstration and architectural review, use sample credentials below.
             </div>
