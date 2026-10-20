@@ -290,6 +290,13 @@ export default function AccessibilityToolbar() {
     settings.muteMedia,
   ].filter(Boolean).length;
 
+  const activeProfilesCount = [
+    settings.seizureSafe,
+    settings.lowVision,
+    settings.adhdFriendly,
+    settings.dyslexia,
+  ].filter(Boolean).length;
+
   // Render multi-level indicator dashes (matching screenshot 4 dashes exactly)
   const renderDashes = (currentVal, totalSteps = 4) => (
     <div className="flex items-center justify-center gap-1.5 mt-2 select-none" aria-hidden="true">
@@ -456,10 +463,17 @@ export default function AccessibilityToolbar() {
             <div className="flex-1 overflow-y-auto px-6 py-5 space-y-4">
               
               {/* SECTION 1: Accessibility Profiles Box */}
-              <div className="rounded-2xl border border-[#ECEEFA] bg-[#F8F9FE] p-4.5">
-                <h3 className="text-[13px] font-bold text-[#1E1B4B] mb-3 tracking-tight">
-                  Accessibility Profiles
-                </h3>
+              <div className="rounded-2xl border border-[#E2E4F0] bg-[#F8F9FE] p-4 shadow-xs">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-[13px] font-bold text-[#1E1B4B] tracking-tight">
+                    Accessibility Profiles
+                  </h3>
+                  {activeProfilesCount > 0 && (
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#6D28D9] bg-[#EDE9FE] px-2 py-0.5 rounded-full border border-[#DDD6FE]">
+                      {activeProfilesCount} Active
+                    </span>
+                  )}
+                </div>
 
                 <div className="grid grid-cols-2 gap-2.5">
                   {[
@@ -474,10 +488,10 @@ export default function AccessibilityToolbar() {
                         key={profile.key}
                         type="button"
                         onClick={() => updateSetting(profile.key, (v) => !v)}
-                        className={`h-11 px-4 rounded-full border text-[12.5px] font-medium transition-all cursor-pointer flex items-center justify-center text-center shadow-2xs active:scale-95 ${
+                        className={`h-10 px-3.5 rounded-full border text-[13px] font-semibold transition-all duration-150 cursor-pointer flex items-center justify-center text-center shadow-xs active:scale-95 ${
                           isActive
-                            ? 'bg-[#6D28D9] border-[#6D28D9] text-white font-bold shadow-xs'
-                            : 'bg-white border-[#E2E4F0] text-[#2D244D] hover:border-[#6D28D9]/40 hover:bg-neutral-50'
+                            ? 'bg-[#6D28D9] border-[#6D28D9] text-white shadow-xs'
+                            : 'bg-white border-[#E2E4F0] text-[#1E1B4B] hover:border-[#6D28D9]/50 hover:bg-[#F3F0FF]/30 hover:text-[#6D28D9]'
                         }`}
                       >
                         <span>{profile.label}</span>
@@ -489,11 +503,11 @@ export default function AccessibilityToolbar() {
               </div>
 
               {/* SECTION 2: Navigate by Page Structure (Collapsible Accordion) */}
-              <div className="rounded-xl border border-[#ECEEFA] bg-white overflow-hidden shadow-2xs">
+              <div className="rounded-xl border border-[#E2E4F0] bg-white overflow-hidden shadow-xs">
                 <button
                   type="button"
                   onClick={() => setNavStructureOpen((prev) => !prev)}
-                  className="w-full flex items-center justify-between px-4 py-3.5 text-[13px] font-bold text-[#1E1B4B] hover:bg-neutral-50 transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold text-[#1E1B4B] hover:bg-neutral-50 transition-colors cursor-pointer"
                 >
                   <span>Navigate by Page Structure</span>
                   {navStructureOpen ? (
