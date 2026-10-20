@@ -12,6 +12,7 @@ import LegalPage from './pages/LegalPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminApp from './admin/AdminApp';
 import { ContentProvider } from './content/ContentProvider';
+import AccessibilityToolbar from './components/AccessibilityToolbar';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
@@ -132,6 +133,9 @@ export default function App() {
 
         {/* Footer Section */}
         <Footer navigate={navigate} />
+
+        {/* Global Accessibility Toolbar & Assistive Overlay */}
+        <AccessibilityToolbar />
       </div>
     </ContentProvider>
   );

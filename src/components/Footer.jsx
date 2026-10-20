@@ -17,24 +17,24 @@ export default function Footer({ navigate }) {
           style={{
             background: 'var(--bg-white)',
             border: '1px solid var(--border-light)',
-            borderRadius: 16,
-            padding: '36px 40px',
-            marginBottom: 44,
+            borderRadius: 20,
+            padding: '44px 48px',
+            marginBottom: 54,
             position: 'relative',
             boxShadow: 'var(--shadow-sm)'
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
             {/* Logo and SEBI Badge Row */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <img
                   src="/wegrow_emblem.png"
                   alt="WeGro Emblem"
-                  style={{ width: 44, height: 28, objectFit: 'contain' }}
+                  style={{ width: 46, height: 30, objectFit: 'contain' }}
                 />
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-dark-primary)', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+                  <span style={{ fontSize: '1.55rem', fontWeight: 800, color: 'var(--text-dark-primary)', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
                     We<span style={{ color: 'var(--brand-primary)' }}>Gro</span>
                   </span>
                   <span style={{ fontSize: '0.6875rem', fontFamily: 'var(--font-mono)', color: 'var(--text-dark-muted)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
@@ -48,11 +48,11 @@ export default function Footer({ navigate }) {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  padding: '6px 14px',
+                  padding: '8px 18px',
                   borderRadius: 999,
                   background: 'var(--brand-primary-soft)',
                   border: '1px solid var(--brand-primary-border)',
-                  fontSize: '0.75rem',
+                  fontSize: '0.78rem',
                   fontFamily: 'var(--font-mono)',
                   color: 'var(--brand-primary)',
                   fontWeight: 600,
@@ -64,22 +64,22 @@ export default function Footer({ navigate }) {
             </div>
 
             {/* Corporate Quote Statement */}
-            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', paddingTop: 6 }}>
-              <Quote size={24} style={{ color: 'var(--brand-primary)', flexShrink: 0, marginTop: 4 }} />
+            <div style={{ display: 'flex', gap: 18, alignItems: 'flex-start', paddingTop: 8 }}>
+              <Quote size={26} style={{ color: 'var(--brand-primary)', flexShrink: 0, marginTop: 4 }} />
               <div>
                 <p
                   style={{
-                    fontSize: 'clamp(1.1rem, 2vw, 1.45rem)',
+                    fontSize: 'clamp(1.15rem, 2.2vw, 1.5rem)',
                     fontWeight: 700,
                     color: 'var(--text-dark-primary)',
-                    lineHeight: 1.45,
+                    lineHeight: 1.5,
                     letterSpacing: '-0.02em',
-                    maxWidth: 860
+                    maxWidth: 880
                   }}
                 >
                   "{companyConfig.tagline}"
                 </p>
-                <p style={{ fontSize: '0.8125rem', color: 'var(--text-dark-muted)', marginTop: 8 }}>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-dark-muted)', marginTop: 10 }}>
                   SEBI Registered Research Analyst • INH000008093 | BSE Membership: 5422
                 </p>
               </div>
@@ -88,11 +88,11 @@ export default function Footer({ navigate }) {
         </div>
 
         {/* Regulatory Details & Office Addresses Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 32, marginBottom: 40 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 48, marginBottom: 52 }}>
           {/* Regulatory Registrations */}
           <div>
-            <h4 className="footer-col-title">Regulatory Details</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '0.875rem', color: 'var(--text-dark-secondary)' }}>
+            <h4 className="footer-col-title" style={{ marginBottom: 16 }}>Regulatory Details</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: '0.875rem', color: 'var(--text-dark-secondary)' }}>
               <div>
                 <strong style={{ color: 'var(--text-dark-primary)' }}>BSE Membership Number: </strong>
                 <span className="tabular-numbers" style={{ color: 'var(--brand-primary)', fontWeight: 600 }}>{companyConfig.bseMembershipNumber}</span>
@@ -114,24 +114,24 @@ export default function Footer({ navigate }) {
 
           {/* Office Addresses */}
           <div>
-            <h4 className="footer-col-title">Office Locations</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, fontSize: '0.8125rem', color: 'var(--text-dark-secondary)' }}>
+            <h4 className="footer-col-title" style={{ marginBottom: 16 }}>Office Locations</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 18, fontSize: '0.85rem', color: 'var(--text-dark-secondary)' }}>
               <div>
-                <div style={{ color: 'var(--text-dark-primary)', fontWeight: 700, marginBottom: 3, display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <MapPin size={14} style={{ color: 'var(--brand-primary)' }} />
+                <div style={{ color: 'var(--text-dark-primary)', fontWeight: 700, marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <MapPin size={15} style={{ color: 'var(--brand-primary)' }} />
                   <span>{companyConfig.offices.registeredOffice.title} (Mumbai)</span>
                 </div>
-                <div style={{ lineHeight: 1.5 }}>
+                <div style={{ lineHeight: 1.6 }}>
                   {companyConfig.offices.registeredOffice.address}
                 </div>
               </div>
 
               <div>
-                <div style={{ color: 'var(--text-dark-primary)', fontWeight: 700, marginBottom: 3, display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <MapPin size={14} style={{ color: 'var(--brand-secondary)' }} />
+                <div style={{ color: 'var(--text-dark-primary)', fontWeight: 700, marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <MapPin size={15} style={{ color: 'var(--brand-secondary)' }} />
                   <span>{companyConfig.offices.principalPlace.title} (Bengaluru)</span>
                 </div>
-                <div style={{ lineHeight: 1.5 }}>
+                <div style={{ lineHeight: 1.6 }}>
                   {companyConfig.offices.principalPlace.address}
                 </div>
               </div>
@@ -140,29 +140,29 @@ export default function Footer({ navigate }) {
 
           {/* Contact Details */}
           <div>
-            <h4 className="footer-col-title">Contact Us</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, fontSize: '0.875rem', color: 'var(--text-dark-secondary)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <h4 className="footer-col-title" style={{ marginBottom: 16 }}>Contact Us</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14, fontSize: '0.875rem', color: 'var(--text-dark-secondary)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Mail size={16} style={{ color: 'var(--brand-primary)' }} />
                 <a href={`mailto:${companyConfig.contact.email}`} style={{ color: 'var(--brand-primary)', fontWeight: 600, textDecoration: 'none' }}>
                   {companyConfig.contact.email}
                 </a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Phone size={16} style={{ color: 'var(--brand-primary)' }} />
                 <span style={{ fontWeight: 600 }}>{companyConfig.contact.phone}</span>
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-dark-muted)', marginTop: 4 }}>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-dark-muted)', marginTop: 4 }}>
                 {companyConfig.contact.supportHours}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Important Links Navigation Block */}
-        <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: 32, marginBottom: 36 }}>
-          <h4 className="footer-col-title" style={{ marginBottom: 16 }}>Important Links</h4>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 24px', fontSize: '0.8125rem' }}>
+        {/* Important Links Navigation Block with Anti-Misclick Tactile Pills */}
+        <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: 40, marginBottom: 44 }}>
+          <h4 className="footer-col-title" style={{ marginBottom: 20 }}>Important Links</h4>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px 14px', fontSize: '0.8125rem' }}>
             {companyConfig.importantLinks.map((item, idx) => (
               item.isExternal ? (
                 <a
@@ -170,18 +170,42 @@ export default function Footer({ navigate }) {
                   href={item.path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="footer-link"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}
+                  className="footer-link-pill"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    padding: '8px 16px',
+                    borderRadius: 10,
+                    background: 'var(--bg-white)',
+                    border: '1px solid var(--border-light)',
+                    color: 'var(--text-dark-secondary)',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    transition: 'all 0.15s ease'
+                  }}
                 >
                   <span>{item.label}</span>
-                  <ExternalLink size={11} />
+                  <ExternalLink size={12} style={{ color: 'var(--brand-primary)' }} />
                 </a>
               ) : (
                 <a
                   key={idx}
                   href={item.path}
                   onClick={(e) => handleNavClick(e, item.path)}
-                  className="footer-link"
+                  className="footer-link-pill"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '8px 16px',
+                    borderRadius: 10,
+                    background: 'var(--bg-white)',
+                    border: '1px solid var(--border-light)',
+                    color: 'var(--text-dark-secondary)',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    transition: 'all 0.15s ease'
+                  }}
                 >
                   {item.label}
                 </a>

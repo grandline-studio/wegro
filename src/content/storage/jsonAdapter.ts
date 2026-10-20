@@ -32,8 +32,10 @@ let dbDir: string = '';
 
 if (isNode) {
   try {
-    fs = await import('fs/promises');
-    path = await import('path');
+    const fsMod = 'fs/promises';
+    const pathMod = 'path';
+    fs = await import(/* @vite-ignore */ fsMod);
+    path = await import(/* @vite-ignore */ pathMod);
     dbDir = path.resolve(process.cwd(), 'data', 'db');
   } catch (err) {
     // fs not available

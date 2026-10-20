@@ -156,7 +156,7 @@ export default function ComplaintsPage({ navigate }) {
     { sno: 3, month: 'July 2026', carried: 0, received: 2, resolved: 2, pending: 0 },
     { sno: 4, month: 'August 2026', carried: 0, received: 1, resolved: 1, pending: 0 },
     { sno: 5, month: 'September 2026', carried: 0, received: 0, resolved: 0, pending: 0 },
-    { sno: 6, month: 'October 2026 (M-T-D)', carried: 9, received: 10, resolved: 13, pending: 6 }
+    { sno: 6, month: 'October 2026 (MTD)', carried: 9, received: 10, resolved: 13, pending: 6 }
   ];
 
   // Table 2B: Annual Trend (Last 3 Financial Years)
@@ -165,6 +165,44 @@ export default function ComplaintsPage({ navigate }) {
     { sno: 2, year: 'FY 2024–25', carried: 0, received: 4, resolved: 4, pending: 0 },
     { sno: 3, year: 'FY 2025–26 (YTD)', carried: 0, received: 14, resolved: 17, pending: 6 }
   ];
+
+  // Helper to format trend period header cleanly, preventing awkward hyphen wrap
+  const formatTrendTitle = (title) => {
+    const match = title.match(/^(.*?)\s*\((M-T-D|MTD|YTD)\)$/i);
+    if (match) {
+      const mainName = match[1];
+      const tag = match[2].replace(/-/g, '').toUpperCase();
+      return (
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, minWidth: 0, flexWrap: 'nowrap' }}>
+          <span style={{ fontWeight: 800, color: '#080705', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>
+            {mainName}
+          </span>
+          <span
+            style={{
+              fontSize: '0.6875rem',
+              fontWeight: 700,
+              fontFamily: 'var(--font-mono)',
+              background: 'rgba(8, 7, 5, 0.05)',
+              color: 'rgba(8, 7, 5, 0.75)',
+              padding: '1px 6px',
+              borderRadius: 4,
+              border: '1px solid rgba(8, 7, 5, 0.1)',
+              letterSpacing: '0.02em',
+              whiteSpace: 'nowrap',
+              lineHeight: 1.4
+            }}
+          >
+            {tag}
+          </span>
+        </div>
+      );
+    }
+    return (
+      <span style={{ fontWeight: 800, color: '#080705', fontSize: '0.95rem', whiteSpace: 'nowrap' }}>
+        {title}
+      </span>
+    );
+  };
 
   // 4-Tier Internal Escalation Matrix (Simplified & Scannable)
   const escalationTiers = [
@@ -1075,12 +1113,12 @@ export default function ComplaintsPage({ navigate }) {
             {/* Monthly Trend: Cards or Table */}
             {trendTab === 'monthly' && (
               trendViewMode === 'cards' ? (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 12 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
                   {monthlyTrendData.map((row) => (
                     <div key={row.sno} className="sebi-mobile-stat-card">
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontWeight: 800, color: '#080705', fontSize: '0.95rem' }}>{row.month}</span>
-                        <span style={{ fontSize: '0.75rem', background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0', padding: '2px 8px', borderRadius: 999, fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8, minHeight: 28 }}>
+                        {formatTrendTitle(row.month)}
+                        <span style={{ fontSize: '0.75rem', background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0', padding: '2px 8px', borderRadius: 999, fontWeight: 700, fontFamily: 'var(--font-mono)', whiteSpace: 'nowrap', flexShrink: 0 }}>
                           {row.pending} Pending
                         </span>
                       </div>
@@ -1142,12 +1180,12 @@ export default function ComplaintsPage({ navigate }) {
             {/* Annual Trend: Cards or Table */}
             {trendTab === 'annual' && (
               trendViewMode === 'cards' ? (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 12 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 14 }}>
                   {annualTrendData.map((row) => (
                     <div key={row.sno} className="sebi-mobile-stat-card">
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontWeight: 800, color: '#080705', fontSize: '1rem' }}>{row.year}</span>
-                        <span style={{ fontSize: '0.75rem', background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0', padding: '2px 8px', borderRadius: 999, fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8, minHeight: 28 }}>
+                        {formatTrendTitle(row.year)}
+                        <span style={{ fontSize: '0.75rem', background: '#ecfdf5', color: '#047857', border: '1px solid #a7f3d0', padding: '2px 8px', borderRadius: 999, fontWeight: 700, fontFamily: 'var(--font-mono)', whiteSpace: 'nowrap', flexShrink: 0 }}>
                           {row.pending} Pending
                         </span>
                       </div>
