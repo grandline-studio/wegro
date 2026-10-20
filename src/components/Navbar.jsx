@@ -84,26 +84,30 @@ export default function Navbar({ currentPath, navigate }) {
             })}
           </ul>
 
-          {/* Right Glossy Glass CTA Button */}
+          {/* Right Glossy Glass CTA Button with Liquid Light Beam */}
           <button
             type="button"
             onClick={handleCtaClick}
             className="liquid-nav-cta"
             aria-label="Request Callback"
           >
-            <span>Request Callback</span>
-            <ArrowRight size={13} />
+            <span className="liquid-cta-shine" aria-hidden="true" />
+            <span className="liquid-cta-content">
+              <span>Request Callback</span>
+              <ArrowRight size={13} className="liquid-cta-arrow" />
+            </span>
           </button>
 
           {/* Mobile Liquid Glass Hamburger Toggle */}
           <button
             type="button"
-            className="liquid-mobile-toggle"
+            className={`liquid-mobile-toggle ${mobileMenuOpen ? 'is-active' : ''}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            <span className="liquid-toggle-bar liquid-toggle-bar--top" />
+            <span className="liquid-toggle-bar liquid-toggle-bar--bottom" />
           </button>
         </div>
 
@@ -117,20 +121,23 @@ export default function Navbar({ currentPath, navigate }) {
                 href={item.path}
                 onClick={(e) => handleNavClick(e, item.path)}
                 className={`liquid-mobile-link ${isActive ? 'active' : ''}`}
+                aria-current={isActive ? 'page' : undefined}
               >
                 {item.label}
               </a>
             );
           })}
-          <div style={{ paddingTop: 8, borderTop: '1px solid rgba(255, 255, 255, 0.08)', marginTop: 4 }}>
+          <div className="liquid-mobile-drawer-footer">
             <button
               type="button"
               onClick={handleCtaClick}
-              className="btn btn-primary btn-glossy"
-              style={{ width: '100%', justifyContent: 'center', padding: '10px 16px', fontSize: '0.875rem' }}
+              className="liquid-nav-cta liquid-nav-cta--mobile"
             >
-              <span>Request Callback</span>
-              <ArrowRight size={14} />
+              <span className="liquid-cta-shine" aria-hidden="true" />
+              <span className="liquid-cta-content">
+                <span>Request Advisory Callback</span>
+                <ArrowRight size={14} />
+              </span>
             </button>
           </div>
         </div>

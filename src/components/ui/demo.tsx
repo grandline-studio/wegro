@@ -9,10 +9,9 @@ import {
   TrendingUp,
   Receipt,
   Star,
-  Lock,
-  IndianRupee
+  Lock
 } from "lucide-react";
-import { Marquee } from "@/demos/ui/marquee";
+import { Marquee } from "@/components/ui/marquee";
 
 export interface HeroProps {
   headline?: string;
