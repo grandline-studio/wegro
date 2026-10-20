@@ -2972,7 +2972,7 @@ main > section:first-child,
 }
 
 .hero-v2-container {
-  max-width: 1280px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -2988,20 +2988,21 @@ main > section:first-child,
 .hero-v2-grid {
   display: grid;
   grid-template-columns: 100%;
-  gap: 48px;
+  gap: 40px;
   align-items: center;
 }
 
 @media (min-width: 1024px) {
   .hero-v2-grid {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: 80px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
   }
 }
 
 @media (min-width: 1280px) {
   .hero-v2-grid {
-    gap: 96px;
+    gap: 68px;
   }
 }
 
@@ -3010,7 +3011,7 @@ main > section:first-child,
   position: relative;
   width: 100%;
   min-width: 0;
-  max-width: 520px;
+  max-width: 580px;
   margin: 0 auto;
 }
 
@@ -3018,13 +3019,14 @@ main > section:first-child,
   .hero-v2-showcase {
     max-width: none;
     order: 1;
+    margin: 0;
   }
 }
 
 .hero-v2-card {
   position: relative;
-  height: 280px;
   width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 22px;
   overflow: hidden;
   border: 1px solid rgba(28, 63, 53, 0.18);
@@ -3034,20 +3036,15 @@ main > section:first-child,
 
 @media (min-width: 640px) {
   .hero-v2-card {
-    height: 380px;
     border-radius: 28px;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero-v2-card {
-    height: 480px;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-v2-card {
-    height: 560px;
+    aspect-ratio: 1 / 1;
+    max-height: 540px;
+    margin-left: 0;
   }
 }
 
@@ -3247,11 +3244,11 @@ main > section:first-child,
 
 /* 5. CTAs — Generous 26px Gaps & Ergonomic 58px Hit Targets to Prevent Misclicks */
 .hero-v2-actions {
-  margin-bottom: 60px;
+  margin-bottom: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 26px;
+  gap: 20px;
 }
 
 .hero-v2-btn-primary {
@@ -3304,11 +3301,13 @@ main > section:first-child,
   transform: translateY(-1px);
 }
 
-/* 6. Partner Marquee — Clear Separation */
+/* 6. Partner Marquee — Clear Separation Across Full Width */
 .hero-v2-marquee-wrap {
   border-top: 1px solid #E8E8E0;
   padding-top: 40px;
+  margin-top: 64px;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .hero-v2-marquee-label {
@@ -3319,6 +3318,7 @@ main > section:first-child,
   letter-spacing: 0.09em;
   color: rgba(8, 7, 5, 0.48);
   margin-bottom: 22px;
+  text-align: center;
 }
 
 /* ==========================================================================
