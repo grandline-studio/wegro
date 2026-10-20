@@ -210,48 +210,48 @@ export default function Hero({
                 </button>
               )}
             </div>
+
+            {/* 6. Partner Marquee */}
+            <div className="hero-v2-marquee-wrap">
+              <span className="hero-v2-marquee-label">
+                Market Coverage & Institutional Compliance
+              </span>
+
+              <div style={{ position: 'relative', margin: '0 -8px', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 36, background: 'linear-gradient(to right, #FBFBFA, transparent)', zIndex: 10, pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 36, background: 'linear-gradient(to left, #FBFBFA, transparent)', zIndex: 10, pointerEvents: 'none' }} />
+
+                <Marquee className="[--duration:28s]" pauseOnHover repeat={3}>
+                  {partners.map((brand, index) => (
+                    <div
+                      key={`brand_${index}`}
+                      style={{
+                        margin: '0 10px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '9px 20px',
+                        borderRadius: 9999,
+                        background: '#FFFFFF',
+                        border: '1px solid #E3E3DC',
+                        color: '#374151',
+                        fontWeight: 700,
+                        fontSize: '0.8125rem',
+                        letterSpacing: '0.03em',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      {brand}
+                    </div>
+                  ))}
+                </Marquee>
+              </div>
+            </div>
+
           </div>
 
         </div>
-
-        {/* 6. Partner Marquee — Full Width Section Across Both Columns */}
-        <div className="hero-v2-marquee-wrap">
-          <span className="hero-v2-marquee-label">
-            Market Coverage & Institutional Compliance
-          </span>
-
-          <div style={{ position: 'relative', margin: '0 -8px', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 36, background: 'linear-gradient(to right, #FBFBFA, transparent)', zIndex: 10, pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 36, background: 'linear-gradient(to left, #FBFBFA, transparent)', zIndex: 10, pointerEvents: 'none' }} />
-
-            <Marquee className="[--duration:28s]" pauseOnHover repeat={3}>
-              {partners.map((brand, index) => (
-                <div
-                  key={`brand_${index}`}
-                  style={{
-                    margin: '0 10px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '9px 20px',
-                    borderRadius: 9999,
-                    background: '#FFFFFF',
-                    border: '1px solid #E3E3DC',
-                    color: '#374151',
-                    fontWeight: 700,
-                    fontSize: '0.8125rem',
-                    letterSpacing: '0.03em',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  {brand}
-                </div>
-              ))}
-            </Marquee>
-          </div>
-        </div>
-
       </div>
     </section>
   );
