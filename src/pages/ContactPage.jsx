@@ -19,7 +19,7 @@ export default function ContactPage() {
     fullName: '',
     email: '',
     phone: '',
-    serviceInterest: 'Stock Cash',
+    serviceInterest: 'Equity Cash & Intraday Growth',
     experienceLevel: '1-3 years',
     message: '',
     privacyConsent: true
@@ -205,7 +205,7 @@ export default function ContactPage() {
                           fullName: '',
                           email: '',
                           phone: '',
-                          serviceInterest: 'Stock Cash',
+                          serviceInterest: 'Equity Cash & Intraday Growth',
                           experienceLevel: '1-3 years',
                           message: '',
                           privacyConsent: true

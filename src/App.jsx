@@ -13,6 +13,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import AdminApp from './admin/AdminApp';
 import { ContentProvider } from './content/ContentProvider';
 import AccessibilityToolbar from './components/AccessibilityToolbar';
+import ConsultationLauncher from './components/ConsultationLauncher';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
@@ -71,8 +72,8 @@ export default function App() {
 
   const cleanPath = currentPath.toLowerCase().replace(/\/$/, '') || '/';
 
-  // 1. ADMIN ROUTE ISOLATION: Render AdminApp exclusively (no public navbar/footer)
-  if (cleanPath.startsWith('/admin')) {
+  // 1. ADMIN & LOGIN ROUTE ISOLATION: Render AdminApp / Client Login portal
+  if (cleanPath.startsWith('/admin') || cleanPath === '/login') {
     return (
       <ContentProvider>
         <AdminApp navigate={navigate} />
@@ -134,8 +135,9 @@ export default function App() {
         {/* Footer Section */}
         <Footer navigate={navigate} />
 
-        {/* Global Accessibility Toolbar & Assistive Overlay */}
+        {/* Global Floating Actions: Accessibility (Bottom-Left) & Consultation (Bottom-Right) */}
         <AccessibilityToolbar />
+        <ConsultationLauncher />
       </div>
     </ContentProvider>
   );

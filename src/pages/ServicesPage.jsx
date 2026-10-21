@@ -33,7 +33,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
     'Equity Cash',
     'Derivatives (F&O)',
     'Commodities',
-    'Hybrid & Multi-Asset'
+    'Positional & Wealth'
   ];
 
   const filteredServices = selectedCategory === 'All'
@@ -92,7 +92,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
           <div className="section-header" style={{ maxWidth: 920, margin: '0 auto', textAlign: 'center' }}>
             <div style={{ marginBottom: 16, display: 'inline-flex', justifyContent: 'center' }}>
               <GlowingBadge variant="cyan" icon={Layers}>
-                Seven Institutional Research Desks · SEBI Registered
+                Four Institutional Advisory Verticals · SEBI Registered
               </GlowingBadge>
             </div>
 
@@ -199,7 +199,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
         <div className="container">
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {filteredServices.map((service, index) => {
-              const deskNumber = `DESK 0${index + 1}/07`;
+              const deskNumber = `DESK 0${index + 1}/04`;
               const isHighRisk = service.riskLevel.toLowerCase().includes('high');
 
               return (
@@ -339,7 +339,7 @@ export default function ServicesPage({ onSelectService, navigate }) {
               Institutional Desk Comparison Matrix
             </h2>
             <p className="section-description" style={{ color: 'rgba(8, 7, 5, 0.72)' }}>
-              Compare holding horizons, risk classifications, and instrument coverage across all seven advisory desks at a glance.
+              Compare holding horizons, risk classifications, and instrument coverage across all four advisory desks at a glance.
             </p>
           </div>
 

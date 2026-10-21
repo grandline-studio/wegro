@@ -42,28 +42,30 @@ export default function Navbar({ currentPath, navigate }) {
   };
 
   return (
-    <header className="floating-navbar-wrapper" role="banner" aria-label="Main Navigation">
-      <nav className="liquid-glass-nav" aria-label="Primary Menu">
-        <div className="liquid-glass-inner">
-          {/* Logo on Left */}
-          <a
-            href="/"
-            onClick={(e) => handleNavClick(e, '/')}
-            className="brand-logo-link"
-            aria-label={`${companyConfig.name} Homepage`}
-          >
-            <img
-              src="/wegrow_emblem.png"
-              alt={`${companyConfig.name} Logo`}
-              className="brand-emblem"
-            />
-            <div className="brand-text-wrap">
-              <span className="brand-name">
-                We<span>Gro</span>
-              </span>
-              <span className="brand-subtext">Research Analysts</span>
-            </div>
-          </a>
+    <>
+      {/* FLOATING LIQUID GLASS NAVBAR */}
+      <header className="floating-navbar-wrapper" role="banner" aria-label="Main Navigation">
+        <nav className="liquid-glass-nav" aria-label="Primary Menu">
+          <div className="liquid-glass-inner">
+            {/* Logo on Left */}
+            <a
+              href="/"
+              onClick={(e) => handleNavClick(e, '/')}
+              className="brand-logo-link"
+              aria-label="WEGRO Homepage"
+            >
+              <img
+                src="/wegrow_emblem.png"
+                alt="WEGRO Logo"
+                className="brand-emblem"
+              />
+              <div className="brand-text-wrap">
+                <span className="brand-name">
+                  WE<span>GRO</span>
+                </span>
+                <span className="brand-subtext">Research Analysts</span>
+              </div>
+            </a>
 
           {/* Core Menu Links: Home, About, Services, Pricing, Complaint Board */}
           <ul className="liquid-nav-links">
@@ -143,5 +145,6 @@ export default function Navbar({ currentPath, navigate }) {
         </div>
       </nav>
     </header>
+    </>
   );
 }

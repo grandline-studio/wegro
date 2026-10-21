@@ -180,6 +180,22 @@ export interface ServicesContent {
   services: ServiceItem[];
 }
 
+export interface PricingPlan {
+  id: string;
+  name: string;
+  price: string;
+  period: string;
+  badge?: string;
+  popular?: boolean;
+  features: string[];
+  ctaLabel?: string;
+}
+
+export interface FeePrinciple {
+  title: string;
+  description: string;
+}
+
 export interface PricingContent {
   hero: {
     eyebrow: string;
@@ -190,7 +206,10 @@ export interface PricingContent {
     title: string;
     content: string;
   };
+  plans?: PricingPlan[];
+  feePrinciples?: FeePrinciple[];
 }
+
 
 export interface ContactContent {
   hero: {

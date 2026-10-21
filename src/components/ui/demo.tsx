@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -9,9 +9,12 @@ import {
   TrendingUp,
   Receipt,
   Star,
-  Lock
+  Lock,
+  Layers,
+  Sparkles,
+  Zap
 } from "lucide-react";
-import { Marquee } from "@/components/ui/marquee";
+import LiveMarketTicker from "@/components/LiveMarketTicker";
 
 export interface HeroProps {
   headline?: string;
@@ -29,6 +32,55 @@ export interface HeroProps {
   avatars?: string[];
 }
 
+// ── Authentic Institutional Research Setups (Zero AI Slop) ──
+const RESEARCH_SEGMENTS = {
+  cash: {
+    id: "cash",
+    label: "Equity Cash",
+    badge: "MOMENTUM BREAKOUT",
+    instrument: "NSE: LARSEN & TOUBRO (LT)",
+    strategy: "Daily Volume & Structure Breakout",
+    horizon: "3 to 7 Trading Days",
+    entryZone: "₹3,620.00 – ₹3,635.00",
+    stopLoss: "₹3,560.00 (Strict 1.6%)",
+    targets: "T1: ₹3,750 | T2: ₹3,840",
+    riskReward: "1:2.35 Target Ratio",
+    chips: ["Volume Expansion", "Dual Targets", "Predefined Stop Loss"],
+    memoNote: "Order Protocol: Predefined SL logged before market open. Never average a losing trade.",
+    refNumber: "WEGRO-EQ-2026-881"
+  },
+  fno: {
+    id: "fno",
+    label: "Index F&O",
+    badge: "HEDGED SPREAD",
+    instrument: "NSE: NIFTY 50 (Weekly Expiry)",
+    strategy: "Bull Call Spread (Defined Risk)",
+    horizon: "Weekly Expiry (3 Days)",
+    entryZone: "22,700 CE Buy / 22,950 CE Sell",
+    stopLoss: "Max Risk Capped to ₹48.00 Net Debit",
+    targets: "Max Payout: ₹125.00 (Net ₹77.00)",
+    riskReward: "1:2.60 Risk-Reward",
+    chips: ["Delta 0.54 Greeks Hedged", "Defined Risk Cap", "Zero Naked Exposure"],
+    memoNote: "Derivatives Mandate: Strictly zero unhedged naked options. Greeks balanced against theta decay.",
+    refNumber: "WEGRO-FNO-2026-419"
+  },
+  mcx: {
+    id: "mcx",
+    label: "Commodities MCX",
+    badge: "MACRO TREND",
+    instrument: "MCX: GOLD MINI (100g)",
+    strategy: "Macro Trend Accumulation on Dip",
+    horizon: "5 to 12 Trading Days",
+    entryZone: "₹78,150 – ₹78,240 / 10g",
+    stopLoss: "₹77,580 (Defined Volatility Band)",
+    targets: "T1: ₹79,200 | T2: ₹79,850",
+    riskReward: "1:2.18 Target Ratio",
+    chips: ["Macro Dollar Correlation", "Trailing Exit Matrix", "Physical Demand Spec"],
+    memoNote: "Bullion Rule: Position sizing strictly locked against portfolio margin reserves.",
+    refNumber: "WEGRO-MCX-2026-104"
+  }
+};
+
 export default function Hero({
   headline = "Your search ends with our research!",
   subheadline = "In-depth market research and quantitative analysis to help you make disciplined, data-backed financial decisions.",
@@ -39,27 +91,20 @@ export default function Hero({
   onCtaClick,
   secondaryCtaText = "Explore Advisory Services",
   onSecondaryCtaClick,
-  partners = [
-    "NSE NIFTY 50",
-    "BSE SENSEX",
-    "SEBI SCORES",
-    "SMART ODR",
-    "MCX COMMODITIES",
-    "STRICT 1:2+ RISK-REWARD",
-    "GST INVOICED BILLS",
-    "DIRECT BANK SETTLEMENT",
-    "ZERO PROFIT SHARING"
-  ],
   avatars = [
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80",
-  ],
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80",
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80",
+    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80",
+    "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=120&h=120&q=80"
+  ]
 }: HeroProps) {
+  const [activeSegment, setActiveSegment] = useState<"cash" | "fno" | "mcx">("cash");
+  const currentSetup = RESEARCH_SEGMENTS[activeSegment];
+
+  // Render authentic hand-drawn red accent underline
   const renderHeadline = () => {
-    if (headline.toLowerCase().includes("our research")) {
-      const parts = headline.split(/our research/i);
+    if (headline.includes("our research")) {
+      const parts = headline.split("our research");
       return (
         <>
           {parts[0]}
@@ -67,15 +112,15 @@ export default function Hero({
             our research
             <svg
               className="hero-v2-hand-drawn-underline"
-              viewBox="0 0 280 26"
+              viewBox="0 0 285 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
               <path
-                d="M 4 14 C 42 10, 95 15, 150 12 C 195 9, 238 13, 276 7"
+                d="M 4 14 C 42 18, 98 12, 148 15 C 196 17, 242 13, 281 18"
                 stroke="#DC2626"
-                strokeWidth="3.6"
+                strokeWidth="3.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -97,14 +142,16 @@ export default function Hero({
   };
 
   return (
-    <section className="hero-v2-section">
+    <section className="hero-v2-section" aria-label="Hero Introduction">
       <div className="hero-v2-container">
         <div className="hero-v2-grid">
 
-          {/* ── LEFT COLUMN: Institutional Credential Showcase ── */}
+          {/* ═════════════════════════════════════════════════════════════════
+              LEFT COLUMN: Institutional Research Desk (Concept A)
+              ═════════════════════════════════════════════════════════════════ */}
           <div className="hero-v2-showcase">
 
-            {/* ── Registration Badge Strip ── */}
+            {/* ── Top Official Registration Badges ── */}
             <div className="hero-v2-reg-strip">
               <div className="hero-v2-reg-badge">
                 <span className="hero-v2-satellite-pulse" />
@@ -120,81 +167,145 @@ export default function Hero({
               </div>
             </div>
 
-            {/* ── Research Brief Card (Main Visual) ── */}
+            {/* ── Main Research Advisory Note Card ── */}
             <div className="hero-v2-brief-card">
-              {/* Card Header */}
+
+              {/* Card Header with Physical Ink Stamp */}
               <div className="hero-v2-brief-header">
                 <div className="hero-v2-brief-header-left">
                   <div className="hero-v2-brief-icon-wrap">
-                    <FileText size={16} style={{ color: '#1C3F35' }} />
+                    <FileText size={17} style={{ color: '#1C3F35' }} />
                   </div>
                   <div>
-                    <div className="hero-v2-brief-title">Research Advisory Note</div>
-                    <div className="hero-v2-brief-meta">WeGro Research Desk • Oct 2026</div>
+                    <div className="hero-v2-brief-title">
+                      Research Advisory Note
+                    </div>
+                    <div className="hero-v2-brief-meta">
+                      WeGro Desk · Mumbai IST · Ref #{currentSetup.refNumber}
+                    </div>
                   </div>
                 </div>
-                <span className="hero-v2-brief-status-badge">Published</span>
+
+                {/* Handcrafted Analyst Desk Ink Stamp */}
+                <div className="hero-v2-analyst-stamp" title="SEBI Registered Quantitative Research Desk">
+                  <div className="hero-v2-stamp-inner">
+                    <span className="hero-v2-stamp-top">WEGRO DESK</span>
+                    <span className="hero-v2-stamp-center">AUTHENTICATED</span>
+                    <span className="hero-v2-stamp-bottom">MUMBAI · SEBI RA</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Interactive Segment Switcher ── */}
+              <div className="hero-v2-segment-tabs" role="tablist" aria-label="Advisory Verticals">
+                {(Object.keys(RESEARCH_SEGMENTS) as Array<keyof typeof RESEARCH_SEGMENTS>).map((key) => {
+                  const seg = RESEARCH_SEGMENTS[key];
+                  const isActive = activeSegment === key;
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setActiveSegment(key)}
+                      className={`hero-v2-segment-tab ${isActive ? 'active' : ''}`}
+                    >
+                      <span className="hero-v2-segment-tab-dot" />
+                      <span>{seg.label}</span>
+                    </button>
+                  );
+                })}
               </div>
 
               {/* Divider */}
               <div className="hero-v2-brief-divider" />
 
-              {/* Research Detail Rows */}
+              {/* ── Research Detail Rows (Tabular Precision) ── */}
               <div className="hero-v2-brief-rows">
                 <div className="hero-v2-brief-row">
                   <span className="hero-v2-brief-row-label">Instrument</span>
-                  <span className="hero-v2-brief-row-val">NSE: NIFTY 50 (Cash &amp; F&amp;O)</span>
+                  <span className="hero-v2-brief-row-val hero-v2-brief-row-val--mono">
+                    {currentSetup.instrument}
+                  </span>
                 </div>
+
                 <div className="hero-v2-brief-row">
-                  <span className="hero-v2-brief-row-label">Segment</span>
-                  <span className="hero-v2-brief-row-val">Equity Derivatives</span>
+                  <span className="hero-v2-brief-row-label">Strategy Setup</span>
+                  <span className="hero-v2-brief-row-val">
+                    {currentSetup.strategy}
+                  </span>
                 </div>
+
                 <div className="hero-v2-brief-row">
-                  <span className="hero-v2-brief-row-label">Horizon</span>
-                  <span className="hero-v2-brief-row-val">3 to 10 Trading Days</span>
+                  <span className="hero-v2-brief-row-label">Entry Zone</span>
+                  <span className="hero-v2-brief-row-val hero-v2-brief-row-val--mono">
+                    {currentSetup.entryZone}
+                  </span>
                 </div>
+
                 <div className="hero-v2-brief-row">
-                  <span className="hero-v2-brief-row-label">Risk Protocol</span>
-                  <span className="hero-v2-brief-row-val hero-v2-brief-row-val--highlight">Predefined Stop Loss</span>
+                  <span className="hero-v2-brief-row-label">Predefined Stop Loss</span>
+                  <span className="hero-v2-brief-row-val hero-v2-brief-row-val--mono hero-v2-brief-row-val--sl">
+                    {currentSetup.stopLoss}
+                  </span>
                 </div>
+
                 <div className="hero-v2-brief-row">
-                  <span className="hero-v2-brief-row-label">Risk:Reward</span>
+                  <span className="hero-v2-brief-row-label">Dual Target Levels</span>
+                  <span className="hero-v2-brief-row-val hero-v2-brief-row-val--mono hero-v2-brief-row-val--target">
+                    {currentSetup.targets}
+                  </span>
+                </div>
+
+                <div className="hero-v2-brief-row">
+                  <span className="hero-v2-brief-row-label">Risk : Reward Ratio</span>
                   <span className="hero-v2-brief-row-val hero-v2-brief-row-val--green">
                     <Star size={11} style={{ display: 'inline', marginRight: 4 }} />
-                    Minimum 1:2 Ratio
+                    {currentSetup.riskReward}
+                  </span>
+                </div>
+
+                <div className="hero-v2-brief-row">
+                  <span className="hero-v2-brief-row-label">Execution Horizon</span>
+                  <span className="hero-v2-brief-row-val">
+                    {currentSetup.horizon}
                   </span>
                 </div>
               </div>
 
-              {/* Divider */}
-              <div className="hero-v2-brief-divider" />
+              {/* ── Handcrafted Analyst Desk Memo ── */}
+              <div className="hero-v2-desk-memo">
+                <div className="hero-v2-desk-memo-header">
+                  <span className="hero-v2-desk-memo-pin">📌</span>
+                  <span className="hero-v2-desk-memo-tag">ANALYST RISK DIRECTIVE</span>
+                </div>
+                <p className="hero-v2-desk-memo-text">
+                  "{currentSetup.memoNote}"
+                </p>
+              </div>
 
               {/* Metric Chips */}
               <div className="hero-v2-brief-chips">
-                <div className="hero-v2-chip">
-                  <BarChart2 size={13} />
-                  <span>Quantitative Analysis</span>
-                </div>
-                <div className="hero-v2-chip">
-                  <TrendingUp size={13} />
-                  <span>Momentum Breakout</span>
-                </div>
-                <div className="hero-v2-chip hero-v2-chip--green">
-                  <Lock size={12} />
-                  <span>SEBI Verified Log</span>
-                </div>
+                {currentSetup.chips.map((chip, idx) => (
+                  <div key={idx} className={`hero-v2-chip ${idx === 2 ? 'hero-v2-chip--green' : ''}`}>
+                    {idx === 0 && <BarChart2 size={12} />}
+                    {idx === 1 && <TrendingUp size={12} />}
+                    {idx === 2 && <Lock size={11} />}
+                    <span>{chip}</span>
+                  </div>
+                ))}
               </div>
 
               {/* Analyst Certification Footer */}
               <div className="hero-v2-brief-footer">
                 <div className="hero-v2-brief-footer-row">
-                  <ShieldCheck size={13} style={{ color: '#059669', flexShrink: 0 }} />
-                  <span>Reviewed &amp; approved under SEBI Research Analyst Regulations, 2014</span>
+                  <ShieldCheck size={14} style={{ color: '#047857', flexShrink: 0 }} />
+                  <span>Reviewed &amp; approved under SEBI (Research Analysts) Regulations, 2014</span>
                 </div>
               </div>
             </div>
 
-            {/* ── Transparent Billing Card ── */}
+            {/* ── Transparent Fixed Advisory & Billing Card ── */}
             <div className="hero-v2-billing-card">
               <div className="hero-v2-billing-header">
                 <div className="hero-v2-billing-icon-wrap">
@@ -231,7 +342,9 @@ export default function Hero({
 
           </div>
 
-          {/* ── RIGHT COLUMN: Typographic Hierarchy + CTAs ── */}
+          {/* ═════════════════════════════════════════════════════════════════
+              RIGHT COLUMN: Typographic Hierarchy + CTAs + Live Ticker
+              ═════════════════════════════════════════════════════════════════ */}
           <div className="hero-v2-content">
 
             {/* Eyebrow Badge */}
@@ -242,7 +355,7 @@ export default function Hero({
               </div>
             )}
 
-            {/* Main Headline */}
+            {/* Main Headline with Hand-Drawn Underline */}
             <h1 className="hero-v2-title">
               {renderHeadline()}
             </h1>
@@ -252,37 +365,27 @@ export default function Hero({
               {subheadline}
             </p>
 
-            {/* Social Proof + Trust Metrics */}
+            {/* Trust Metrics & Social Proof */}
             <div className="hero-v2-trust-row">
               <div className="hero-v2-avatars">
-                {avatars.map((src, i) => (
+                {avatars.slice(0, 4).map((src, i) => (
                   <img
                     key={i}
                     src={src}
-                    alt={`Active Participant ${i + 1}`}
-                    style={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: '50%',
-                      border: '2.5px solid #FFFFFF',
-                      marginRight: -10,
-                      boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
-                      objectFit: 'cover'
-                    }}
+                    alt={`Investor ${i + 1}`}
+                    loading="lazy"
                   />
                 ))}
               </div>
 
-              <div style={{ width: 1, height: 36, background: '#E3E3DC' }} />
-
               <div className="hero-v2-stat">
-                <span className="hero-v2-stat-num">{metricNumber}</span>
-                <span className="hero-v2-stat-label">{metricLabel}</span>
+                <div className="hero-v2-stat-num">{metricNumber}</div>
+                <div className="hero-v2-stat-label">{metricLabel}</div>
               </div>
 
               <div className="hero-v2-trust-badge">
-                <CheckCircle2 size={13} style={{ color: '#047857' }} />
-                <span>Strict 1:2+ Risk:Reward</span>
+                <Star size={13} fill="#047857" style={{ color: '#047857' }} />
+                <span>Disciplined 1:2+ R:R</span>
               </div>
             </div>
 
@@ -309,42 +412,13 @@ export default function Hero({
               )}
             </div>
 
-            {/* Partner Marquee */}
+            {/* Live Market Coverage Marquee Ticker */}
             <div className="hero-v2-marquee-wrap">
               <span className="hero-v2-marquee-label">
                 Market Coverage &amp; Institutional Compliance
               </span>
 
-              <div style={{ position: 'relative', margin: '0 -8px', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 36, background: 'linear-gradient(to right, #FBFBFA, transparent)', zIndex: 10, pointerEvents: 'none' }} />
-                <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 36, background: 'linear-gradient(to left, #FBFBFA, transparent)', zIndex: 10, pointerEvents: 'none' }} />
-
-                <Marquee className="[--duration:28s]" pauseOnHover repeat={3}>
-                  {partners.map((brand, index) => (
-                    <div
-                      key={`brand_${index}`}
-                      style={{
-                        margin: '0 10px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '9px 20px',
-                        borderRadius: 9999,
-                        background: '#FFFFFF',
-                        border: '1px solid #E3E3DC',
-                        color: '#374151',
-                        fontWeight: 700,
-                        fontSize: '0.8125rem',
-                        letterSpacing: '0.03em',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
-                      {brand}
-                    </div>
-                  ))}
-                </Marquee>
-              </div>
+              <LiveMarketTicker />
             </div>
 
           </div>

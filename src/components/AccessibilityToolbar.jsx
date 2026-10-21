@@ -353,26 +353,27 @@ export default function AccessibilityToolbar() {
       )}
 
       {/* =========================================================================
-          3. FLOATING ACCESSIBILITY LAUNCHER (DOCKED ON SCREEN RIGHT)
+          3. FLOATING ACCESSIBILITY LAUNCHER (CIRCULAR, DOCKED ON BOTTOM LEFT)
           ========================================================================= */}
-      <div className="a11y-exempt fixed right-0 top-1/2 -translate-y-1/2 z-[9980] flex items-center">
+      <div className="a11y-exempt fixed left-4 sm:left-6 bottom-4 sm:bottom-6 z-[9980] flex items-center">
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center gap-2 sm:gap-2.5 rounded-l-xl sm:rounded-l-2xl bg-[#1C3F35] py-2.5 sm:py-3.5 pl-3 sm:pl-4 pr-2 sm:pr-3 text-white shadow-xl transition-all duration-300 hover:translate-x-[-4px] sm:hover:translate-x-[-6px] hover:bg-[#142F27] cursor-pointer border-t border-b border-l border-white/20 select-none"
+          className="group relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1C3F35] text-white shadow-xl hover:shadow-2xl hover:shadow-emerald-950/30 transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-[#142F27] cursor-pointer border border-white/20 select-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
           aria-label="Open WeGro Accessibility Menu (Alt + A)"
           title="WeGro Accessibility Menu (Alt + A)"
         >
-          <div className="relative flex items-center justify-center">
-            <Accessibility className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:scale-110" />
-            {activeCount > 0 && (
-              <span className="absolute -top-2 -right-2 flex h-4.5 w-4.5 items-center justify-center rounded-full bg-[#10B981] text-[10px] font-black text-white ring-2 ring-white shadow-xs">
-                {activeCount}
-              </span>
-            )}
-          </div>
-          <span className="hidden xl:inline text-xs font-bold uppercase tracking-wider pr-1 writing-vertical select-none text-emerald-100">
-            Accessibility
+          <Accessibility className="h-6 w-6 sm:h-6.5 sm:w-6.5 text-white transition-transform duration-300 group-hover:scale-110" />
+          {activeCount > 0 && (
+            <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#10B981] text-[11px] font-black text-white ring-2 ring-white shadow-sm">
+              {activeCount}
+            </span>
+          )}
+
+          {/* Hover Tooltip (Appears to the right of the button) */}
+          <span className="pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-1 group-hover:translate-x-0 absolute left-full ml-3 px-3 py-1.5 rounded-lg bg-[#080705] text-white text-xs font-semibold whitespace-nowrap shadow-xl border border-white/10 hidden sm:flex items-center gap-1.5 z-10">
+            <span>Accessibility</span>
+            <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-white/15 text-emerald-200 rounded">Alt+A</kbd>
           </span>
         </button>
       </div>

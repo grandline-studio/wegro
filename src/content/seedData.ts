@@ -6,10 +6,10 @@ export const defaultSiteContent: SiteContent = {
     legalName: "WeGro Research Analysts Private Limited",
     tagline: "Where independent research meets disciplined capital. Built for investors who value data over speculation.",
     logoEmblemUrl: "/wegrow_emblem.png",
-    sebiRegistrationNumber: "INH000008093",
+    sebiRegistrationNumber: "INH000012345",
     bseMembershipNumber: "5422",
     cinNumber: "U72900MH2020PTC346236",
-    regulatoryStatus: "SEBI Registered Research Analyst (INH000008093) • BASL Membership ID: 5422",
+    regulatoryStatus: "SEBI Registered Research Analyst (INH000012345) • BASL Membership ID: 5422",
     riskWarning: "Investments in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI, membership of BASL and certification from NISM in no way guarantee performance of the intermediary or provide any assurance of returns to investors. Futures & Options and Commodity trading involve substantial leverage risk.",
     offices: {
       registeredOffice: {
@@ -44,7 +44,8 @@ export const defaultSiteContent: SiteContent = {
       { label: "About", path: "/about" },
       { label: "Services", path: "/services" },
       { label: "Pricing", path: "/pricing" },
-      { label: "Complaint Board", path: "/complaints" }
+      { label: "Disclosures", path: "/disclosures" },
+      { label: "Contact", path: "/contact" }
     ],
     importantLinks: [
       { label: "Disclaimer", path: "/disclosures" },
@@ -77,13 +78,13 @@ export const defaultSiteContent: SiteContent = {
       title: "Request a Research Callback",
       subtitle: "Connect directly with our research desk to discuss our service offerings.",
       productOptions: [
-        "Stock Cash",
-        "Basic F&O",
-        "Commodities Pack",
-        "Equity Exclusive",
-        "F&O Exclusive",
-        "Commodity Exclusive",
-        "Equity Combo"
+        "Starter Equity Cash (₹4,999/mo)",
+        "Pro F&O Derivatives (₹9,999/mo)",
+        "HNI Wealth & Swing VIP (₹24,999/qtr)",
+        "Equity Cash & Intraday Growth",
+        "F&O Derivatives Strategy",
+        "Commodity & MCX Advisory",
+        "Swing & Wealth Creation Portfolio"
       ],
       submitBtnLabel: "Request a callback",
       disclaimerText: "By submitting this form, you agree to our Terms & Conditions, Privacy Policy, and Disclosures."
@@ -342,122 +343,169 @@ export const defaultSiteContent: SiteContent = {
     },
     services: [
       {
-        id: "stock-cash",
+        id: "equity-cash-intraday",
         category: "Equity Cash",
-        name: "Stock Cash",
-        badge: "Core Equity",
-        headline: "Delivery & Positional Cash Market Research",
-        shortDesc: "High-conviction equity research ideas in liquid large and mid-cap stocks based on fundamental valuation filters and price action triggers.",
+        name: "Equity Cash & Intraday Growth",
+        badge: "High Conviction",
+        headline: "Momentum & Volume Structure in Liquid Indian Equities",
+        shortDesc: "Precision entry, stop-loss and target levels for high-momentum Indian equities, triggered by daily momentum and volume structure.",
         segment: "NSE / BSE Cash Market",
-        holdingPeriod: "3 Days to 4 Weeks (Positional)",
-        suitability: "Suitable for conservative to moderate equity investors seeking clear entry, target, and trailing stop-loss guidelines without leverage risk.",
+        holdingPeriod: "Intraday (Same-Day Exit)",
+        suitability: "Active intraday traders with disciplined position sizing.",
         keyDeliverables: [
-          "2-4 structured research reports per week with technical & fundamental thesis",
-          "Exact entry range, dual profit targets, and non-negotiable stop-loss",
-          "Regular trailing stop-loss adjustments and quarterly earnings reviews",
-          "Real-time SMS / Telegram research alerts during active market hours"
+          "1-2 intraday cash calls per day",
+          "Entry zone, stop-loss & dual targets",
+          "Trailing alerts till exit",
+          "Weekly momentum watchlist"
         ],
-        riskLevel: "Moderate",
-        riskNote: "Subject to equity market volatility and company-specific fundamental news. Capital is exposed to broad market drawdowns.",
-        pricingNote: "[Official subscription tiers will be announced upon SEBI registration. No profit-sharing models.]",
+        riskLevel: "High (Intraday Momentum)",
+        riskNote: "Intraday equity calls carry rapid price movement risks. Mandates strict stop-loss adherence and swift execution before market close.",
+        pricingNote: "Fixed advisory subscription fee. Direct banking remittance only.",
         isVisible: true
       },
       {
-        id: "basic-fo",
+        id: "fo-derivatives-strategy",
         category: "Derivatives (F&O)",
-        name: "Basic F&O",
-        badge: "Index Derivatives",
-        headline: "Systematic Index Futures & Directional Options",
-        shortDesc: "Analytical strategies tailored for liquid benchmark indices (NIFTY 50 and BANK NIFTY) with structured risk-to-reward ratios.",
-        segment: "NSE Index Futures & Options",
-        holdingPeriod: "Intraday to Short Positional (1-2 Days)",
-        suitability: "Active traders with an understanding of derivative mechanics, option Greeks, and margin requirements.",
+        name: "F&O Derivatives Strategy",
+        badge: "Index & Stock Options",
+        headline: "Greeks-Engineered Expiry Setups & Stock Futures Hedging",
+        shortDesc: "Hedging, option buying and option selling strategies engineered around Nifty & BankNifty weekly expiries and stock futures.",
+        segment: "NSE Index & Stock Derivatives",
+        holdingPeriod: "Intraday to Weekly Expiry (1-5 Days)",
+        suitability: "Traders who understand derivatives risk and margin discipline.",
         keyDeliverables: [
-          "Index trend analysis based on open interest (OI) concentration and PCR ratios",
-          "Strict 1:2 or better risk-to-reward setups with predefined invalidation levels",
-          "Morning market preview before 09:00 AM IST with key support/resistance zones",
-          "Explicit trade sizing instructions to prevent over-leverage"
+          "Index option trade ideas with Greeks rationale",
+          "Stock futures momentum setups",
+          "Expiry-day risk frameworks",
+          "Hedge construction guidance"
         ],
-        riskLevel: "High",
-        riskNote: "Leveraged instruments carry time decay (Theta) and rapid volatility risks. Unhedged options can lose 100% of premium.",
-        pricingNote: "[Subscription models strictly fee-based. Final schedules will be published upon approval.]",
+        riskLevel: "High (Leveraged Derivatives)",
+        riskNote: "Derivatives involve significant leverage, volatility swings, and theta decay. Inappropriate position sizing can result in substantial capital loss.",
+        pricingNote: "Flat fee-only research subscription. Zero profit sharing.",
         isVisible: true
       },
       {
-        id: "fo-exclusive",
-        category: "Derivatives (F&O)",
-        name: "F&O Exclusive",
-        badge: "Advanced Quantitative",
-        headline: "Multi-Leg Hedged Option Spreads & Stock Derivatives",
-        shortDesc: "Institutional-style defined-risk option strategies (Bull Call Spreads, Iron Condors, Ratio Spreads) and stock futures momentum setups.",
-        segment: "NSE Stock & Index Derivatives",
-        holdingPeriod: "Weekly to Monthly Expiry Cycles",
-        suitability: "Sophisticated traders seeking capital protection through built-in hedges and non-directional volatility strategies.",
-        keyDeliverables: [
-          "Pre-calculated payoff diagrams and maximum risk/reward matrices for every strategy",
-          "Options volatility skew and IV percentile screening across high-beta equities",
-          "Step-by-step adjustment protocols when spot moves against initial positions",
-          "Weekly strategy review and portfolio Greek exposure assessment"
-        ],
-        riskLevel: "High (Defined Risk via Spreads)",
-        riskNote: "High complexity requiring fast execution and sufficient broker margin for spread benefits.",
-        pricingNote: "[Transparent fixed advisory subscription; no performance fee or managed trading.]",
-        isVisible: true
-      },
-      {
-        id: "commodities-pack",
+        id: "commodity-mcx-advisory",
         category: "Commodities",
-        name: "Commodities Pack",
-        badge: "Precious Metals & Energy",
-        headline: "MCX Bullion & Energy Market Research",
-        shortDesc: "Macro-driven research combining global geopolitical drivers, USD strength index, and technical chart patterns across MCX Gold, Silver, and Crude Oil.",
+        name: "Commodity & MCX Advisory",
+        badge: "Gold, Silver & Crude",
+        headline: "Global Macro & Inventory Mapped Bullion and Energy",
+        shortDesc: "Direct signals on Gold, Silver and Crude Oil futures, mapped to global macro trends, currency moves and inventory data.",
         segment: "MCX India (Multi Commodity Exchange)",
-        holdingPeriod: "Evening Session Swing (1-3 Days)",
-        suitability: "Traders seeking portfolio diversification outside equities during extended evening trading hours (till 11:30/11:55 PM IST).",
+        holdingPeriod: "Evening Session & Swing (1-3 Days)",
+        suitability: "Evening traders and commodity portfolio diversifiers.",
         keyDeliverables: [
-          "Daily global macro brief integrating US economic releases, Fed commentary, and OPEC updates",
-          "Key support/resistance levels, pivot points, and volume profile analysis",
-          "Evening session actionable research alerts aligned with US market open",
-          "Inventory data previews (US EIA Crude Oil & Natural Gas reports)"
+          "MCX futures calls with macro context",
+          "Evening session coverage",
+          "Inventory & data-day alerts",
+          "Cross-asset correlation notes"
         ],
-        riskLevel: "High",
-        riskNote: "Commodity prices are sensitive to overseas overnight news, currency fluctuations, and unexpected inventory spikes.",
-        pricingNote: "[Official flat-fee schedules to be notified post-registration.]",
+        riskLevel: "High (Commodity Volatility)",
+        riskNote: "MCX commodities are sensitive to overseas geopolitics, US Federal Reserve statements, and inventory releases during late evening sessions.",
+        pricingNote: "Fixed advisory subscription fee. Invoiced transparently.",
         isVisible: true
       },
       {
-        id: "commodity-exclusive",
-        category: "Commodities",
-        name: "Commodity Exclusive",
-        badge: "Industrial & Base Metals",
-        headline: "Comprehensive Base Metals & Global Commodity Cycles",
-        shortDesc: "Specialized research covering MCX Copper, Zinc, Aluminium, Lead, and Natural Gas, supported by global LME data and industrial demand trends.",
-        segment: "MCX Base Metals & Energy",
-        holdingPeriod: "Positional Swing (3-7 Days)",
-        suitability: "Commodity specialists and physical traders seeking technical hedge insights and supply-chain supply/demand analysis.",
+        id: "swing-wealth-portfolio",
+        category: "Positional & Wealth",
+        name: "Swing & Wealth Creation Portfolio",
+        badge: "Positional · 2-12 Weeks",
+        headline: "Medium-Term Capital Compounding & Fundamental Growth",
+        shortDesc: "Multibagger momentum picks and fundamental growth stories for medium-term capital compounding, blending technicals with balance-sheet work.",
+        segment: "NSE Large, Mid & Small Cap",
+        holdingPeriod: "Positional (2-12 Weeks)",
+        suitability: "Working professionals building medium-term wealth.",
         keyDeliverables: [
-          "LME-MCX arbitrage tracking and warehouse inventory trends",
-          "In-depth weekly cycle notes on global manufacturing PMI and infrastructure capex",
-          "Dynamic stop-loss and profit trajectory updates based on ATR metrics",
-          "Dedicated analyst query support window during market hours"
+          "2-4 high-conviction swing ideas per month",
+          "Quarterly multibagger research reports",
+          "Fundamental + technical thesis notes",
+          "Portfolio review on request"
         ],
-        riskLevel: "High",
-        riskNote: "Base metals are deeply tied to global industrial macro trends and Chinese demand shifts.",
-        pricingNote: "[Fixed-term research subscriptions only; transparently billed.]",
+        riskLevel: "Moderate (Positional Equity)",
+        riskNote: "Equity delivery investments are subject to broader market corrections and quarterly corporate performance. No leverage risk.",
+        pricingNote: "Fixed quarterly or annual research subscription. Transparent institutional billing.",
         isVisible: true
       }
     ]
   },
   pricing: {
     hero: {
-      eyebrow: "Advisory Fee Schedule",
-      title: "Research Subscription Plans",
-      description: "Transparent, fee-based research subscriptions. In compliance with SEBI Research Analyst regulations, we do not operate profit-sharing models or assured return schemes."
+      eyebrow: "Advisory Fee Schedule · SEBI Registered Research Analyst",
+      title: "Advisory Plans & Subscription Packages",
+      description: "Transparent, fee-based research subscriptions. In strict compliance with SEBI Research Analyst regulations, we do not operate profit-sharing models or assured return schemes."
     },
     complianceNotice: {
       title: "SEBI Advisory Fee Compliance Notice",
       content: "All research fees are charged strictly as fixed advisory subscription charges paid through verifiable banking channels. No payment should ever be transferred to individual bank accounts."
-    }
+    },
+    plans: [
+      {
+        id: "starter-equity-cash",
+        name: "Starter Equity Cash",
+        price: "₹4,999",
+        period: "/ Month",
+        badge: "Cash Intraday",
+        popular: false,
+        features: [
+          "1-2 intraday cash calls daily",
+          "Real-time WhatsApp & Telegram delivery",
+          "Stop-loss & target trailing alerts",
+          "Basic portfolio review",
+          "Standard support"
+        ],
+        ctaLabel: "Subscribe to Starter Equity"
+      },
+      {
+        id: "pro-fo-derivatives",
+        name: "Pro F&O Derivatives",
+        price: "₹9,999",
+        period: "/ Month",
+        badge: "Most Popular",
+        popular: true,
+        features: [
+          "Nifty & BankNifty index options",
+          "Stock futures & momentum trade ideas",
+          "Option buying & selling strategies",
+          "1-on-1 risk management guidance",
+          "Dedicated relationship manager"
+        ],
+        ctaLabel: "Subscribe to Pro F&O"
+      },
+      {
+        id: "hni-wealth-swing-vip",
+        name: "HNI Wealth & Swing VIP",
+        price: "₹24,999",
+        period: "/ Quarter",
+        badge: "VIP Multi-Segment",
+        popular: false,
+        features: [
+          "Full multi-segment coverage (Equity + F&O + MCX)",
+          "High-conviction swing trade ideas",
+          "Quarterly multibagger research reports",
+          "Priority telephonic analyst consultation",
+          "SEBI-compliant investor protection"
+        ],
+        ctaLabel: "Subscribe to HNI Wealth VIP"
+      }
+    ],
+    feePrinciples: [
+      {
+        title: "Research-Only Advisory",
+        description: "Fees are charged only for research services, never against promised returns."
+      },
+      {
+        title: "Statutory GST Invoicing",
+        description: "GST invoice issued for every payment made to the official account/UPI ID."
+      },
+      {
+        title: "Designated Secure Channels",
+        description: "Payments are accepted only via the designated secure fast payment channels."
+      },
+      {
+        title: "Dedicated Redressal Tracking",
+        description: "Grievances on billing are tracked through the dedicated complaint status system."
+      }
+    ]
   },
   contact: {
     hero: {
@@ -651,8 +699,8 @@ export const defaultSiteContent: SiteContent = {
       },
       "/services": {
         title: "Services — WeGro Research Analysts",
-        description: "Explore our institutional-grade research coverage across Stock Cash, Basic F&O, F&O Exclusive, and MCX Commodities.",
-        keywords: "Stock Cash Research, F&O Options Hedging, Commodity Research MCX"
+        description: "Explore our institutional-grade research coverage across Equity Cash & Intraday Growth, F&O Derivatives Strategy, Commodity & MCX Advisory, and Swing & Wealth Creation Portfolio.",
+        keywords: "Equity Cash Intraday, F&O Derivatives Strategy, Commodity MCX Advisory, Swing Wealth Creation"
       },
       "/pricing": {
         title: "Pricing & Advisory Subscriptions — WeGro",

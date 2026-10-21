@@ -21,6 +21,13 @@ export default defineConfig({
   server: {
     port: 5173,
     open: false,
+    proxy: {
+      '/api/market': {
+        target: 'https://query1.finance.yahoo.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/market/, ''),
+      },
+    },
   },
   build: {
     chunkSizeWarningLimit: 1600,
